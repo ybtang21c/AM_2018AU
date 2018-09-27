@@ -1,0 +1,117 @@
+%!TEX program = xelatex
+
+%%%%% basic settings
+\input{settings/basicSetting.tex}
+
+%%%%% my font set
+\input{settings/fontSet.tex}
+
+%%%%% my macros
+\input{settings/macros.tex}
+
+\begin{document}
+
+% \thispagestyle{empty}
+% % \input{cover-I.tex}
+% \input{cover-II.tex}
+
+%%%%% level of TOC
+\setcounter{tocdepth}{3}%控制目录显示的层级
+\tableofcontents
+
+%%%%% let the split from list to para compact
+\let\itemize\compactitem 
+\let\enditemize\endcompactitem 
+\let\enumerate\compactenum 
+\let\endenumerate\endcompactenum 
+\let\description\compactdesc 
+\let\enddescription\endcompactdesc
+\setlength{\pltopsep}{0pt}
+
+\bs\bs
+
+\hrule
+
+\bs\bs
+
+{\bf 说明：} {\kaishu本讲义主要作为教师讲课和学生课后复习的参考，与相关教材在基本内容上一致，
+但在知识讲授的次序上无严格关联。}%
+
+\newpage
+
+\setcounter{page}{1}
+
+% \input{selfTest/st-ch1.tex}
+% 
+% \newpage
+
+\input{Chapters/Ch00-Intro.tex}
+
+%\input{Ch01-FuncLim.tex}
+
+% \input{Ch02-Drev.tex}
+
+% \input{UnitTest/UT-Ch01-lim-cont.tex}
+
+% \input{Ch02-limnTest.tex} % e
+% 
+% \input{Ch02-seriesTest.tex} % e
+% 
+% \input{Ch03-appDeriv.tex}
+
+% \input{UnitTest/UT-Ch03-mid.tex}
+% 
+% \input{Ch1-3-midTest.tex} % e
+% 
+% \input{Ch04-inDefInt.tex}
+% 
+% \input{Ch04-selfTest.tex}
+% 
+% \input{dxy-test-50min.tex}
+% 
+% % \input{IntegralTable.tex}
+% 
+% \input{Ch05-Integration.tex}
+% 
+% \input{Ch06-IntegrationApp.tex}
+
+% \input{Ch12-InfiniteSeries.tex}
+
+% \input{Ch07-diffEqu.tex}
+% 
+% \input{onLimits.tex}
+% 
+% % \input{AM-AU-review.tex}
+% 
+% % \input{exam-AU-summery.tex}
+% 
+% \input{Ch08-SpaceAnalGeometry.tex}
+%
+% \input{Ch09-MUFDerivative.tex}
+
+% \input{Ch10-multipleIntegral.tex}
+
+% \input{Ch11-LS-Integration.tex}
+
+% 
+% % \input{Ch7-9-UT.tex}
+% 
+% \input{Ch10.tex}
+% 
+% % \input{Ch10-UT.tex}
+% 
+% \input{Ch11.tex}
+% 
+% % \input{Ch11-UT.tex}
+% 
+% \input{Ch12.tex}
+% 
+% \input{Ch13.tex}
+
+% \input{testABCD-AMII.tex}
+
+% \input{exam-SP-summery.tex}
+
+% \input{tikzBase.tex}
+
+\end{document}

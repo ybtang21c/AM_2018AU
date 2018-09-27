@@ -1,0 +1,54 @@
+%===============macros====================
+\def\ds{\displaystyle}
+% \def\fin{\hfill$\Box$}
+\def\fin{\hfill{\color{green!50!black}$\blacksquare$}}
+\def\bs{\bigskip}
+\def\b{\color{blue!80!yellow}}
+\def\bb{\bf\color{blue}}
+\def\e{\ensuremath{\varepsilon}}
+
+\newcommand{\ba}[1]{\alert{\bf #1}}
+\providecommand{\mbb}[1]{\ensuremath{\mathbb{{#1}}}}
+\providecommand{\mr}[1]{\ensuremath{\mathrm{{#1}}}}
+
+
+\newcommand{\limn}{\ensuremath{\lim\limits_{n\to\infty}}}
+\newcommand*{\limx}[1]{\ensuremath{\lim\limits_{x\to{#1}}}}
+\newcommand*{\limdx}{\ensuremath{\lim\limits_{\Delta x\to 0}}}
+\providecommand{\llim}[1]{\ensuremath{\lim\limits_{#1}}}
+
+\newcommand{\sumn}[1][1]{\ensuremath{\sum\limits_{n=#1}^{\infty}}}
+\providecommand{\sumk}[1]{\ensuremath{\sum\limits_{k={#1}}^n}}
+\providecommand{\suml}{\ensuremath{\sum\limits}}
+
+\newcommand*{\df}[2]{\displaystyle\frac{\,{#1}\,}{\,{#2}\,}}
+\newcommand*{\dx}{\Delta x}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand*{\p}{\ensuremath{\partial}}
+
+\newcommand{\dint}{\ensuremath{\displaystyle\int}}
+
+\newcommand{\ps}[1]{$^{[\mbox{\kaiti\footnotesize 注}]}$
+\marginpar{\kaiti\small\color{blue} {注：}#1}}
+
+%define tab of .25 textwidth and can auto strech
+%\tab{the word}\tab{another word}\tab{3rd one}
+\newlength{\tabcont}
+\newcommand{\tab}[1]{%
+	\settowidth{\tabcont}{#1}%
+	\ifthenelse{\lengthtest{\tabcont < .25\linewidth}}%
+	{\makebox[.25\linewidth][l]{#1}\ignorespaces}%
+	%{\makebox[.5\linewidth][l]{\color{red} #1}\ignorespaces}%
+	{\makebox[.5\linewidth][l]{#1}\ignorespaces}%
+}%
+
+%set fontsize with number of points
+% \newcommand{\fs}[1]{\fontsize{#1 pt}{5pt}\selectfont}
+
+\newtcolorbox{thx}{colframe=blue!40!black,colback=white,breakable}
+
+\newtcolorbox{ext}{colframe=green!60!black,colback=green!20!white,breakable}
+
+\definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
+
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}

@@ -1,0 +1,8 @@
+/old/
+/pdf/
+/.settings/
+/tmp/
+/src/*.pdf
+.project
+
+.texlipse
