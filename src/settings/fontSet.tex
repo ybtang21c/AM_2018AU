@@ -1,4 +1,15 @@
 %-----------------------xeCJK下设置中文字体------------------------------%
+
+% \usepackage{CJKfntef}
+\usepackage{fontspec, xunicode, xltxtra}
+\usepackage{xeCJK}
+%\setmainfont{Times New Roman} 						% 默认的英文字体
+\setmainfont{Cambria} 						% 默认的英文字体
+\setCJKmainfont[ItalicFont={Adobe Kaiti Std}, 		% 默认的中文字体
+	BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Adobe Heiti Std}					% serif是有衬线字体，sans serif无衬线字体。
+\setCJKmonofont{Adobe Fangsong Std}					% 中文等宽字体
+
 %常用字体
 \setCJKfamilyfont{song}{Adobe Song Std}				%Adobe宋 \song
 \newcommand{\song}{\CJKfamily{song}}                

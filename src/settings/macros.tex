@@ -1,3 +1,5 @@
+% !TEX root = ../0-main-LN.tex
+
 %===============macros====================
 \def\ds{\displaystyle}
 % \def\fin{\hfill$\Box$}
@@ -6,6 +8,10 @@
 \def\b{\color{blue!80!yellow}}
 \def\bb{\bf\color{blue}}
 \def\e{\ensuremath{\varepsilon}}
+
+\def\baa{\bf\color{purple}}
+
+\newcommand{\tbd}[1]{{\large\bf\color{red} TBD: #1}}
 
 \newcommand{\ba}[1]{\alert{\bf #1}}
 \providecommand{\mbb}[1]{\ensuremath{\mathbb{{#1}}}}
@@ -28,8 +34,14 @@
 
 \newcommand{\dint}{\ensuremath{\displaystyle\int}}
 
-\newcommand{\ps}[1]{$^{[\mbox{\kaiti\footnotesize 注}]}$
-\marginpar{\kaiti\small\color{blue} {注：}#1}}
+%\newcommand{\ps}[1]{$^{[\mbox{\kaiti\footnotesize 注}]}$
+%\marginpar{\kaiti\small\color{blue} {注：}#1}}
+%\newcommand{\ps}[1]{$^{[\mbox{\kaiti\scriptsize 注}]}$
+%\marginpar{\kaiti\small\color{blue} #1}}
+\newcommand{\ps}[1]{$^{[\mbox{\kaiti\scriptsize 注}]}$
+\marginnote{\vspace{-2em}\begin{flushleft}\kaiti\small\color{blue} #1\end{flushleft} }[0cm]}
+%\newcommand{\pss}[1]{\marginpar{\kaiti\small\color{blue} #1}}
+\newcommand{\pss}[1]{\marginnote{\vspace{-2em}\begin{flushleft}\kaiti\small\color{blue} #1\end{flushleft}}[0cm]}
 
 %define tab of .25 textwidth and can auto strech
 %\tab{the word}\tab{another word}\tab{3rd one}
@@ -52,3 +64,8 @@
 \definecolor{shadecolor}{rgb}{0.9,0.9,0.9}
 
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+
+%%%%% define counters
+\newcounter{theExample}
+\def\exNo{{例\arabic{chapter}-\arabic{theExample}}}
+\def\egz{\stepcounter{theExample} {\bf \exNo .\;}}

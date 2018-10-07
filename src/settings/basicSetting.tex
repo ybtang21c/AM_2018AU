@@ -1,4 +1,7 @@
-\documentclass[a4paper, openany, punct, adobefonts, UTF8]{ctexbook}%{ctexart}
+% !TEX root = ../0-main-LN.tex
+
+\documentclass[a4paper, openany, punct, adobefonts, UTF8]{ctexbook}
+%\documentclass[a4paper, openany, punct, adobefonts, UTF8]{ctexbook}%{ctexart}
 % \documentclass[a4paper, openany, UTF8, punct, adobefonts]{book}
 % \documentclass[a4paper, openany, twocolumn, UTF8, punct,adobefonts]{ctexbook}%{ctexart}
 % \documentclass[a4paper,twocolumn,12pt]{article}
@@ -8,7 +11,9 @@
 % \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 % \usepackage[left={3cm},right={3cm},marginparwidth={2cm},
 % marginparsep={1em},vmargin={2cm},]{geometry}
-\usepackage[left={2cm},right={4cm},marginparwidth={3cm},
+%\usepackage[left={2cm},right={4cm},marginparwidth={3cm},
+%	marginparsep={1em},vmargin={2cm}]{geometry}
+\usepackage[left={2cm},right={5cm},marginparwidth={4cm},
 	marginparsep={1em},vmargin={2cm}]{geometry}
 % \usepackage[top=.6in, bottom=.6in, left=1in, right=1in]{geometry}
 \setlength{\parindent}{0pt}
@@ -25,7 +30,8 @@
 \usepackage{color,xcolor,graphics,framed}
 \usepackage{graphicx}
 \usepackage[justification=centering]{caption} %全局图片标题居中
-%\captionsetup[figure]{textfont=it}
+\captionsetup[figure]{font={small, it},labelfont={up}}
+
 \usepackage{subcaption}
 %\usepackage[labelfont=bf,textfont=normalfont,singlelinecheck=off,%justification=raggedright]{subcaption}
 \usepackage{ulem}	%各种下划线：uline, uuline, uwave, sout, xout
@@ -49,36 +55,35 @@
 %%%%% extended list environments
 \usepackage{paralist}
 
+%%%%% margin note
+\usepackage{marginnote}
 
 %%%%% Chinese Font Config
-% \usepackage{CJKfntef}
-\usepackage{fontspec, xunicode, xltxtra}
-\usepackage{xeCJK}
-%\setmainfont{Times New Roman} 						% 默认的英文字体
-\setmainfont{Cambria} 						% 默认的英文字体
-\setCJKmainfont[ItalicFont={Adobe Kaiti Std}, 		% 默认的中文字体
-	BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Adobe Heiti Std}					% serif是有衬线字体，sans serif无衬线字体。
-\setCJKmonofont{Adobe Fangsong Std}					% 中文等宽字体
+\input{Settings/fontSet.tex}
 
 %%%%% content visibility control
 %用\newif来定义一个判断变量\ifabc，初始值一律为false，
 %则除了\ifabc外，还自动生成两个控制序列\abctrue和\abcfalse；
 %用\abctrue来设置为true，还可以用\abcfalse来设置为false
+%\ifabc和\fi之间的内容由\ifabc来控制是否出现
 \newif\ifvisible
+\newif\ifanswer  % if the answer of homework
+\newif\ifhint % if the hint to exercise
 % \visibletrue
 % \visiblefalse
 
 %%%%% head and foot setting
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% % \columnsep=10mm
-% \fancyhead{}
-% \fancyhead[RE]{\leftmark} % 在偶数页的右侧显示章名
-% \fancyhead[LE,RO]{\rightmark} % 在奇数页的左侧显示小节名
-% % \fancyhead[RE,LO]{}
-% % \fancyhead[LE,RO]{~\thepage~} % 在偶数页的左侧，奇数页的右侧显示页码
-% \fancyfoot[LE,RO]{\color{gray} NUDT-2017-S3\;\date}
+ \usepackage{fancyhdr}
+ \pagestyle{fancyplain}
+ \renewcommand{\chaptermark}[1]{\markboth{\chaptername .\;\ #1}{}}
+ \renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+ \fancyhf{}
+ \fancyhead[RE,LO]{\fangsong\leftmark}
+ \fancyhead[LE,RO]{\fangsong\rightmark}
+ \fancyhead[CE,CO]{} %
+ \fancyfoot[LE,RO]{\color{gray} AM-NUDT-2018-S3，
+ \number\day-\number\month-\number\year}
+ \fancyfoot[LO,RE]{\fangsong -\,\thepage\,-}
 % \renewcommand{\headrulewidth}{2pt}
 % \renewcommand{\footrulewidth}{1pt}
 % \renewcommand{\headrulewidth}{0pt}
@@ -86,6 +91,7 @@
 % colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green,dvipdfm]{hyperref}
 % \excludecomment{student}
 % \includecomment{teacher}
+\clearpage{\pagestyle{empty}\cleardoublepage}
 
 %%%%% page watermark
 \usepackage[all, scale=10, color=purple!5,

@@ -1,53 +1,69 @@
-%!TEX program = xelatex
+% !TEX program = xelatex
+% !TEX encoding = UTF-8  (utf8)
 
 %%%%% basic settings
-\input{settings/basicSetting.tex}
-
-%%%%% my font set
-\input{settings/fontSet.tex}
+\input{Settings/basicSetting.tex}
 
 %%%%% my macros
-\input{settings/macros.tex}
+\input{Settings/macros.tex}
 
 \begin{document}
-
-% \thispagestyle{empty}
-% % \input{cover-I.tex}
-% \input{cover-II.tex}
 
 %%%%% level of TOC
 \setcounter{tocdepth}{3}%控制目录显示的层级
 \tableofcontents
 
+\thispagestyle{empty}
+
 %%%%% let the split from list to para compact
 \let\itemize\compactitem 
 \let\enditemize\endcompactitem 
-\let\enumerate\compactenum 
+\let\enumerate\compactenum
 \let\endenumerate\endcompactenum 
 \let\description\compactdesc 
 \let\enddescription\endcompactdesc
 \setlength{\pltopsep}{0pt}
+%%%%% keep tight between math formula and its contex
+\setlength\abovedisplayskip{0pt}
+\setlength\belowdisplayskip{0pt}
+
+%%%%% if answer is visible
+%\answertrue
+%%%%% if hint is visible
+%\hinttrue
 
 \bs\bs
 
 \hrule
 
 \bs\bs
+{\bf 说明}
 
-{\bf 说明：} {\kaishu本讲义主要作为教师讲课和学生课后复习的参考，与相关教材在基本内容上一致，
-但在知识讲授的次序上无严格关联。}%
+{\kaishu本讲义主要作为教师讲课和学生课后复习的参考，
+与相关教材在基本内容上一致，但在知识讲授的次序上无严格关联。}
+
+\bs
+
+{\kaishu 如发现本讲义上的错漏，或有任何修改完善的建议，
+欢迎随时提出，作者将不胜感激。联系方式如下：
+\begin{itemize}
+	\setlength{\itemindent}{2cm}
+	\item[QQ] 20847517
+	\item[WeChat] blueband21c
+	\item[email] ybtang21c@163.com
+	\item[phone] 84573259(外线)，573259(内线) 
+\end{itemize}
+}
 
 \newpage
 
 \setcounter{page}{1}
 
-% \input{selfTest/st-ch1.tex}
-% 
-% \newpage
+%\input{Test/st-ch1.tex} % 微积分学前自测
 
-\input{Chapters/Ch00-Intro.tex}
+\input{Chapters/Ch00-Intro.tex} % 课程简介与学习要求
 
-%\input{Ch01-FuncLim.tex}
+\input{Chapters/Ch01-FuncLim.tex}  % 函数与极限
 
 % \input{Ch02-Drev.tex}
 
