@@ -9,9 +9,22 @@
 
 \begin{document}
 
-%%%%% level of TOC
-\setcounter{tocdepth}{3}%控制目录显示的层级
-\tableofcontents
+%%%%% if answer is visible
+\answertrue
+%%%%% if hint is visible
+\hinttrue
+%%%%% if it is a test
+\nottesttrue
+
+\ifnottest
+	%%%%% level of TOC
+	\setcounter{tocdepth}{3}%控制目录显示的层级
+	\tableofcontents
+\fi
+
+%%%%% background color of the document
+%\pagecolor{yellow!10!white}
+%\pagecolor{gray!10!white}
 
 \thispagestyle{empty}
 
@@ -27,45 +40,48 @@
 \setlength\abovedisplayskip{0pt}
 \setlength\belowdisplayskip{0pt}
 
-%%%%% if answer is visible
-%\answertrue
-%%%%% if hint is visible
-%\hinttrue
+\ifnottest
+	\bs\bs
 
-\bs\bs
+	\hrule
 
-\hrule
+	\bs\bs 
+	{\bf 说明}
 
-\bs\bs
-{\bf 说明}
+	{\kaishu 本讲义主要作为教师讲课和学生课后复习的参考，
+	与相关教材在基本内容上一致，但在知识讲授的次序上无严格关联。}
 
-{\kaishu本讲义主要作为教师讲课和学生课后复习的参考，
-与相关教材在基本内容上一致，但在知识讲授的次序上无严格关联。}
+	\bs
 
-\bs
+	{\kaishu 如发现本讲义上的错漏，或有任何修改完善的建议，
+	欢迎随时提出，作者将不胜感激。联系方式如下：
+	\begin{description}
+		\setlength{\itemindent}{2cm}
+		\item[QQ] 20847517
+		\item[WeChat] blueband21c
+		\item[email] ybtang21c@163.com
+		\item[phone] 84573259(外线)，573259(内线) 
+	\end{description}
+	}
 
-{\kaishu 如发现本讲义上的错漏，或有任何修改完善的建议，
-欢迎随时提出，作者将不胜感激。联系方式如下：
-\begin{itemize}
-	\setlength{\itemindent}{2cm}
-	\item[QQ] 20847517
-	\item[WeChat] blueband21c
-	\item[email] ybtang21c@163.com
-	\item[phone] 84573259(外线)，573259(内线) 
-\end{itemize}
-}
+	\newpage
+\fi
 
-\newpage
+%{\color{gray} This page is intentionally left blank.}
+%
+%\newpage
 
 \setcounter{page}{1}
 
 %\input{Test/st-ch1.tex} % 微积分学前自测
 
-\input{Chapters/Ch00-Intro.tex} % 课程简介与学习要求
+%\input{Chapters/Ch00-Intro.tex} % 课程简介与学习要求
 
 \input{Chapters/Ch01-FuncLim.tex}  % 函数与极限
 
-% \input{Ch02-Drev.tex}
+%\input{test/test-1.1-1.2.tex}
+
+%\input{Chapters/Ch02-Drev.tex} % 导数与微分
 
 % \input{UnitTest/UT-Ch01-lim-cont.tex}
 

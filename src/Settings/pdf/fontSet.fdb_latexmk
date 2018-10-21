@@ -1,0 +1,10 @@
+# Fdb version 3
+["pdflatex"] 1539956349 "fontSet.tex" "pdf/fontSet.pdf" "fontSet" 1539956350
+  "/usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf" 1366045088 31707 0953c15448e216a6585e92ee639d2dc2 ""
+  "/usr/local/texlive/2013/texmf-var/web2c/xetex/xelatex.fmt" 1379683879 3164672 dcf3aac5e777e64a299902cbc6dcce9f ""
+  "/usr/local/texlive/2013/texmf.cnf" 1369923207 577 cbc827f6294276973a1952e86e8ad73a ""
+  "fontSet.tex" 1539956348 3074 790a23065639a39f6e2d377a2836c3e6 ""
+  "pdf/fontSet.aux" 1539956349 8 a94a2480d3289e625eea47cd1b285758 ""
+  (generated)
+  "pdf/fontSet.log"
+  "pdf/fontSet.pdf"

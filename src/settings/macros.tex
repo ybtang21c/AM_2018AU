@@ -39,7 +39,8 @@
 %\newcommand{\ps}[1]{$^{[\mbox{\kaiti\scriptsize 注}]}$
 %\marginpar{\kaiti\small\color{blue} #1}}
 \newcommand{\ps}[1]{$^{[\mbox{\kaiti\scriptsize 注}]}$
-\marginnote{\vspace{-2em}\begin{flushleft}\kaiti\small\color{blue} #1\end{flushleft} }[0cm]}
+	\marginnote{\vspace{-2em}\begin{flushleft}\kaiti\small\color{blue} #1\end{flushleft} }[0cm]}
+%\newcommand{\ps}[1]{\marginpar{\kaiti\small\color{blue} #1}}
 %\newcommand{\pss}[1]{\marginpar{\kaiti\small\color{blue} #1}}
 \newcommand{\pss}[1]{\marginnote{\vspace{-2em}\begin{flushleft}\kaiti\small\color{blue} #1\end{flushleft}}[0cm]}
 
@@ -68,4 +69,4 @@
 %%%%% define counters
 \newcounter{theExample}
 \def\exNo{{例\arabic{chapter}-\arabic{theExample}}}
-\def\egz{\stepcounter{theExample} {\bf \exNo .\;}}
+\def\egz{\stepcounter{theExample} {\bf \exNo \;}}

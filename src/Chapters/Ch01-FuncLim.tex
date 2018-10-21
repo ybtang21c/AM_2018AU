@@ -1,6 +1,7 @@
 % !TEX root = ../0-main-LN.tex
 
 \setcounter{theExample}{1}
+\setcounter{chapter}{0}
 
 \chapter{函数与极限}
 
@@ -84,8 +85,8 @@ U_0(a,\delta)\quad\mbox{或}\quad U^0(a,\delta)$$
 有时候，我们也会用到所谓的{\kaishu 无穷邻域}，其定义为
 $$\{x\in\mathbb{R}||x-x_0|>M\},\;M>0,$$
 表示与点$x_0$的距离超过$M$的所有点构成的集合。我们可以将无穷领域想象
-成以{\kaishu 无穷远点}\ps{\baa因为无穷远点不是一个数，为了避免误解，我们不会将无穷邻域写成
-类似$U(\infty,M)$的形式}
+成以{\kaishu 无穷远点}\ps{\baa 因为无穷远点不是一个数，为了避免误解，我们不会将无穷邻域
+写成类似 $U(\infty ,M)$的形式}
 （现实中是不存在的）为中心的领域。
 
 最后，还有所谓的{\kaishu 左（右）半邻域}，例如：点$a$的右半邻域为
@@ -388,8 +389,6 @@ $$\sup A_1=\sup A_2=a.$$
 	
 	显然，闭集可以视为其最大开子集和其所有边界点的并。
 	
-	\bs
-
 	\egz 指出以下集合哪些是开集，哪些是闭集？
 	\begin{enumerate}[(1)]
 	  \setlength{\itemindent}{1cm}
@@ -545,7 +544,7 @@ $$f:D\mapsto\mathbb{R},\;(D\subset\mathbb{R})$$
 $$y=f(x),\quad (x\in D\subset\mathbb{R},y\in\mathbb{R}).$$
 
 {\bf （一元函数的）函数图像}是如下的集合：
-\ps{\includegraphics[width=\marginparwidth]{./images/Ch01/C_fx.jpg}}
+\ps{\includegraphics[width=\marginparwidth]{./images/Ch01/yfx.png}}
 $$G=\{(x,f(x))\in\mathbb{R}^2|x\in D\}.$$
 
 {\bf 思考：}一元函数的图像是否一定是平面内的一条曲线？
@@ -569,7 +568,7 @@ $$G=\{(x,f(x))\in\mathbb{R}^2|x\in D\}.$$
 		
 	{\bf 思考：}二元函数和三维的向量值函数可以表示怎样的几何对象？
 	\ifhint
-	\pss{\includegraphics[width=\marginparwidth]{./images/Ch01/S_fxy.jpg}}
+	\pss{\includegraphics[width=\marginparwidth]{./images/Ch01/zfxy.png}}
 	二元函数的图像一般可以表示为三维空间中的一个曲面，而三维的向量值
 	函数则对应于三维空间中的一条曲线。
 	\fi
@@ -646,16 +645,16 @@ $\{f(x)|x\in I\}$有界，
 		\includegraphics[width=\textwidth]{./images/Ch01/xsinx.pdf}
 		\caption{$y=x\sin x$}
 	\end{subfigure}
-	\begin{subfigure}[t]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{./images/Ch01/1xsinx.pdf}
-		\caption{$y=x\sin x$}
-	\end{subfigure}
 
 	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
+		\includegraphics[width=\textwidth]{./images/Ch01/1xsinx.pdf}
+		\caption{$y=\df{\sin x}x$}
+	\end{subfigure}\quad
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
 		\includegraphics[width=\textwidth]{./images/Ch01/sin1x.pdf}
-		\caption{$y=x\sin x$}
+		\caption{$y=\sin\df1x$}
 	\end{subfigure}
 	\caption{\exNo 图（建议熟练掌握）}
 	\label{fig:sinFigures}
@@ -705,9 +704,17 @@ $\{f(x)|x\in I\}$有界，
 	
 	证：对任意$M>0$，令$x_M=\min\left\{\df{\pi}4,\df1{2M+1}\right\}$，
 	由于$x_M<\pi/3$时，$\cos x_M>\df12$，故
-	$$f(x_M)>\df1{2x_M}>\df1{2\df1{2M+1}}=M+\df12>M,$$
+	$$f(x_M)>\df1{2x_M}\geq\df1{2\df1{2M+1}}=M+\df12>M,$$
 	于是由定义可知，$f(x)$无界。\fin
 \end{shaded}		
+
+{\bf 思考：}设$a,b$为常数，证明函数
+$$f(x)=|x-a|-|x-b|$$
+有界。
+
+\ifhint
+提示：给出函数的分段定义，再观察即可。
+\fi
 
 {\bf 2.单调性}
 
@@ -742,7 +749,7 @@ $$f(x_2)-f(x_1)>(x_2-x_1)-2\left|\sin\df{x_2-x_1}{2}\right|
 \ifhint
 答：反之不成立。例如函数
 \ps{\centering
-\includegraphics[width=\marginparwidth]{./images/ch01/pswsRef.pdf}
+\includegraphics[width=0.9\marginparwidth]{./images/ch01/pswsRef.pdf}\\
 可逆但不整体单调}
 $$f(x)=\left\{\begin{array}{ll}
 	x,&0<x<1;\\
@@ -762,6 +769,44 @@ $$[f(x_2)-f(x_1)](x_2-x_1)\leq 0,$$
 
 \ifhint
 答：$y=f(x)$单调递减。
+\fi
+
+\bs
+{\bf 思考：}设$f(x),g(x)$均为区间$(a,b)$上的增函数，证明函数
+\begin{align*}
+	\varphi(x)&=\max_{x\in(a,b)}\{f(x),g(x)\}\\
+	\psi(x)&=\min_{x\in(a,b)}\{f(x),g(x)\}
+\end{align*}
+均为$(a,b)$上的增函数。
+
+\ifhint
+提示：根据$f(x),g(x)$在特定点上的取值大小关系进行讨论。
+
+例如，设$x_2>x_1$，且$f(x_2)\leq g(x_2),f(x_1)\geq g(x_1)$，则
+$$\varphi(x_2)-\varphi(x_1)
+=g(x_2)-f(x_1)\geq f(x_2)-f(x_1)\geq 0.$$
+\fi
+
+\bs
+{\bf 思考：}设$\frac{f(x)}x$在$(0,+\infty)$上单调递减，证明：
+对任意$x>0,y>0$，均有
+$$f(x+y)\leq f(x)+f(y).$$
+
+\ifhint
+提示：$\frac{f(x)}x$在$(0,+\infty)$上单调递减，故对任意
+$x_1\geq x_1>0$，均有
+$$\frac{f(x_2)}{x_2}\leq \frac{f(x_1)}{x_1},$$
+进而
+$$f(x_2)\leq f(x_1)\df{x_2}{x_1}.$$
+不妨设$x\leq y$，则
+$$f(x+y)\leq f(x)\df{x+y}x,\quad
+f(x)\df yx\leq f(y),$$
+于是
+\begin{align*}
+	f(x+y)-f(x)
+	\leq f(x)\left(\df{x+y}x-1\right)
+	=f(x)\df yx\leq f(y).
+\end{align*}
 \fi
 
 \bs
@@ -811,6 +856,50 @@ $f(x+T)=f(x)$。
 显然，若$T$为$f(x)$的一个周期，则任意$n\in\mathbb{Z}$和
 任意$x\in\mathbb{R}$，总成立
 $$f(x+nT)=f(x).$$
+
+\bs
+\egz 设定义在$(-\infty,+\infty)$上的函数$f(x)$
+的图形关于直线$x=a$和$x=b$（$a\ne b$）对称，证明$f(x)$
+是周期函数。
+
+证：$f(x)$的图形关于$x=a$和$x=b$对称意味着，对任意
+$x\in(-\infty,+\infty)$，均有
+$$f(x)=f(2a-x)=f(2b-x),$$
+进而，对任意$x\in(-\infty,+\infty)$，
+$$f(x)=f(2a-x)=f(2b-(2a-x))=f(2(b-a)+x),$$
+因为$b-a\ne0$，故上式说明$f(x)$是以$2(b-a)$为周期的周期函数。\fin
+
+\bs
+{\bf 思考：}设$f(x)$定义在$(-\infty,+\infty)$上，且
+存在$T\ne 0$，使对任意$x\in(-\infty,+\infty)$，总有
+$$f(x+T)=-f(x),$$
+证明：$f(x)$是周期函数。
+
+\ifhint
+提示：$f(x+2T)=-f(x+T)=f(x)$.
+\fi
+
+\bs
+{\bf 思考：}设$\alpha$为无理数，证明：$\sin x+\sin\alpha x$
+不是周期函数。
+
+\ifhint
+提示：用反证法。假设该函数为周期函数，$T>0$为其周期。
+于是
+$$\sin(T+x)+\sin\alpha(T+x)=\sin x+\sin\alpha x,$$
+利用和差化积，可化为
+$$\cos(T+2x)\sin T+\cos\alpha(T+2x)\sin\alpha T=0.$$
+在上式中分别令$x=0$和$x=\pi$，可得
+\begin{align*}
+	\sin2T+\sin\alpha T\cos\alpha T=0,
+	\quad
+	\sin2T+2\cos\alpha(T+\pi)\sin\alpha T=0.
+\end{align*}
+从而可推出
+$$\cos\alpha T=\cos(\alpha T+2\alpha\pi),$$
+因为$\alpha$为无理数，故$2\alpha\pi$不可能是$\cos x$
+的周期，从而可知上式必不成立。至此，可知假设错误。
+\fi
 
 \subsubsection{常用函数}
 
@@ -998,12 +1087,12 @@ $$\arcsin(\sin x)=\arcsin(\sin(-\bar x))=-\bar x=-(2n+1)\pi-x.$$
 $$\arcsin(\sin x)=\left\{\begin{array}{ll}
 -x-\pi, & -\pi\leq x<-\pi/2,\\
 x, & -\pi/2\leq x\leq\pi/2,\\ 
-x+\pi, & \pi/2<x\leq\pi.
+-x+\pi, & \pi/2<x\leq\pi.
 \end{array}\right.$$
 其图像如下
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./Images/Ch01/arcsin-sin.pdf}
+	\includegraphics[width=0.7\textwidth]{./Images/Ch01/arcsin-sin.png}
 	\caption{$\arcsin(\sin x)$的图像}
 	\label{fig:arcsin-sin}
 \end{figure}
@@ -1011,7 +1100,7 @@ x+\pi, & \pi/2<x\leq\pi.
 类似地，我们可以得到$\arccos(\cos x)$的图像(如图\ref{fig:arccos-cos})\ps{请自行练习推导函数表达式}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./Images/Ch01/arccos-cos.pdf}
+	\includegraphics[width=0.7\textwidth]{./Images/Ch01/arccos-cos.png}
 	\caption{$\arccos(\cos x)$的图像}
 	\label{fig:arccos-cos}
 \end{figure}
@@ -1030,6 +1119,15 @@ $$\mbox{原式}=\df x{\sqrt{1-x^2}},\quad x\in(-1,1).$$
 \ifhint
 提示：等式两边都除以$4$，然后取正切，再反复利用如下公式
 $$\tan(A+B)=\df{\tan A+\tan B}{1-\tan A\tan B}.$$
+\fi
+
+\bs
+{\bf 思考：}化简如下的公式
+$$\arctan\df13+\arctan\df17+\ldots+\arctan\df1{n^2+n+1}$$
+
+\ifhint
+提示：
+$\tan\left(\arctan\df1{n}-\arctan1{n+1}\right)=\df1{n^2+n+1}.$
 \fi
 
 \bs
@@ -1059,6 +1157,21 @@ $$P_n(x)=\sum_{i=0}^na_ix^i,
     $$P_n(x)=a_n\prod_{i=1}^n(x-x_i)=a_n(x-x_1)(x-x_2)\ldots(x-x_n),$$
     \item 已知$P_n(x)$在$n+1$个点处的值， 可以唯一确定$P_n(x)$。
   \end{enumerate}
+
+\bs
+{\bf 思考：}证明任何正系数多项式函数$P(x)$都不可能同时满足
+$P(7)=5$和$P(15)=9$。
+
+\ifhint
+提示：反证法。设
+$$P(x)=\sum\limits_{k=0}^na_kx^k,$$
+则
+\begin{align*}
+	P(15)-P(7)=\sum\limits_{k=0}^na_k\left[(15)^k-7^k\right],
+\end{align*}
+不难验证，对任意$k=1,2,\ldots,n$，$(15)^k-7^k$均可以被$8$整除，
+因此$P(15)-P(7)$也可以被$8$整除，从而与已知矛盾。
+\fi
 
 \bs
 
@@ -1112,9 +1225,10 @@ x}{\cosh x}, \ldots$$
 	  请给出：
 	  \begin{enumerate}[(1)]
 	    \item $Q$的极角$\theta$与$P$的横坐标$x_P$的对应关系；
-	    \item $Q$的坐标$(x_Q,y_Q)$与$P$的坐标$(x_P,y_P)$的对应关系；
+	    \item 将$Q$的坐标$(x_Q,y_Q)$表示为$P$的坐标$(x_P,y_P)$的函数；
 	    \item 思考（选作）：参考右图，给出将一个单位球面映射为二维平面的
-	    {\it 三维球极投影映射}，写出具体的对应关系。
+	    {\it 三维球极投影映射}，将球面上一点的坐标表示为对应二维平面
+	    上的点的函数。
 	  \end{enumerate}
 	\begin{center}
 		\resizebox{!}{5cm}{\includegraphics{./images/ch01/sphereline2D.pdf}}\quad
@@ -1210,8 +1324,9 @@ $\{a_n\}$的实质是定义在$\mathbb{Z}_+$上的函数，因此数列也被称
 为了表达这种“无限靠近”，数学上可以这样来解释：
 对于以$a$为中心的任意小的邻域$(a-\e,a+\e)$
 （图上的蓝色阴影部分），只要把$n$取得{\it 充分大}（$N$的意义就是为了界定这个所谓的充分大
-\ps{显然，$\e$取得越小通常意味着$N$要取得越大，但必须注意的是$N$和$\e$
-之间并不是简单的函数对应关系，因为如果某个$N$可以满足命题要求，
+\ps{显然，$\e$取的越小通常意味着$N$要取的越大，
+但必须注意的是$N$和$\e$
+之间并不是简单的函数关系，因为如果某个$N$可以满足命题要求，
 则$N$加任意的正常数显然也满足}
 )，则$a_n$都将落在$(a-\e,a+\e)$之内。
 	
@@ -1228,10 +1343,14 @@ $\{a_n\}$的实质是定义在$\mathbb{Z}_+$上的函数，因此数列也被称
 
 \begin{shaded}
 	\pss{\centering
-	\includegraphics[width=0.7\marginparwidth]{./images/ch01/800px-Karl_Weierstrass.jpg}\\
+	\includegraphics[width=0.7\marginparwidth]{./images/ch01/Weierstrass.jpeg}\\
 	\href{https://en.wikipedia.org/wiki/Karl_Weierstrass}{K. Weierstrass(1815-1897)}\\
-	\includegraphics[width=0.7\marginparwidth]{./images/ch01/795px-WeierstrassFunction.svg.png}\\
-	著名的\href{https://en.wikipedia.org/wiki/Weierstrass_function}{Weierstrass函数}，处处连续，但处处不可微
+	 \includegraphics[width=0.7\marginparwidth]{./images/ch01/WeierstrassFunction.png}\\
+	著名的\href{https://en.wikipedia.org/wiki/Weierstrass_function}
+	{Weierstrass函数}
+	$$f(x)=\sum\limits_{n=0}^{\infty}a^n\cos(b^n\pi x)$$
+	$$\left( 0<a<1,\;ab>1+\frac32\pi\right)$$
+	处处连续，但处处不可导
 	}
 
 	关于极限的定义，历史上曾经有过很长时间的讨论，当时的许多数学家都尝试
@@ -1282,41 +1401,42 @@ $$\forall\e>0,\exists N\in\mathbb{Z}_+,\forall n>N,
 \begin{enumerate}
   \setlength{\itemindent}{1cm}
   \item[(2)] $\forall\e>0$，$\exists N$，$\forall
-  n>N$，$|a_n-a|\leq\e.$ \hfill{$\surd$} 
+  n>N$，$|a_n-a|\leq\e.$ 
   
-  \ifhint\quad 提示：只要强调$n>N$为正整数即可，
+  \ifhint\quad 提示：等价。只要强调$n>N$为正整数即可，
   根据需要$N$总是可以取得更大，无所谓是不是正整数。\fi
 
   \item[(3)] $\exists N\in\mathbb{Z}_+$，$\forall\e>0$，$\forall
-  n>N$，$|a_n-a|<\e.$ \hfill{$\times$}
+  n>N$，$|a_n-a|<\e.$ 
   
-  \ifhint\quad 提示：(3)可以推出(1)，但反之不然。事实上，由(3)可以推出，
+  \ifhint\quad 提示：不等价。(3)可以推出(1)，但反之不然。事实上，由(3)可以推出，
   $\{a_n\}$仅有有限项的值不等于$a$，但显然不是所有收敛的数列都有此
   性质，例如$\{1/n\}$\fi
 
   \item[(4)] $\forall\e>0$，仅有有限多个$n$，使得$|a_n-a|\geq\e.$
-  \hfill{$\surd$}
   
-  \ifhint\quad 提示：由(4)，仅有有限多个$a_n$不满足$|a_n-a|<\e$，
+  \ifhint\quad 提示：等价。由(4)，仅有有限多个
+  $a_n$不满足$|a_n-a|<\e$，
   则我们总可以取其中下标最大的下标作为$N$，
   则当$n>N$时，总有$|a_n-a|<\e$，即(1)成立；反之，由
   (1)，最多有不超过$N$个$a_n$不满足$|a_n-a|<\e$。
   故(4)与（1）等价。\fi
   
   \item[(5)] $\forall\e>0$，总有无穷多个$n$，使得$|a_n-a|<\e.$
-  \hfill{$\times$} 
   
-  \ifhint\quad 提示：考虑反例：$a_n=(-1)^n$，取$a=1$。\fi
+  \ifhint\quad 提示：不等价。考虑反例：$a_n=(-1)^n$，取$a=1$。\fi
 
   \item[(6)] $\forall\e>0$，要使$|a_n-a|<\e$，
-  只须$n$充分大 \hfill{$\surd$}
+  只须$n$充分大
   
-  \ifhint\quad 提示：语序有变化，但逻辑关系和含义并未发生改变。\fi
+  \ifhint\quad 提示：等价。语序有变化，
+  但逻辑关系和含义并未发生改变。\fi
 
   \item[(7)] $\forall\e>0,\exists N\in\mathbb{Z}_+,\forall
-  n>N,|a_n-a|<2\e$\hfill{$\surd$}
-  
-  \ifhint\quad 提示：由于$\e$是任意的，$2\e$和$\e$的取值范围并没有区别，都是
+  n>N,|a_n-a|<2\e$
+
+  \ifhint\quad 提示：等价。由于$\e$是任意的，
+  $2\e$和$\e$的取值范围并没有区别，都是
   $(0,+\infty)$！事实上，在用定义证明极限时，完全可以使用$C\e$，
   其中$C\in\mathbb{R}$为给定的常数，这是数列极限最常用的一种等价定义。\fi
 \end{enumerate}
@@ -1347,7 +1467,7 @@ $\left[1/\sqrt{\e}\right]+1>1/\sqrt{\e}$）。
 \ps{直接给出与$\e$相关的$N$的值，是最直接的说明$N$的存在性的途径}，
 则对任意$n>N$，有
 $$\left|(-1)^n\df1{n^2}-0\right|=\df1{n^2}<\df1{N^2}
-<\df1{(\sqrt{\e})^2}=\e,$$
+<\df1{\left(\frac1{\sqrt{\e}}\right)^2}=\e,$$
 由极限的定义，即证。
 \fin 
 
@@ -1390,6 +1510,51 @@ $$||a_n|-|a||\leq|a_n-a|<\e,$$
 \ifhint 
 提示：有两种可行的途径：一是利用极限定义的反面说法（或其反命题），
 二是利用有界性（后面我们将证明收敛的数列必有界）。
+\fi
+
+\bs
+{\bf 思考：}证明：$\limn\df{n^2}{2^n}=0$.
+
+\ifhint
+证法一：注意到
+$$2^n=(1+1)^n=1+n+\df{n(n-1)}2+\df{n(n-1)(n-2)}6+\ldots+1
+>\df{n(n-1)(n-2)}6.$$
+故对任意$\e>0$，令$N=\left[\frac6{\e}\right]+4$，则对任意$n>N$有
+\begin{align*}
+	\left|\df{n^2}{2^n}\right|
+	&<\df{n^2}{\frac{n(n-1)(n-2)}6}
+	=\df{6n}{(n-1)(n-2)}=\df{6}{n-3+\frac2n}\\
+	&<\df6{n-3}<\df6{N-3}=\df6{\left[\frac6{\e}\right]+1}
+	<\df6{\frac{6}{\e}}=\e.
+\end{align*}
+即证。\fin
+
+证法二：记$a_n=\df{n^2}{2^n}$，则$a_{n+1}
+=\left(\df{n+1}{n}\right)^2\df12a_n$。
+
+易证$\limn\left(\df{n+1}n\right)^2=1$，故对
+$\e_1=\df12$，存在$N_1\in\mathbb{Z}_+$，使对
+任意$n>N_1$，有
+$$\left|\left(\df{n+1}n\right)^2-1\right|<\df12
+\quad\Rightarrow\quad \left(\df{n+1}n\right)^2<\df32.$$
+由此可知，对任意$n>N_1$，有
+\begin{align*}
+	a_{n+1}&=\left(\df{n+1}n\right)^2\df12a_n
+	<\df34a_n\\
+	&<\left(\df34\right)^2a_{n-1}<\ldots<
+	\left(\df34\right)^{n-N_1}a_{N_1+1},
+\end{align*}
+于是对任意$\e>0$，令$N=N_1
++\left[\log_{\frac34}\df{\e}{a_{N_1+1}}\right]+1$，
+则对任意$n>N$，有
+\begin{align*}
+	|a_{n+1}|<\left(\df34\right)^{n-N_1}a_{N_1+1}
+	<\left(\df34\right)^{\log_{\frac34}\frac{\e}{a_{N_1+1}}}a_{N_1+1}
+	=\e,
+\end{align*}
+由此可知$\limn a_n=0$。\fin
+
+证法三：将该问题转化为求函数的极限：$\limx{+\infty}\df{x^2}{2^x}$
 \fi
 
 \begin{shaded}
@@ -1466,8 +1631,8 @@ $$|a-b|\leq|a_n-a|+|a_n-b|<2\e,$$
 目前使用的极限定义其实也是一种约定。}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./Images/Ch01/1-0.9n.jpg}
-	\caption{一个不收敛的数列}
+	\includegraphics[width=0.5\textwidth]{./Images/Ch01/an109.pdf}
+	\caption{一个不收敛的数列：$\{(-1)^n-(0.9)^n\}$}
 	\label{fig:an-diverse}
 \end{figure}
 
@@ -1491,8 +1656,8 @@ $$|a_n|\leq M,$$
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{./Images/Ch01/sin2nn.jpg}
-	\caption{一个收敛的数列}
+	\includegraphics[width=0.5\textwidth]{./Images/Ch01/095nsin2n.pdf}
+	\caption{一个收敛的数列：$\{(-0.95)^n\sin2n\}$}
 	\label{fig:an-converge}
 \end{figure}
 
@@ -1517,7 +1682,7 @@ $$|a_n|\leq M,$$
 \end{shaded}
 
 \bs
-{3. 保号性}
+{\bf 3. 保号性}
 \begin{thx}
 	{\bf 定理：}设$\lim\limits_{n\to\infty}a_n=a>0$，则存在$N$，
 	对任意$n>N$，$a_n>0$	
@@ -1555,7 +1720,7 @@ $$a_n\geq b_n\,(n\in\mathbb{Z}_+)\quad\Rightarrow
 $\{a_{n_k}\}$，其中$\{n_k\}$必须是一个严格单调递增的正整数列。
 显然，对任意$k\in\mathbb{Z}_+$，$n_k\geq k$。
 
-例如，数列$\{a_n\}$的{\it 奇子列}和{\it 偶子列}可分别
+例如，数列$\{a_n\}$的{\it 偶子列}和{\it 奇子列}可分别
 记为$\{a_{2k}\}$、$\{a_{2k-1}\}$，有时也直接写为
 $\{a_{2n}\}$、$\{a_{2n-1}\}$。
 
@@ -1593,7 +1758,7 @@ $$|a_{n_k}-a|<\e.$$
 
 \egz 证明数列$\{(-1)^n\}$发散。
 
-证：取该数列的偶子列和奇子列，分别即为$\{a_{2k}\}$和$\{a_{2k-1}\}$。显然，
+证：取该数列的偶子列和奇子列，分别为$\{a_{2k}\}$和$\{a_{2k-1}\}$。显然，
 对任意$k\in\mathbb{Z}_+$，都有
 $$a_{2k}\equiv 1,\quad a_{2k-1}\equiv -1,$$
 因此
@@ -1674,17 +1839,18 @@ $$\lim\limits_{k\to\infty}a_{2k}=1,\quad
 合并起来能够完全覆盖原数列，
 或最多不能覆盖原数列中有限多个数，且这些子列均收敛于相同的极限，
 则原数列收敛。
-例如：{\it 若子数列$\{a_{3n}\},\{a_{3n-1},\{a_{3n-2}\}\}$
+例如：{\it 若子数列$\{a_{3n}\},\{a_{3n-1}\},\{a_{3n-2}\}$
 都收敛于$a$，
 则$\{a_{n}\}$收敛于$a$。}
 
 \begin{shaded}
 {\bf Cauchy命题}
 
-以下结论不容易证明，但结论很直观，了解即可：
+以下结论不容易证明，但结论很直观，了解即可
+\ps{证明参见菲赫金哥尔茨《微积分学教程》第一卷第一章第2节}：
 \begin{tcolorbox}
 	{\bf Cauchy命题}：若$\limn a_n=a$，
-	则$\limn\df{a_1+a_2+\ldots+a_n}n=a$。\ps{证明参见菲赫金哥尔茨《微积分学教程》第一卷第一章第2节}
+	则$\limn\df{a_1+a_2+\ldots+a_n}n=a$。
 \end{tcolorbox}
 
 这个结论也称为Cauchy{\it 极限}，有着非常重要的应用，例如，今后我们会学习
@@ -1771,7 +1937,9 @@ $$\limn\ln \sqrt[n]{a_n}=\limn\df1n\ln a_n=\limn\df1n\left(
 {\bf 1.\;$x$趋于无穷时的函数极限}
 
 参考数列极限的定义，我们可以给出函数当$x$趋于无穷时的极限的定义，这里
-我们使用了较简略的写法：
+我们使用了较简略的写法
+\ps{$x\to\infty$表示同时趋向正负无穷，其实质是远离任何一个
+固定的点，只有当趋于正负无穷的极限相同时该极限才有意义}：
 \begin{thx}
 	\begin{enumerate}%[(1)]
 	  \item $\limx{+\infty}f(x)=A\quad\Leftrightarrow\quad
@@ -1780,8 +1948,6 @@ $$\limn\ln \sqrt[n]{a_n}=\limn\df1n\ln a_n=\limn\df1n\left(
 	  \forall \e>0,\exists X<0,\forall x<X,|f(x)-A|<\e$
 	  \item $\limx{\infty}f(x)=A\quad\Leftrightarrow\quad
 	  \forall \e>0,\exists X>0,\forall |x|>X,|f(x)-A|<\e$
-	  \ps{$x\to\infty$表示同时趋向正负无穷，其实质是远离任何一个
-  	  固定的点，只有当趋于正负无穷的极限相同时该极限才有意义}
 	\end{enumerate}
 \end{thx}
 
@@ -1824,7 +1990,9 @@ $$\left|\df1{\sqrt x}-0\right|=\df1{\sqrt x}<\df1{1/\e}=\e,$$
 \bs
 
 {\bf 2.\;$x$趋于有限值时的函数极限}
-
+\pss{$U_0^+(x_0,\delta)=(x_0,x_0+\delta)$，也即$x_0$
+	  的右半$\delta$邻域；同理，$U_0^-(x_0,\delta)$表示
+	  $x_0$的左半$\delta$邻域}
 \begin{thx}
 	\begin{enumerate}%[(1)]
 	  \item $\limx{x_0}f(x)=A\quad\Leftrightarrow\quad
@@ -1833,9 +2001,6 @@ $$\left|\df1{\sqrt x}-0\right|=\df1{\sqrt x}<\df1{1/\e}=\e,$$
 	  \item $\limx{x_0^+}f(x)=A\quad\Leftrightarrow\quad
 	  \forall \e>0,\exists\delta>0,\forall x\in
 	  U_0^+(x_0,\delta),|f(x)-A|<\e.$
-	  \pss{$U_0^+(x_0,\delta)=(x_0,x_0+\delta)$，也即$x_0$
-	  的右半$\delta$邻域；同理，$U_0^-(x_0,\delta)$表示
-	  $x_0$的左半$\delta$邻域}
 	  \item $\limx{x_0^-}f(x)=A\quad\Leftrightarrow\quad
 	  \forall \e>0,\exists\delta>0,\forall
 	  x\in U_0^-(x_0,\delta),|f(x)-A|<\e.$
@@ -1939,15 +2104,15 @@ $$|f(x)-A|<\e.$$
 	
 	证：任取$x_0,A\in\mathbb{R}$，不妨设$A\ne 0$（$A\ne 1$的情况同理可证）。
 	
-	令$\e_0=\df{|A|}2$，对任意$\delta>0$，由有理数的稠密性，总可以在
-	$U_0(x_0,\delta)$内取得某个有理数$x^*$，从而$D(x^*)=0$，于是
+	令$\e_0=\df{|A|}2$，对任意$\delta>0$，由无理数的稠密性，总可以在
+	$U_0(x_0,\delta)$内取得某个无理数$x^*$，从而$D(x^*)=0$，于是
 	$$|D(x^*)-A|=|A|>\e_0,$$
 	由上述的定义，可知当$x\to x_0$时$D(x)$无极限，又由$x_0$的任意性，可知
 	$D(x)$处处无极限。\fin
 
 	\bs
 	
-	{\bf 思考题：}证明：函数$f(x)=xD(x)$只在$x=0$处收敛。
+	{\bf 思考：}证明：函数$f(x)=xD(x)$只在$x=0$处收敛。
 
 	注意，证明应该包括两个部分，一是证明$xD(x)$在$x=0$处收敛，二是证明
 	$xD(x)$在任意$x\ne 0$处发散。
@@ -1957,25 +2122,74 @@ $$|f(x)-A|<\e.$$
 
 参考数列极限的性质，可以类似地证明函数极限的下列性质。
 
-\begin{thx}
-	{\bf 唯一性：}函数极限若存在，必唯一。
-	
-	{\bf 有界性：}
+为了指出这些性质与数列极限的类似性质在表述上的差异，
+这里分别以$x\to+\infty$和$x\to x_0$
+两种情形为例叙述一遍（证明略）：
+
+{\kaishu 情形1.} $x\to+\infty$时函数极限的性质：
+
+设$x\to+\infty$时函数$f(x)$收敛，则：
+\begin{itemize}
+	\setlength{\itemindent}{1cm}
+	\item {\kaishu 唯一性：}$\limx{+\infty}f(x)$唯一确定。
+	\item {\kaishu 有界性：}存在$M$和$X$，对任意$x>X$有，
+	$|f(x)|\leq M$。
+	\item {\kaishu 保号性：}
 	\begin{enumerate}[(1)]
-	  \setlength{\itemindent}{1cm}
-	  \item 若$\limx{+\infty}f(x)=A$，则$f(x)$当$x$充分大时有界
- 	  \ps{\vspace{-2em}当$x$充分大时，也即：存在$X$，当$x>X$时}
-	  \item 若$\limx{x_0}f(x)=A$，则$f(x)$当$x$充分靠近$x_0$时有界
- 	  \ps{当$x$充分靠近$x_0$时，也即：存在$\delta>0$，
- 	  当$x\in U_0(x_0,\delta)$时}
+		\setlength{\itemindent}{1cm}
+		\item 若$\limx{+\infty}f(x)=A>0$，则
+		存在$X$，对任意$x>X$，$f(x)>0$.
+		\item 若存在$X$，对任意$x>X$，总有$f(x)>0$，
+		则$\limx{+\infty}f(x)\geq 0$.
 	\end{enumerate}
+\end{itemize}
+
+关于保号性，可以参考数列极限的保号性写出若干推论，这里不再赘述。
+
+{\kaishu 情形2.}$x\to x_0$时函数极限的性质：
+
+设$x\to x_0$时函数$f(x)$收敛，则：
+\begin{itemize}
+	\setlength{\itemindent}{1cm}
+	\item {\kaishu 唯一性：}$\limx{x_0}f(x)$唯一确定。
+	\item {\kaishu 有界性：}存在$M$和$\delta>0$，对任意
+	$x\in U_0(x_0,\delta)$有，$|f(x)|\leq M$。
+	\item {\kaishu 保号性：}
+	\begin{enumerate}[(1)]
+		\setlength{\itemindent}{1cm}
+		\item 若$\limx{+\infty}f(x)=A>0$，则
+		存在$\delta>0$，对任意$x\in U_0(x_0,\delta)$，$f(x)>0$.
+		\item 若存在$\delta>0$，对任意$x\in U_0(x_0,\delta)$，
+		总有$f(x)>0$，则$\limx{+\infty}f(x)\geq 0$.
+	\end{enumerate}
+\end{itemize}
+
+注意到以上两种情形下函数极限的性质有很大相似性，对于更一般的
+极限的基本性质，我们可以总结如下：
+
+\begin{thx}
+	{\bf $x\to\Delta$时函数极限的性质：}
+
+	设$x\to\Delta$时函数$f(x)$收敛，则：
+	
+	{\bf 唯一性：}$\limx{\Delta}f(x)$唯一确定。
+	
+	{\bf 有界性：}存在$M$，使当$x$充分靠近$\Delta$时，
+	$|f(x)|\leq M$。
+	
 	{\bf 保号性：}
 	\begin{enumerate}[(1)]
- 	  \setlength{\itemindent}{1cm}
-	  \item 若$\limx{+\infty}f(x)=A>0$，则当$x$充分大时，$f(x)>0$
-	  \item 若$\limx{x_0}f(x)=A>0$，则当$x$充分靠近时$x_0$时，$f(x)>0$
+		\setlength{\itemindent}{1cm}
+		\item 若$\limx{\Delta}f(x)=A>0$，则
+		当$x$充分靠近$\Delta$时，$f(x)>0$.
+		\item 若当$x$充分靠近$\Delta$时，
+		总有$f(x)>0$，则$\limx{\Delta}f(x)\geq 0$.
 	\end{enumerate}
 \end{thx}
+
+以上的$\Delta$可以任意代表$\infty,+\infty,-\infty,x_0,x_0^+,
+x_0^-$之一。而所谓{\kaishu $x$充分靠近$\Delta$}则需要根据$\Delta$
+的不同有不同的表述。
 
 函数极限有界性和数列极限有界性的叙述存在的差异：
 数列收敛则数列整体有界（数列极限中的数列整体都有界，
@@ -1986,12 +2200,12 @@ $$|f(x)-A|<\e.$$
 类似地，$\limx{1}x=1$，但$x$显然也是无界的。
 
 \bs
-\begin{thx}
-	{\bf 函数极限与数列极限的关系}（{\kaishu Henie定理}）：
-	\pss{Henie(1821-1881)，德国数学大师Weierstrass的学生。
+\pss{Henie(1821-1881)，德国数学大师Weierstrass的学生。
 	1872年证明：有界闭区间上的连续函数必是一致连续的。
 	也即，如果把函数的定义限定在闭区间上，
 	连续和一致连续的差别将随之消失。} 
+\begin{thx}
+	{\bf 函数极限与数列极限的关系}（{\kaishu Henie定理}）：
 	已知$\limx{x_0}f(x)=A$，若若数列$\{x_n\}$取值在$f(x)$的定义域内，
 	且满足：$x_n\to x_0(n\to$ $\infty)$，$x_n\ne 0\;
 	(n\in\mathbb{Z}_+)$，
@@ -2018,7 +2232,7 @@ Henie定理的用途更多地是证明函数极限不存在。
 \bs
 \egz 证明：$f(x)=\sin\df 1x$当$x\to 0$时无极限。
 
-证：令
+证：令\ps{如图\ref{fig:sin1x1-1}}
 $$x^{(1)}_n=\df1{n\pi},\quad
 x^{(2)}_n=\df1{2n\pi+\frac{\pi}2},\quad n\in\mathbb{Z}_+$$ 
 显然，$\limn x^{(1)}_n=\limn x^{(2)}_n=0$，且
@@ -2026,7 +2240,7 @@ $$f(x^{(1)}_n)\equiv0,\quad f(x^{(2)}_n)\equiv1,$$
 进而
 $$\limn f(x^{(1)}_n)=0\ne1=\limn f(x^{(2)}_n),$$
 由Henie定理，即知极限不存在。\fin
-	
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./Images/Ch01/sin1x.pdf}
@@ -2037,8 +2251,6 @@ $$\limn f(x^{(1)}_n)=0\ne1=\limn f(x^{(2)}_n),$$
 	\label{fig:sin1x1-1}
 \end{figure}
 
-提示：如图\ref{fig:sin1xa}
-
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{./Images/Ch01/sin1xa.pdf}
@@ -2046,6 +2258,7 @@ $$\limn f(x^{(1)}_n)=0\ne1=\limn f(x^{(2)}_n),$$
 	\label{fig:sin1xa}
 \end{figure}
 
+\bs
 \egz 用Henie定理证明Dirichlet函数在任意点处无极限。
 	
 证：
@@ -2083,9 +2296,7 @@ $$\limn D(x_n^{(1)})=1\ne0=\limn D(x_n^{(2)}),$$
 以下$\Delta$表示$x_0,x_0^+,x_0^-,\infty,+\infty,-\infty$
 中的之一。
 
-\begin{thx}
-	若$\limx{\Delta}f(x)=0$，则称{\bf $f(x)$为$x\to\Delta$时的无穷小}，记为
-	\pss{\baa 引入类似$\circ(\cdot)$的符号，是为了运算时的方便，但是必须
+\pss{\baa 引入类似$\circ(\cdot)$的符号，是为了运算时的方便，但是必须
 	意识到其意义并不是指一个确定的函数，而是说等号左边的函数具有特定的性质，
 	或者说，$\circ(\cdot)$应该被理解为一类函数。
 	换个角度来说，“$=\circ(\cdot)$”更应该被视为一个整体，
@@ -2093,6 +2304,8 @@ $$\limn D(x_n^{(1)})=1\ne0=\limn D(x_n^{(2)}),$$
 	$f(x)$是满足$\limx{\Delta}f(x)=0$的众多函数中的一个。\\
 	一般来说，下面的写法总是错误的：
 	$$\circ(1)-\circ(1)=0\;(x\to\Delta)$$}
+\begin{thx}
+	若$\limx{\Delta}f(x)=0$，则称{\bf $f(x)$为$x\to\Delta$时的无穷小}，记为
 	$$f(x)=\circ(1),\;(x\to\Delta).$$
 \end{thx}
 
@@ -2112,13 +2325,13 @@ $$\limx{\Delta}f(x)=A\quad\Leftrightarrow\quad f(x)=A+\circ(1)$$
 
 \bs
 进一步地，由无穷小的定义，不难证明：
+\pss{$f(x)$当$x\to\Delta$时有界，是指$f(x)$在$\Delta$
+	  的某邻域内有界}
 \begin{thx}
 	{\bf 无穷小的性质：}
 	\begin{enumerate}
 	  \item 在同一过程中的{\it 有限多个}无穷小的和也是该过程中的无穷小；
 	  \item 在同一过程中的有界函数与无穷小的乘积也是该过程中的无穷小；
-	  \ps{$f(x)$当$x\to\Delta$时有界，是指$f(x)$在$\Delta$
-	  的某邻域内有界}
 	  \item 在同一过程中的任意多个无穷小的乘积也是该过程中的无穷小。
 	\end{enumerate}
 \end{thx}
@@ -2752,12 +2965,12 @@ $$\left|\sqrt{n+1}-\sqrt{n}-0\right|
 \fi
 
 \bs
+\pss{\centering
+\includegraphics[width=0.9\marginparwidth]{./images/ch01/sqrtna.pdf}\\
+不同$a$值（100,50,10,1,0.1,0.01）对应的数列$\{\sqrt[n]a\}$
+}
 \begin{thx}
 	{\bf 常用极限：}若$a>0$为常数，则$\limn \sqrt[n]{a}=1$。
-	\pss{\centering
-	\includegraphics[width=\marginparwidth]{./images/ch01/sqrtna.pdf}\\
-	不同$a$值（100,50,10,1,0.1,0.01）对应的数列$\{\sqrt[n]a\}$
-	}
 \end{thx}
 证：$a=1$时结论显然成立。
 
@@ -2774,12 +2987,12 @@ $$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
 至此，证毕。\fin
 
 利用本例类似的方法，可以证明：
-\begin{thx}
-	{\bf 常用极限：}$\limn\sqrt[n]n=1.$
-	\pss{\centering
-	\includegraphics[width=\marginparwidth]{./images/ch01/sqrtnn.pdf}\\
+\pss{\centering
+	\includegraphics[width=0.9\marginparwidth]{./images/ch01/sqrtnn.pdf}\\
 	数列$\{\sqrt[n]n\}$
 	}
+\begin{thx}
+	{\bf 常用极限：}$\limn\sqrt[n]n=1.$
 \end{thx}
 请作为思考题加以练习。
 
@@ -2819,9 +3032,9 @@ $$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
 \end{thx}
 
 利用该准则，我们可以得到另一个常用的重要极限：
+\pss{\baa 如未特别说明，以下三角函数中的$x$均取弧度值！}
 \begin{thx}
 	{\bf 常用极限：}$\limx{0}\df {\sin x}x=1$.
-	\pss{\baa 如未特别说明，以下三角函数中的$x$均取弧度值！}
 \end{thx}
 
 证：如图，
@@ -2846,8 +3059,22 @@ $\lim\limits_{\theta\to0^-}\df{\sin\theta}{\theta}=1$。
 
 综上即证。\fin
 
-\bs
+\begin{shaded}
+	{\bf Cauchy的数列}
 
+	在求解圆周率的计算过程中，诞生了一个重要的方法——割圆法。
+	其基本思想是，如果用圆的内接正$n$边形来近似圆，则随着$n$的不断增大，
+	二者周长和面积的误差将都越来越小，最终趋于零。
+
+	据说，Cauchy给出了下面的数列：
+	$$\{a_n\}=\left\{r^2n\cos\df{\pi}n\sin\df{\pi}n\right\}.$$
+	不难验证该数列表示的是半径为$r$的正$n$边形的面积。利用极限
+	$\limx0\df{\sin x}x=1$，不难验证：
+	$$\limn a_n=\pi r^2\limn\df{\sin\frac{\pi}n}
+	{\frac{\pi}n}\limn\cos\df{\pi}n=\pi r^2.$$
+\end{shaded}
+
+\bs
 从这个极限出发可得到的一些常用的极限：
 
 {\bf 课堂练习：}计算下列极限
@@ -2911,9 +3138,9 @@ $$\left|a_1+a_2\df{\sin 2x}{\sin x}+\ldots
 
 \subsection{单调有界准则（原理）}
 
+\pss{单调有界可以理解为单调递增有上界或单调递减有下界}
 \begin{thx}
 	{\bf 单调有界准则I：}单调有界
-	\ps{单调有界可以理解为单调递增有上界或单调递减有下界}
 	数列必收敛。
 \end{thx}
 
@@ -2934,9 +3161,9 @@ $$a_N\leq a_n\leq A\quad\Rightarrow\quad |a_n-A|<\e,$$
 单调有界原理可以证明极限的存在性（或数列的收敛性），
 但常常无法给出具体的极限值。例如下面的极限：
 
+\pss{证明参见KD教材2.2.4节例7，不要求掌握}
 \begin{thx}
 	{\bf 常用极限：}$\left\{\left(1+\df1n\right)^n\right\}=e$.
-	\ps{证明参见KD教材2.2.4节例7，不要求掌握}
 \end{thx}
 
 该极限结果的常数$e$称为{\kaishu Napier常数}
@@ -2987,7 +3214,7 @@ $$\left(1+\df1n\right)^n\cdot 1<
 	=&\limn \underbrace{\left(1+\df 1n\right)\left(1+\df 1n\right)\cdots
 	\left(1+\df	1n\right)}_{n\mbox{\footnotesize\it 个}}\\
 	&=&\underbrace{\limn\left(1+\df1n\right)\limn\left(1+\df1n\right)
-	\cdots\limn\left(1+\df1n\right)}_{n\mbox{\footnotesize\it个}}\\
+	\cdots\limn\left(1+\df1n\right)}_{n\mbox{\footnotesize\it 个}}\\
 	&=&\left[\limn\left(1+\df1n\right)\right]^n=1
 \end{eqnarray*}}
 和前面关于无穷多个无穷小的和的例子类似，这样相当于把某个$n$
@@ -3351,14 +3578,14 @@ $(2-A)A=1$，解得$A=1$，即为$\{a_n\}$的极限。\fin
 \begin{shaded}
 \subsection{Cauchy极限存在准则}
 
-\begin{thx}
-{\bf Cauchy审敛原理：}
 \pss{\centering
 	\includegraphics[width=0.7\marginparwidth]{./images/ch01/200px-Augustin-Louis_Cauchy_1901.jpg}\\
 	\href{https://en.wikipedia.org/wiki/Karl_Weierstrass}
 	{A. L. Cauchy(1789-1857)}\\
 	在现代数学的各个分支中，随处可见他的诸多贡献
 }
+\begin{thx}
+{\bf Cauchy审敛原理：}
 数列$\{a_n\}$收敛，当且仅当：对任意$\e>0$，存在正整数$N$，使对任意$m,n>N$，总有
 $$|a_m-a_n|<\e.$$
 \end{thx}
@@ -3675,8 +3902,9 @@ $$
 
 \bs
 根据前面学习过的一些常用极限，可以很容易地得到如下一些常用的等价无穷小：
+\pss{\baa 熟练掌握！}
 \begin{thx}
-	{\bf 常用的等价无穷小：}$x\to 0$时，\pss{\baa 熟练掌握！}
+	{\bf 常用的等价无穷小：}$x\to 0$时，
 	\begin{enumerate}[(1)]
 % 	  \setlength{\itemindent}{1cm}
 	  \item $x\sim \sin x\sim \tan x$ 
@@ -3829,11 +4057,11 @@ $$\limx0\df{x-\sin x}{x^3},
 
 \subsection{函数连续的概念}
 
-\begin{thx}
-{\bf 函数$f(x)$在$x_0$连续}
-\ps{现实里的连续可以想象成一段没有断点的曲线（例如：绳索、短路），
+\pss{现实里的连续可以想象成一段没有断点的曲线（例如：绳索、短路），
 也就是说，连续应该是一段曲线的一个整体性质，但在微积分中，我们首先
 引入的是函数在一个点上连续的概念}
+\begin{thx}
+{\bf 函数$f(x)$在$x_0$连续}
 ，也即满足
 	$$\limx{x_0}f(x)=f(x_0).$$
 	如果记$\Delta y=f(x_0+\Delta x)-f(x_0)$，则上式可以等价地写为
@@ -3906,12 +4134,12 @@ $$\lim\limits_{\Delta x\to 0}f(\Delta x)
 {\bf 间断点}即不连续点，根据前述函数一点连续的必要条件，
 可以对间断点作出如下的分类：
 
-\begin{thx}
-	以下设$x_0$是$f(x)$的间断点（不连续点）。
-	\pss {分类原则：首先根据$f(x)$在$x_0$处的左右极限
+\pss {分类原则：首先根据$f(x)$在$x_0$处的左右极限
 	$f(x+0)$和$f(x-0)$都存在，将其分为第一类间断点和第二类
 	间断点，然后再分别将其分为可去间断点、跳跃间断点、
 	无穷间断点和振荡间断点。}
+\begin{thx}
+	以下设$x_0$是$f(x)$的间断点（不连续点）。
 	\begin{enumerate}[(1)]
 		\item 若$f(x_0+0),f(x_0-0)$均存在，
 		则称$x_0$是$f(x)$的{\bf 第一类间断点}，进一步地
@@ -4054,9 +4282,9 @@ $$f(x)=2(x+1)^{\sin(x+1)}-k,$$
 \end{enumerate}
 
 至此，我们再次给出此前引用过的重要定理：
+\pss{证明需要用到各个基本初等函数的代数性质，略。}
 \begin{thx}
 	{\bf 定理：}所有的初等函数在其有定义的区间上均是连续的。
-	\ps{证明需要用到各个基本初等函数的代数性质，略。}
 \end{thx}
 这个定理反映了初等函数的良好性质之一，即在其有定义的任何一个点上，
 其函数运算都可以和极限运算交换次序，这为今后我们研究此类函数提供
@@ -4162,7 +4390,7 @@ $M_1>0$，对任意$x\in[a,X]$，均有$|f(x)|\leq M_1$。
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./Images/Ch01/fxx1xi.pdf}
-	\caption{\exNo图}
+	\caption{\exNo 图}
 	\label{fig:fxx1xi}
 \end{figure}
 
@@ -4298,8 +4526,9 @@ $$f(\pi/2)=A_1(\pi/2)-A_2(\pi/2)=A_4(0)-A_1(0)=A_2(0)-A_1(0)=-f(0)<0,$$
 \end{ext}
 
 \newpage
-\section*{小结}
-\addcontentsline{toc}{section}{小结}
+\section{小结}
+%\section*{小结}
+%\addcontentsline{toc}{section}{小结}
 
 数列极限是我们研究和讨论更一般的函数极限的基础，
 因为其典型性和相对简单直观的性质，成为了
@@ -4374,8 +4603,9 @@ $\circ(x^2)+\circ(x)=\circ(x)$）的理解，以及
 \ifanswer
 
 \newpage
-\section*{作业参考解答}
-\addcontentsline{toc}{section}{作业参考解答}
+\section{作业参考解答}
+%\section*{作业参考解答}
+%\addcontentsline{toc}{section}{作业参考解答}
 
 \begin{center}
 	\bf 习题1-1
@@ -4400,7 +4630,7 @@ $$|x_M\sin x_M|=|x_M|>M,$$
 
 提示：分析过程略，函数表达式为
 $$\arcsin(\cos x)=\left\{\begin{array}{ll}
-1-|x|,& |x|\in[-\pi,\pi],\\
+\frac{\pi}2-|x|,& x\in[-\pi,\pi],\\
 \arcsin(\cos(x\pm2\pi)),& \mbox{其他}
 \end{array}\right.$$
 
@@ -4425,7 +4655,7 @@ $$\arcsin(\cos x)=\left\{\begin{array}{ll}
 	\setlength{\itemindent}{1cm}
 	\item $y=x-[x]$
 	\item $y=[x]-x+1$
-	\item $y=[-x]+x-1$
+	\item $y=[-x]+x+1$
 \end{enumerate}
 
 \bs
@@ -4433,9 +4663,10 @@ $$\arcsin(\cos x)=\left\{\begin{array}{ll}
   请给出：
   \begin{enumerate}[(1)]
     \item $Q$的极角$\theta$与$P$的横坐标$x_P$的对应关系；
-    \item $Q$的坐标$(x_Q,y_Q)$与$P$的坐标$(x_P,y_P)$的对应关系；
+    \item 将$Q$的坐标$(x_Q,y_Q)$表示为$P$的坐标$(x_P,y_P)$的函数；
     \item 思考（选作）：参考右图，给出将一个单位球面映射为二维平面的
-    {\it 三维球极投影映射}，写出具体的对应关系。
+    {\it 三维球极投影映射}，将球面上一点的坐标表示为对应二维平面
+    上的点的函数。
   \end{enumerate}
 \begin{center}
 	\resizebox{!}{5cm}{\includegraphics{./images/ch01/sphereline2D.pdf}}\quad
@@ -4460,8 +4691,8 @@ $$y_Q=\df{x^2_P-1}{1+x^2_P},\quad x_Q=\df{2x_P}{1+x^2_P}.$$
 $$\theta=
 \left\{
 \begin{array}{ll}
-	\arccos\df{x^2_P-1}{1+x^2_P},& x_P\geq 0\\
-	\pi-\arctan\df{x^2_P-1}{1+x^2_P}, & x_P<0
+	\arcsin\df{x^2_P-1}{1+x^2_P},& x_P\geq 0\\
+	\pi-\arcsin\df{x^2_P-1}{1+x^2_P}, & x_P<0
 \end{array}
 \right.
 $$
@@ -4506,6 +4737,8 @@ $$\rho=\df{cb^2\cos\theta\pm b^2\sqrt{c^2\cos^2\theta
 记$p=\frac{b^2}{c}$，则$\frac{b^2}{a}=ep$，进而可得
 $$\rho=\frac{ep}{1-e\cos\theta},$$
 即为所求。\fin
+
+\newpage
 
 \begin{center}
 	\bf 习题1-2

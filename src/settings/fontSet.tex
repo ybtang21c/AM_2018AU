@@ -1,57 +1,73 @@
-%-----------------------xeCJK下设置中文字体------------------------------%
+% !TEX root = ../0-main-LN.tex
 
-% \usepackage{CJKfntef}
-\usepackage{fontspec, xunicode, xltxtra}
+%%%%% fontspec
+\usepackage{fontspec}
+\setmainfont[BoldFont={Georgia Bold},
+	ItalicFont={Georgia Italic},
+	BoldItalicFont={Georgia Bold Italic}
+	]{Georgia}
+
+%%%%% XeCJK
 \usepackage{xeCJK}
-%\setmainfont{Times New Roman} 						% 默认的英文字体
-\setmainfont{Cambria} 						% 默认的英文字体
-\setCJKmainfont[ItalicFont={Adobe Kaiti Std}, 		% 默认的中文字体
+\setCJKmainfont[ItalicFont={Adobe Kaiti Std},
 	BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Adobe Heiti Std}					% serif是有衬线字体，sans serif无衬线字体。
-\setCJKmonofont{Adobe Fangsong Std}					% 中文等宽字体
+\setCJKsansfont{Adobe Fangsong Std}
+\setCJKmonofont{Adobe Heiti Std}
+\setCJKmathfont{Cambria Math}
 
-%常用字体
+%%%%% Chinese font
+%% Adobe
 \setCJKfamilyfont{song}{Adobe Song Std}				%Adobe宋 \song
 \newcommand{\song}{\CJKfamily{song}}                
-      
-\setCJKfamilyfont{fsong}{Adobe Fangsong Std}			%adobe仿宋 \fsong
+\setCJKfamilyfont{fsong}{Adobe Fangsong Std}		%adobe仿宋 \fsong
 \newcommand{\fsong}{\CJKfamily{fsong}}
-
 \setCJKfamilyfont{kai}{Adobe Kaiti Std}				%Adobe楷体 \kaiti
 \newcommand{\kaiti}{\CJKfamily{kai}}
-
 \setCJKfamilyfont{hei}{Adobe Heiti Std}				%Adobe黑体 \heiti
 \renewcommand{\heiti}{\CJKfamily{hei}}
-
-\setCJKfamilyfont{hwzs}{STZhongsong}				%华文中宋 \hwzs
-\newcommand{\hwzs}{\CJKfamily{hwzs}}
-
+\setCJKfamilyfont{ming}{Adobe Ming Std}				%Adobe黑体 \ming
+\newcommand{\ming}{\CJKfamily{ming}}
+%% MS Yahei
 \setCJKfamilyfont{yh}{Microsoft YaHei}				%微软雅黑 \msyh
 \newcommand{\msyh}{\CJKfamily{yh}}
-
-%其他字体
-\setCJKfamilyfont{hwfs}{STFangsong}				%华文仿宋  hwfs
+%% ST
+\setCJKfamilyfont{hwzs}{STZhongsong}				%华文中宋 \hwzs
+\newcommand{\hwzs}{\CJKfamily{hwzs}}
+\setCJKfamilyfont{hwst}{STSong}						%华文宋体 \hwst
+\newcommand{\hwst}{\CJKfamily{hwst}}
+\setCJKfamilyfont{hwfs}{STFangsong}					%华文仿宋  \hwfs
 \newcommand{\hwfs}{\CJKfamily{hwfs}}
-
-\setCJKfamilyfont{hwxh}{STXihei}					%华文细黑  hwxh
+\setCJKfamilyfont{hwxh}{STXihei}					%华文细黑  \hwxh
 \newcommand{\hwxh}{\CJKfamily{hwxh}}
-
-\setCJKfamilyfont{hwl}{STLiti}						%华文隶书  hwl
+\setCJKfamilyfont{hwl}{STLiti}						%华文隶书  \hwl
 \newcommand{\hwls}{\CJKfamily{hwl}}
-
-\setCJKfamilyfont{hwxw}{STXinwei}					%华文新魏  hwxw
+\setCJKfamilyfont{hwxw}{STXinwei}					%华文新魏  \hwxw
 \newcommand{\hwxw}{\CJKfamily{hwxw}}
-
-\setCJKfamilyfont{hwxk}{STXingkai}					%华文行楷  hwxk
+\setCJKfamilyfont{hwxk}{STXingkai}					%华文行楷  \hwxk
 \newcommand{\hwxk}{\CJKfamily{hwxk}}
-
-\setCJKfamilyfont{hwhp}{STHupo}					%华文琥珀   hwhp
+\setCJKfamilyfont{hwhp}{STHupo}						%华文琥珀  \hwhp
 \newcommand{\hwhp}{\CJKfamily{hwhp}}
-
-\setCJKfamilyfont{wawati}{Wawati SC}				%娃娃体 wawati
+%% 
+\setCJKfamilyfont{wawati}{Wawati SC}				%娃娃体    \wawati
 \newcommand{\wawati}{\CJKfamily{wawati}}
+%% Windows
+\setCJKfamilyfont{ssong}{SimSun}					%宋体      \ssong
+\newcommand{\ssong}{\CJKfamily{ssong}}
+\setCJKfamilyfont{shei}{SimHei}						%黑体      \shei
+\newcommand{\SimHei}{\CJKfamily{shei}}
+\setCJKfamilyfont{skai}{KaiTi}						%楷体      \skai
+\newcommand{\skai}{\CJKfamily{skai}}
+%% Fandol
+\setCJKfamilyfont{fdhei}{FandolHei}					%Fandol黑体 \fdhei
+\newcommand{\fdhei}{\CJKfamily{fdhei}}
+\setCJKfamilyfont{fdkai}{FandolKai}					%Fandol楷体 \fdkai
+\newcommand{\fdkai}{\CJKfamily{fdkai}}
+\setCJKfamilyfont{fdsong}{FandolSong}				%Fandol宋体 \fdsong
+\newcommand{\fdsong}{\CJKfamily{fdsong}}
+\setCJKfamilyfont{fdfsong}{FandolFang}				%Fandol仿宋 \fdfsong
+\newcommand{\fdfsong}{\CJKfamily{fdfsong}}
 
-%------------------------------设置字体大小------------------------%
+%%%%% Chinese font size
 \newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}     %初号
 \newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} %小初号
 \newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}      %一号

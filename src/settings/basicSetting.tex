@@ -1,10 +1,17 @@
 % !TEX root = ../0-main-LN.tex
 
-\documentclass[a4paper, openany, punct, adobefonts, UTF8]{ctexbook}
+\documentclass[a4paper, punct, adobefonts, UTF8]{ctexbook}
+%openany 可以在任意页开始新的一章，否则只能在奇数页开始
+%punct 对中文标点进行调整
+%noindent 段首不缩进
+
 %\documentclass[a4paper, openany, punct, adobefonts, UTF8]{ctexbook}%{ctexart}
 % \documentclass[a4paper, openany, UTF8, punct, adobefonts]{book}
 % \documentclass[a4paper, openany, twocolumn, UTF8, punct,adobefonts]{ctexbook}%{ctexart}
 % \documentclass[a4paper,twocolumn,12pt]{article}
+
+%\usepackage[keeplastbox]{flushend}		%使双栏文本的底端对齐
+%\usepackage{cuted}			%支持双栏文本
 
 %%%%% page layout
 % \usepackage[top=1in, bottom=1in, left=1.25in, right=1in]{geometry}
@@ -16,67 +23,68 @@
 \usepackage[left={2cm},right={5cm},marginparwidth={4cm},
 	marginparsep={1em},vmargin={2cm}]{geometry}
 % \usepackage[top=.6in, bottom=.6in, left=1in, right=1in]{geometry}
-\setlength{\parindent}{0pt}
+%\setlength{\parindent}{0pt}
+
+%%%%% margin note
+\usepackage{marginnote}
 
 %%%%% TOC with hyperlinks
 \usepackage[colorlinks,linkcolor=blue!80!yellow,
 	anchorcolor=red,citecolor=green]{hyperref}
 
 %%%%% math settings
-\usepackage{amsmath,amsfonts,amssymb,amsthm,bm}
-\usepackage{tikz}
-\usetikzlibrary{arrows,snakes,backgrounds,petri}
-\usepackage{extarrows}%任意长的等号, \xlongequal
-\usepackage{color,xcolor,graphics,framed}
-\usepackage{graphicx}
-\usepackage[justification=centering]{caption} %全局图片标题居中
-\captionsetup[figure]{font={small, it},labelfont={up}}
+\usepackage{amsmath}		%数学环境，align, align*
+\usepackage{amsfonts}		%数学字体，mathbb
+\usepackage{amssymb}		%数学公式
+%\usepackage{amsthm}			%已包含在amsmath中
+%\usepackage{mathrsfs}		%数学花体
+\usepackage{extarrows}		%\xlongequal
+\usepackage{bm}				%bm
 
+\usepackage{tikz}
+%\usetikzlibrary{arrows,snakes,backgrounds,petri}
+
+%\usepackage{color}
+\usepackage{xcolor}
+
+\usepackage{graphics}
+\usepackage{graphicx}		%definecolor, colorbox, fcolorbox
+\usepackage{wrapfig}		%文字环绕的图片
+
+\usepackage{framed}			%support shaded environment
+
+\usepackage[justification=centering]{caption} %全局图片标题居中
+\captionsetup[figure]{font={small,it},labelfont={up}}
 \usepackage{subcaption}
 %\usepackage[labelfont=bf,textfont=normalfont,singlelinecheck=off,%justification=raggedright]{subcaption}
-\usepackage{ulem}	%各种下划线：uline, uuline, uwave, sout, xout
+
+\usepackage{ulem}			%各种下划线：uline, uuline, uwave, sout, xout
 %\usepackage{enumerate}
-\usepackage{esint} %any type of integral symbol
+%\usepackage{esint}			%any type of integral symbol
 % \usepackage{tabularx}
 % \usepackage{multirow}
 % \usepackage{verbatim}
 % \usepackage{listings}
-\usepackage{polynom}%多项式的竖式带余除法
-\usepackage{overpic}%允许在图片上写文字
-\usepackage{wrapfig}%支持插入文字环绕的图片
-\usepackage{booktabs}%粗的表格横线
-\usepackage{flushend,cuted}
-\usepackage{tcolorbox} %各种自定义的盒子
+\usepackage{polynom}		%多项式的竖式带余除法
+%\usepackage{overpic}		%允许在图片上写文字
+%\usepackage{wrapfig}		%支持插入文字环绕的图片
+\usepackage{booktabs}		%粗的表格横线
+
+\usepackage{tcolorbox} 		%各种自定义的盒子
 \tcbuselibrary{skins, breakable, theorems}
 
-%%%%% if-then control
-\usepackage{ifthen}
-
 %%%%% extended list environments
-\usepackage{paralist}
-
-%%%%% margin note
-\usepackage{marginnote}
+\usepackage{paralist}		%控制段间距等
 
 %%%%% Chinese Font Config
 \input{Settings/fontSet.tex}
 
-%%%%% content visibility control
-%用\newif来定义一个判断变量\ifabc，初始值一律为false，
-%则除了\ifabc外，还自动生成两个控制序列\abctrue和\abcfalse；
-%用\abctrue来设置为true，还可以用\abcfalse来设置为false
-%\ifabc和\fi之间的内容由\ifabc来控制是否出现
-\newif\ifvisible
-\newif\ifanswer  % if the answer of homework
-\newif\ifhint % if the hint to exercise
-% \visibletrue
-% \visiblefalse
-
 %%%%% head and foot setting
  \usepackage{fancyhdr}
  \pagestyle{fancyplain}
- \renewcommand{\chaptermark}[1]{\markboth{\chaptername .\;\ #1}{}}
- \renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+ %\renewcommand{\chaptermark}[1]{\markboth{\chaptername .\;\ #1}{}}
+ %\renewcommand{\chaptermark}[1]{\markboth{\chaptername .\;\ #1}{}}
+ %\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
  \fancyhf{}
  \fancyhead[RE,LO]{\fangsong\leftmark}
  \fancyhead[LE,RO]{\fangsong\rightmark}
@@ -101,3 +109,17 @@ angle=70,contents=NUDT-2018-S3]{background}
 % \definecolor{myback}{RGB}{204,232,207}
 % \pagecolor{yellow!10!white}
 % \renewcommand{\baselinestretch}{1.25}
+
+%%%%% if-then control
+\usepackage{ifthen}
+%%%%% content visibility control
+%用\newif来定义一个判断变量\ifabc，初始值一律为false，
+%则除了\ifabc外，还自动生成两个控制序列\abctrue和\abcfalse；
+%用\abctrue来设置为true，还可以用\abcfalse来设置为false
+%\ifabc和\fi之间的内容由\ifabc来控制是否出现
+\newif\ifvisible
+\newif\ifanswer  % if the answer of homework
+\newif\ifhint % if the hint to exercise
+\newif\ifnottest % if its a test
+% \visibletrue
+% \visiblefalse
