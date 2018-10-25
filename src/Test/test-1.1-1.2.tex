@@ -67,11 +67,11 @@ $$\left|\df1{2^n+n}-0\right|=\df1{2^n+n}<\df1{2^n}
 	=\df{(\sqrt{n^2+n}-\sqrt{n^2-n}-1)(\sqrt{n^2+n}+\sqrt{n^2-n}+1)}
 	{\sqrt{n^2+n}+\sqrt{n^2-n}+1}\\
 	&=\df{2n-2\sqrt{n^2-n}-1}{\sqrt{n^2+n}+\sqrt{n^2-n}+1}
-	<\df{2(n-\sqrt{n^2-n})}{\sqrt{(n+1)^2}+\sqrt{(n+1)^2}+1}\\
+	<\df{2(n-\sqrt{n^2-n})}{\sqrt{n^2}+\sqrt{(n-1)^2}+1}\\
 	&=\df{2(n-\sqrt{n^2-n})}{2n+3}
-	<\df{n-\sqrt{n^2-n}}{n+1}\\
-	&=\df{(n-\sqrt{n^2-n})(n+\sqrt{n^2-n})}{(n+1)(n+\sqrt{n^2-n})}\\
-	&=\df{n}{(n+1)(n+\sqrt{n^2-n})}<\df1n<\df1N
+	<\df{n-\sqrt{n^2-n}}{n}\\
+	&=\df{(n-\sqrt{n^2-n})(n+\sqrt{n^2-n})}{n(n+\sqrt{n^2-n})}\\
+	&=\df{1}{n+\sqrt{n^2-n}}<\df1n<\df1N
 	=\df1{[1/\e]+1}<\df1{1/\e}=\e,
 \end{align*}
 即证。\fin
@@ -104,9 +104,9 @@ $$\sin\df{2k\pi}2=\sin\left(k\pi\right)=0,$$
 \bs
 6.判断数列$\left\{(-1)^{1+\cos n\pi}\right\}$是否收敛？给出证明.
 
-答：收敛。因为$\cos n\pi=(-1)^{n+1}$，故该数列即为
+答：收敛。因为$\cos n\pi=(-1)^{n}$，故该数列即为
 $$(-1)^0,(-1)^2,(-1)^0,(-1)^2,(-1)^0,(-1)^2,(-1)^0,(-1)^2,\ldots$$
-也即常数数列$\{1\}$，该数列显然收敛。\fin
+也即常数数列$\{1\}$，显然收敛。\fin
 
 \bs
 判断以下命题的正误（若正确给出证明，若错误举反例）

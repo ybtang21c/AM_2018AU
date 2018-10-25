@@ -1,222 +1,88 @@
-% !Mode:: "TeX:UTF-8"
+% !TEX program = xelatex
+% !TEX encoding = UTF-8  (utf8)
 
-%Composed by Y.B. TANG (ybtang21c@gmail.com), spring-2011
-%tex distribution: Texlive / MikTex 2010
-%recommended editer: Eclipse + Texlipse
-%usage: compile with XeLatex
+%\documentclass[glossy]{beamer}
+\documentclass[glossy,handout]{beamer}
 
-%option: red, brown, blue
-% \documentclass[14pt,mathserif]{beamer}
-% \documentclass[14pt]{beamer}
-\documentclass[usepdftitle=false, 14pt, handout]{beamer} %无动画
-% \documentclass[usepdftitle=false, 14pt]{beamer}
-
-\usepackage{amsmath,amsfonts,amssymb,amsthm,bm}
-% \usepackage{txfonts} %another style of math fonts
-\usepackage{beamerthemesplit,color,graphics}
-\usepackage{ulem} %erase line
-\usepackage{esint} %any type of integral symbol
-% \usepackage{yhmath} %圆弧帽：\wideparen{AB}
-
-\usepackage{tcolorbox} %各种自定义的盒子
-\tcbuselibrary{skins, breakable, theorems}
-
-\usepackage{extarrows}%任意长的等号, \xlongequal
-
-\usepackage{bbding}%各种五角星
-% \FiveStar，\FiveStarOpen，\FiveStarLines，\FiveStarShadow
-% \FiveStarOutline，\FiveStarCenterOpen，\FiveStarOpenDotted
-% \FiveStarConvex，\FiveStarOutlineHeavy，\FiveStarOpenCircled
-
-%==============XeCJK==============================
-\usepackage[slantfont,boldfont,CJKchecksingle]{xeCJK}
-\setmainfont{Times New Roman}
-\setCJKmainfont[BoldFont={Adobe Heiti Std},
-	ItalicFont={Adobe Kaiti Std},
-    SlantedFont={Adobe Song Std},
-%     BoldItalicFont={Weibei SC},
-     BoldSlantedFont={Adobe Fangsong Std}
-	]{Adobe Heiti Std}
-\punctstyle{CCT}
-\usepackage{xeCJKfntef}%汉字加点和可断行的下划线
-
-\newCJKfontfamily[Wawa]\Wawati{Wawati SC}
-\newCJKfontfamily[STLi]\stliti{STLiti}
-
-%============== Chinese Font Config 2 ===================
-
-% \usepackage{fontspec, xunicode, xltxtra}
-% \usepackage{xeCJK}%中文字体
-% 
-% \setmainfont{Times New Roman}%缺省英文字体 Times New Roman
-% \setCJKmainfont[ItalicFont={Adobe Kaiti Std}, 
-% 	BoldFont={Adobe Heiti Std}]{Adobe Song Std}%衬线字体 缺省中文字体
-% \setCJKsansfont{Adobe Heiti Std}%serif是有衬线字体sans serif无衬线字体。
-% \setCJKmonofont{Adobe Fangsong Std}%中文等宽字体
-
-%======== customer defined fonts and fontsize ============
-
-% \input{fontSet.tex}
-
-\usefonttheme{professionalfonts}
-
-\newcommand{\fs}[1]{\fontspec{#1}\CJKfontspec{#1}}
-
-%
-
-% %==============std fontspec settings==============
-% \usepackage[no-math,cm-default]{fontspec}
-% % \newfontfamily\zhfont[BoldFont=Adobe Heiti Std]{Adobe Heiti Std}
-% \newfontfamily\zhfont[BoldFont=Adobe Heiti Std]{Adobe Kaiti Std}
-% % 
-% % %==============spacing of CH in Xetex==============
-% \usepackage{zhspacing}
-% \zhspacing
-
-%==============layout setting==============
-\setlength{\parindent}{0pt}  
-
-%==============beamer configuration==============
-\setbeamertemplate{theorems}[normal font]
-
-%============beamer theme setting #2============
 \mode<presentation>{
-	\usetheme{CambridgeUS} %Copenhagen, Warsaw, CambridgeUS
-  	\usecolortheme{rose} %rose, seahorse, lily, crane
-  	\usefonttheme{serif}
-  	\usefonttheme{structurebold}
-  	\useoutertheme{infolines}
-%   \beamertemplateshadingbackground{brown!5}{yellow!10}
-% 	\setbeamercolor{frametitle}{bg=white}	
-%  	\setbeamercovered{transparent}
+	\useoutertheme{wuerzburg}
+	\useinnertheme[realshadow,corners=2pt,padding=2pt]{chamfered}
+	\usecolortheme{shark}
+	\usefonttheme{serif}
+	\usefonttheme{professionalfonts}
+	\usefonttheme{structurebold}
 }
 
-%============TOC setting============
-% \AtBeginSection{
-%    \begin{frame}{内容提要}
-%      \tableofcontents[currentsection,hideallsubsections]
-%    \end{frame}
-% }
-% \AtBeginSubsection{
-%    \begin{frame}{内容提要}
-%      \tableofcontents[currentsection,currentsubsection]
-%    \end{frame}
-% }
-% \AtBeginSection{
-%   \frame{\tableofcontents[sections={\thesection}]}
-% }
+%%%%% fontspec
+\usepackage{fontspec}
+\setmainfont[BoldFont={Georgia Bold},
+	ItalicFont={Georgia Italic},
+	BoldItalicFont={Georgia Bold Italic}
+	]{Georgia}
 
-%===============macros====================
-% \newcommand{\bb}{\bf\color{blue}}
-% \newcommand{\ba}[1]{\alert{\bf #1}}
-% \newcommand*{\e}{\ensuremath{\varepsilon}}
-% \renewcommand{\b}{\color{blue}}
-% \newcommand*{\p}{\ensuremath{\partial}}
-% \newcommand{\limn}{\ensuremath{\lim\limits_{n\to\infty}}}
-% \newcommand{\sumn}{\ensuremath{\sum\limits_{n=1}^{\infty}}}
-% \newcommand*{\df}[2]{\displaystyle\frac{\,{#1}\,}{\,{#2}\,}}
-% \newcommand*{\limx}[1]{\ensuremath{\lim\limits_{x\to{#1}}}}
-% \newcommand*{\limdx}{\ensuremath{\lim\limits_{\Delta x\to 0}}}
-% \newcommand*{\dx}{\Delta x}
-% \newcommand{\dint}{\ensuremath{\displaystyle\int}}
-% \renewcommand{\d}{\mathrm{d}}
-% \newcommand{\ds}{\displaystyle}
+%%%%% XeCJK
+\usepackage[AutoFallBack,AutoFakeBold,AutoFakeSlant,
+	PunctStyle=CCT]{xeCJK}
+\setCJKmainfont[%BoldFont={Adobe Heiti Std},
+	ItalicFont={Adobe Kaiti Std},
+%	SlantedFont={Adobe Song Std},
+    BoldItalicFont={Weibei SC},
+%    BoldSlantedFont={Adobe Fangsong Std}
+	]{Adobe Heiti Std}
+%\usepackage{xeCJKfntef}		%汉字加点和可断行的下划线
+\setCJKmathfont{Cambria Math}
 
-\input{macros.tex}
+%%%%% math settings
+\usepackage{amsmath}		%数学环境，align, align*
+\usepackage{amsfonts}		%数学字体，mathbb
+\usepackage{amssymb}		%数学公式
+%\usepackage{amsthm}			%已包含在amsmath中
+%\usepackage{mathrsfs}		%数学花体
+\usepackage{extarrows}		%\xlongequal
+\usepackage{bm}				%bm
 
-%================exampleblock counter===================
-% \newcounter{examplecounter}
-% \usecounter{examplecounter}
-% \setcounter{examplecounter}{1}
-% \newcommand{\exno}{{\bf
-% 例\arabic{examplecounter}}\refstepcounter{examplecounter}}
+\usepackage{xcolor}
 
-%================block setting test=====================
-% \definecolor{beamer@blendedred}{rgb}{0.7,0.2,0.2} % use structure theme to change
-% \definecolor{beamer@blendedblue}{rgb}{0.2,0.2,0.7} % use structure theme to change
-% \definecolor{beamer@blendedyellow}{rgb}{0.7,0.7,0.2}
+\usepackage{graphics}
+\usepackage{graphicx}		%definecolor, colorbox, fcolorbox
 
-% \setbeamercolor{structure}{fg=beamer@blendedred}
+\usepackage{ulem}			%各种下划线：uline, uuline, uwave, sout, xout
+%\usepackage{enumerate}
+%\usepackage{esint}			%any type of integral symbol
+% \usepackage{tabularx}
+% \usepackage{multirow}
+% \usepackage{verbatim}
+% \usepackage{listings}
+%\usepackage{polynom}		%多项式的竖式带余除法
+%\usepackage{overpic}		%允许在图片上写文字
+%\usepackage{wrapfig}		%支持插入文字环绕的图片
+\usepackage{booktabs}		%粗的表格横线
 
-% \setbeamercolor{block title}
-% {use=structure,fg=structure.fg,bg=structure.fg!20!bg}
-% \setbeamercolor{block title alerted}
-% {use=alerted text,fg=alerted text.fg,bg=alerted text.fg!20!bg}
-% \setbeamercolor{block title example}
-% {use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+\usepackage{tcolorbox} 		%各种自定义的盒子
+\tcbuselibrary{skins, breakable, theorems}
 
-% \setbeamercolor{block body}
-% {parent=normal text,use=block title,bg=block title.bg!50!bg}
-% \setbeamercolor{block body alerted}
-% {parent=normal text,use=block title alerted,bg=block title alerted.bg!50!bg}
-% \setbeamercolor{block body example}
-% {parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,matrix,chains,backgrounds,fit}
+\newcommand<>{\hover}[1]{
+	\uncover#2{%
+	\begin{tikzpicture}[remember picture,overlay]%
+	\draw[fill,opacity=0.4] (current page.south west)
+	rectangle (current page.north east);
+	\node at (current page.center) {#1};
+	\end{tikzpicture}}
+}
 
-% \setbeamercolor{titlelike}{parent=structure,bg=white!90!red}
-%=======================================================
-
-%===============title setting====================
-
-% \title{Advanced Mathematics II}
-% \author[ybtang@nudt.edu.cn]{唐扬斌\\
-% \texttt{\small ybtang21c@gmail.com\\tangyangbin@gfkd.mtn\\CP: 18374857376}}
-% \institute[NUDT]{National University of Defense Technology}
-% \date[Spring 2017]{Spring 2017}
-
-% \title{作业讲评}
 \title{作业讲评}
-% \title{常微分方程小结与补充例题}
-% \title{随堂测验}
-
-%===============document begins here==============
+\author{YB. Tang}
+\institute{NUDT}
+%\date{\today}
+\date{2018-AU}
 
 \begin{document}
 
-% \input{./hwComB/Ch01-1.tex}
+%%%%% my macros
+\input{Settings/macros.tex}
 
-% \input{./hwComB/Ch01-2-02-1.tex}
-
-% \input{./hwComB/Ch02-2.tex}
-
-% \input{./hwComB/Ch02-3-03-1.tex}
-
-% \input{./hwComB/Ch03-2.tex}
-
-% \input{./hwComB/Ch03-3.tex}
-
-% \input{./hwComB/Ch05-1.tex}
-
-% \input{./hwComB/Ch05-2.tex}
-
-% \input{./hwComB/Ch06-1.tex}
-
-% \input{./hwComB/Ch12-1.tex}
-
-% \input{./hwComB/Ch07-1.tex}
-
-% \input{./slides/Ch07-summaryAndEx.tex}
-
-% \input{./hwComB/Ch07-2.tex}
-
-% \input{./hwComB/Ch08-1.tex}
-
-% \input{./hwComB/Ch08-2.tex}
-
-% \input{./hwComB/Ch08-3.tex}
-
-% \input{./hwComB/Ch09-1.tex}
-
-% \input{./hwComB/Ch09-2.tex}
-
-% \input{./hwComB/Ch10-1.tex}
-
-\input{./hwComB/Ch10-2.tex}
-
-% \input{./UnitTest/UT-5-5.tex}
-
-%   \input{Ch07-ex-slides.tex} %常微分方程习题课
-% 	\input{Ch08-ex1-slides.tex} %空间直线与平面习题课
-% 	\input{Ch12-ex-slides.tex} %曲线与曲面积分习题课
-% 	\input{AM-SP-review-slides.tex} %曲线与曲面积分习题课
+\input{Slides/HWR-1.2.tex}
 
 \end{document}

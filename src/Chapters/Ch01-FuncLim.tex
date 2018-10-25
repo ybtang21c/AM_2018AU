@@ -1243,7 +1243,6 @@ x}{\cosh x}, \ldots$$
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{数列的极限}
 
 极限概念的引入是微积分发展史上具有革命性的一步，
@@ -1674,10 +1673,10 @@ $$|a_n|\leq M,$$
 
 	证：对任意$M>0$，令$N=[2M]+1$，则当$n>N$时，总有$n>2M$。此时
 	$$\df{n!}{M^n}=\df{N!}{M^N}\cdot\df{N+1}{M}
-	\cdot\df{N+2}{M}\ldots\df{n}{M}>\df{N!}{M^N}\cdot2^{n-N+1}.$$
-	注意到$\df{N!}{M^N}$为有限值，而$2^{n-N+1}$随着$n$的增大趋于正无穷，
+	\cdot\df{N+2}{M}\ldots\df{n}{M}>\df{N!}{M^N}\cdot2^{n-N}.$$
+	注意到$\df{N!}{M^N}$为有限值，而$2^{n-N}$随着$n$的增大趋于正无穷，
 	故当$n$充分大时，必有
-	$$\df{n!}{M^n}=\df{N!}{M^N}\cdot2^{n-N+1}>1,$$
+	$$\df{n!}{M^n}=\df{N!}{M^N}\cdot2^{n-N}>1,$$
 	从而$\sqrt[n]{n!}>M$，也即$\{\sqrt[n]{n!}\}$无界，故发散。\fin
 \end{shaded}
 
@@ -1741,6 +1740,15 @@ $$\lim\limits_{k\to\infty}a_{n_k}=a,\quad
 	当且仅当它的所有子列均收敛到相同的极限。
 \end{thx}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./Images/Ch01/anank.pdf}
+	\caption{若$\{a_n\}$收敛，则它的任意子列$\{a_{n_k}\}$一定
+	和它有着完全相同的收敛性质，\\
+	形象地说，就是要”随大流“}
+	\label{fig:anank}
+\end{figure}
+
 证：充分性是显然的，因为$\{a_n\}$可以看成是自身的一个子列。
 
 下面证明必要性。设$\limn a_n=a$，则对任意$\e>0$，存在$N\in\mathbb{Z}_+$，
@@ -1751,7 +1759,7 @@ $$\lim\limits_{k\to\infty}a_{n_k}=a,\quad
 $$|a_{n_k}-a|<\e.$$
 也即$\lim\limits_{k\to\infty}a_{n_k}=a$。因为$\{a_{n_k}\}$是任意的，即证。
 \fin
-
+	
 \bs
 该定理的一个明显用途，是判定一些数列的发散。也即，{\bf 若某个数列存在
 发散的子数列，或者存在两个收敛到不同极限的子数列，则该数列必发散。}
@@ -1901,7 +1909,6 @@ $$\limn\ln \sqrt[n]{a_n}=\limn\df1n\ln a_n=\limn\df1n\left(
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{函数的极限}
 
 \subsection{函数极限的定义}
@@ -2206,11 +2213,29 @@ x_0^-$之一。而所谓{\kaishu $x$充分靠近$\Delta$}则需要根据$\Delta$
 	连续和一致连续的差别将随之消失。} 
 \begin{thx}
 	{\bf 函数极限与数列极限的关系}（{\kaishu Henie定理}）：
-	已知$\limx{x_0}f(x)=A$，若若数列$\{x_n\}$取值在$f(x)$的定义域内，
-	且满足：$x_n\to x_0(n\to$ $\infty)$，$x_n\ne 0\;
+	已知$\limx{x_0}f(x)=A$，若数列$\{x_n\}$取值在$f(x)$的定义域内，
+	且满足：$x_n\to x_0(n\to$ $\infty)$，$x_n\ne x_0\;
 	(n\in\mathbb{Z}_+)$，
 	则必有$\limn f(x_n)=A$。
 \end{thx}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Images/Ch01/HenieXnInf.pdf}
+		\subcaption{若$\{x_n\}$趋于$+\infty$，则$\limn f(x_n)
+		=\limx{+\infty}f(x)=A$}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./Images/Ch01/HenieXnX0.pdf}
+		\subcaption{若$\{x_n\}$趋于$x_0$，则$\limn f(x_n)
+		=\limx{x_0}f(x)=A$}
+	\end{subfigure}
+	\caption{Henie定理表达的性质与子数列的收敛性类似}
+	\label{fig:Henie}
+\end{figure}
 
 证：已知$\limx{x_0}f(x)=A$，故对任意$\e>0$，存在$\delta>0$，
 使对任意$x\in U_0(x_0,\delta)$，都有$|f(x)-A|<\e$。
@@ -2270,6 +2295,7 @@ x_n^{(2)}=x_n+\df{\sqrt2}n,$$
 $$\limn D(x_n^{(1)})=1\ne0=\limn D(x_n^{(2)}),$$
 从而由Hiene定理，即证。\fin
 
+\bs
 \begin{ext}
 	{\centering\bf 习题1-3}
 	
@@ -2277,14 +2303,13 @@ $$\limn D(x_n^{(1)})=1\ne0=\limn D(x_n^{(2)}),$$
 	  \item 用定义证明如下极限：
 	  \begin{enumerate}[(1)]
 	    \item $\limx{-2}{x^2}=4$；
-	    \item $\limx{\infty}\df{\sin x}{\sqrt x}=0$；
+	    \item $\limx{+\infty}\df{\sin x}{\sqrt x}=0$；
 	    \item $\limx{\infty}\df{x+\sin x}{x+\cos x}=1$.
 	  \end{enumerate}
 	  \item （选作）证明：$f(x)=xD(x)$仅当$x=0$时极限存在。（$D(x)$表示Dirichlet函数）
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{无穷小与无穷大}
 
 无穷小和无穷大是对极限的一种描述方式，接下来的有关性质为
@@ -2321,7 +2346,8 @@ $$\limn D(x_n^{(1)})=1\ne0=\limn D(x_n^{(2)}),$$
 	其中$\alpha$是$x\to\Delta$时的无穷小。
 \end{thx}
 该结论也可以简写为：
-$$\limx{\Delta}f(x)=A\quad\Leftrightarrow\quad f(x)=A+\circ(1)$$
+$$\limx{\Delta}f(x)=A\quad\Leftrightarrow\quad 
+f(x)=A+\circ(1),\;(x\to\Delta)$$
 
 \bs
 进一步地，由无穷小的定义，不难证明：
@@ -2330,9 +2356,14 @@ $$\limx{\Delta}f(x)=A\quad\Leftrightarrow\quad f(x)=A+\circ(1)$$
 \begin{thx}
 	{\bf 无穷小的性质：}
 	\begin{enumerate}
-	  \item 在同一过程中的{\it 有限多个}无穷小的和也是该过程中的无穷小；
-	  \item 在同一过程中的有界函数与无穷小的乘积也是该过程中的无穷小；
-	  \item 在同一过程中的任意多个无穷小的乘积也是该过程中的无穷小。
+	  \item 在同一过程中的{\it 有限多个}无穷小的和也是该过程中的无穷小，也即
+	  $$\underbrace{\circ(1)+\circ(1)+\ldots+\circ(1)}
+	  _{\mbox{有限多个}}=\circ(1),\;(x\to\Delta)$$
+	  \item 在同一过程中的有界函数与无穷小的乘积也是该过程中的无穷小，也即
+	  对任意的$M(x)$为$x\to\Delta$时的有界量，
+	  $$M(x)\cdot\circ(1)=\circ(1),\;(x\to\Delta)$$
+	  \item 在同一过程中的任意多个无穷小的乘积也是该过程中的无穷小，也即
+	  $$\underbrace{\circ(1)\cdot\circ(1)\cdots\circ(1)}_{\mbox{任意多个}}=\circ(1),\;(x\to\Delta)$$
 	\end{enumerate}
 \end{thx}
 
@@ -2389,14 +2420,14 @@ $f(x)$为$x\to\Delta$时的无穷大，也即：
 	总有$|f(x)|>M$。
 \end{thx}
 
-证：任取$M>0$，令$\e=\df1M$。由无穷大的定义，$\limx{\Delta}\df1{f(x)}=0$，故对
+证：任取$M>0$，令$\e=\df1M$。由无穷大的定义，$\limx{x_0}\df1{f(x)}=0$，故对
 此$\e$，存在$\delta>0$，使对任意$x\in U_0(x_0,\delta)$，总有
 $$\left|\df1{f(x)}\right|<\e\quad\Rightarrow |f(x)|>\df1{\e}=M.$$
 即证。\fin
 
 \bs
 $x$趋于有限值时的无穷大对应的是函数曲线的{\bf 铅直渐近线}。
-例如：
+例如：（如图\ref{fig:verAsy}）
 \begin{itemize}
 	\setlength{\itemindent}{1cm}
 	\item $\limx{1}(x-1)=0$，故$x=1$是$f(x)=\df1{x-1}$的铅直渐近线；
@@ -2419,6 +2450,32 @@ $x$趋于有限值时的无穷大对应的是函数曲线的{\bf 铅直渐近线
 	\caption{铅直渐近线}
 	\label{fig:verAsy}
 \end{figure}
+
+\bs 
+\pss{\centering
+	\includegraphics[width=\marginparwidth]{./images/ch01/exOex.pdf}\\
+	$y=\df{1+e^x}{1-e^x}$\\
+	及其水平和铅直渐近线
+}
+\egz $f(x)=\df{1+e^x}{1-e^x}$，求曲线$y=f(x)$
+的水平和铅直渐近线。
+
+解：因为
+$$\limx0\df1{f(x)}=\df{1-\limx0e^x}{1+\limx0e^x}=0,$$
+故$f(x)$是$x\to 0$时的无穷大，从而可知$x=0$是$y=f(x)$
+的铅直渐近线。
+
+又
+$$\limx{+\infty}\df{1+e^x}{1-e^x}
+=\limx{+\infty}\df{e^{-x}+1}{e^{-x}-1}
+=\df{\limx{+\infty}e^{-x}+1}{\limx{+\infty}e^{-x}-1}
+=-1,$$
+故$y=-1$是$y=f(x)$的一条水平渐近线。
+
+再由
+$$\limx{-\infty}\df{1+e^x}{1-e^x}
+=\df{1+\limx{-\infty}e^x}{1-\limx{-\infty}e^x}=1,$$
+故$y=1$也是$y=f(x)$的一条水平渐近线。\fin
 
 \bs
 \egz 证明多项式函数$f(x)=\sum\limits_{k=1}^{n}a_kx^k$（$a_n> 0$）
@@ -2460,6 +2517,18 @@ $$f(x)>x^n\df{a_n}2>M.$$
 	从而$f(x)$是无穷大，与已知矛盾！\fin
 \end{enumerate}
 \fi
+
+\bs
+\egz 证明：$f(x)=x\sin x$不是$x\to+\infty$时的无穷大。
+
+证：反证法。假设$f(x)$是$x\to+\infty$时的无穷大，
+由无穷大的等价定义，对任意$M>0$，必存在$X$，使对任意
+$x>X$总有，$|f(x)|>M$。
+
+然而，若令$x_M=2\pi\left(\left[\frac{X}{2\pi}\right]+1\right)$，
+显然$x_M>X$，但
+$$f(x_M)=x_M\sin(x_M)=0,$$
+从而与假设矛盾，故假设错误。即证。\fin
 
 \bs
 \begin{ext}
@@ -2504,7 +2573,7 @@ $$f(x)\cdot g(x)=(A+\circ(1))\cdot (B+\circ(1))
 \quad (x\to\Delta)$$
 
 （3）证明$\limx{\Delta}[f(x)/g(x)]=A/B$。显然，有了以上的乘法规则，
-在此只需证明$\limx{\Delta}g(x)=1/B$即可。
+在此只需证明$\limx{\Delta}1/g(x)=1/B$即可。
 
 注意到$B\ne 0$，由极限的保号性，当$x$充分靠近$\Delta$时，
 $$|B+\circ(1)|\in(0.5|B|,1.5|B|),$$
@@ -4779,9 +4848,9 @@ $$|\sqrt[3]{n+1}-\sqrt[3]{n}|
 
 (4)$\limn\df{n^2-n-1}{2n^2+2n-4}=\df12$.
 
-证：对任意$\e>0$，令$N=$，则对任意$n>N$有
+证：对任意$\e>0$，令$N=\left[\frac1{\e}\right]+1$，则对任意$n>N$有
 $$\left|\df{n^2-n-1}{2n^2+2n-4}-\df12\right|
-=\left|\df{-2n-3}{2n^2+2n-4}\right|<\df1n<\df1N<\df1{\e}.$$
+=\left|\df{-2n-3}{2n^2+2n-4}\right|<\df1n<\df1N<\e.$$
 由数列极限的定义，即证。\fin
 
 \bs

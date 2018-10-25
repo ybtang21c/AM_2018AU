@@ -1,6 +1,0 @@
-PWD /Users/ybtang21c/Documents/workspace/AM_2018AU/src/Settings
-INPUT /usr/local/texlive/2013/texmf.cnf
-INPUT /usr/local/texlive/2013/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2013/texmf-var/web2c/xetex/xelatex.fmt
-INPUT fontSet.tex
-OUTPUT pdf/fontSet.log

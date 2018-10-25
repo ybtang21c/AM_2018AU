@@ -76,7 +76,21 @@
 %%%%% extended list environments
 \usepackage{paralist}		%控制段间距等
 
-%%%%% Chinese Font Config
+%%%%% fontspec
+\usepackage{fontspec}
+\setmainfont[BoldFont={Georgia Bold},
+	ItalicFont={Georgia Italic},
+	BoldItalicFont={Georgia Bold Italic}
+	]{Georgia}
+
+%%%%% XeCJK
+\usepackage{xeCJK}
+\setCJKmainfont[ItalicFont={Adobe Kaiti Std},
+	BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Adobe Fangsong Std}
+\setCJKmonofont{Adobe Heiti Std}
+\setCJKmathfont{Cambria Math}
+%%%%% font families
 \input{Settings/fontSet.tex}
 
 %%%%% head and foot setting
