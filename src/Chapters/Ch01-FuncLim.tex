@@ -1064,30 +1064,26 @@ $$\arcsin(\sin x),\quad \sin(\arcsin x)$$
 
 解：$\sin(\arcsin x)=x$，其定义域为$[-1,1]$。
 
-$\arcsin x$的值域为$[-\pi/2,\pi/2]$，因此作如下的讨论：
+显然，$\arcsin(\sin x)$是以$2\pi$为周期的函数，故以下仅讨论其
+在一个周期内的取值即可。
+
+注意到$\arcsin x$的值域为$[-\pi/2,\pi/2]$，因此：
 
 若$x\in[-\pi/2,\pi/2]$，则$\arcsin(\sin x)=x$；
 
-若$x\notin[-\pi/2,\pi/2]$，则需要利用$\sin x$的性质
-将$\sin x$化为某个$\sin(\bar x)$，其中$\bar x\in[-\pi/2,\pi/2]$，
-且与$x$之间相差$\pi$的整数倍。进一步讨论：
+若$x\in[-\pi.-\pi/2)$，注意到
+$$\sin x=\sin(-\pi-x),$$
+而$-\pi-x\in(-\pi/2,0]$，故此时$\arcsin(\sin x)=-\pi-x$；
 
-若$\bar x-x=2n\pi$，其中$n$为整数，则$\sin\bar x=\sin x$，
-此时
-$$\arcsin(\sin x)=\arcsin(\sin\bar x)=\bar x=x+2n\pi.$$
+又若$x\in(\pi/2,\pi]$，由
+$$\sin x=\sin(\pi-x),$$
+而$\pi-x\in[0,\pi/2)$，故此时$\arcsin(\sin x)=\pi-x$。
 
-若$\bar x-x=(2n+1)\pi$，其中$n$为整数，则$\sin(-\bar x)
-=-\sin\bar x=\sin x$，
-此时
-$$\arcsin(\sin x)=\arcsin(\sin(-\bar x))=-\bar x=-(2n+1)\pi-x.$$
-
-又注意到$\arcsin(\sin x)$显然是以$2\pi$
-为周期函数，故以下只需给出其在一个周期上的
-定义，其余部分按照周期进行复制即可。综上
+综上，
 $$\arcsin(\sin x)=\left\{\begin{array}{ll}
--x-\pi, & -\pi\leq x<-\pi/2,\\
+-\pi-x, & -\pi\leq x<-\pi/2,\\
 x, & -\pi/2\leq x\leq\pi/2,\\ 
--x+\pi, & \pi/2<x\leq\pi.
+\pi-x, & \pi/2<x\leq\pi.
 \end{array}\right.$$
 其图像如下
 \begin{figure}[h]
@@ -2535,13 +2531,12 @@ $$f(x_M)=x_M\sin(x_M)=0,$$
 	{\centering\bf 习题1-4}
 	
 	\begin{enumerate}  
-	  \item 证明：函数$y=\df1x\sin\df1x$在区间$[0,1]$内无界，
+	  \item 证明：函数$y=\df1x\sin\df1x$在区间$(0,1]$内无界，
 	  但它不是$x\to 0^+$时的无穷大。
 	  \item 求函数$y=\df1{1-x^2}$的水平渐近线和铅直渐进线。
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{极限的运算}
 
 如未特别说，以下讨论的所有性质都是指
@@ -2612,6 +2607,19 @@ $1=\limn n\df1n$
 甚至在极限运算之后也将其保留了下来
 （第三个等号之后），而在数列极限运算结果中是不应该再出现$n$的，因此可以说这是与一个极限概念自身相矛盾的错误。
 
+另一个类似的错误如下{\baa 
+\begin{eqnarray*}
+	\limn\left(1+\df1n\right)^n&
+	=&\limn \underbrace{\left(1+\df 1n\right)\left(1+\df 1n\right)\cdots
+	\left(1+\df	1n\right)}_{n\mbox{\footnotesize\it 个}}\\
+	&=&\underbrace{\limn\left(1+\df1n\right)\limn\left(1+\df1n\right)
+	\cdots\limn\left(1+\df1n\right)}_{n\mbox{\footnotesize\it 个}}\\
+	&=&\left[\limn\left(1+\df1n\right)\right]^n=1
+\end{eqnarray*}}
+和前面的情况类似，这样相当于把某个$n$
+放在了极限符号之外。事实上，这个极限的结果应该是
+$$\limn\left(1+\df1n\right)^n=e\approx 2.71828\ldots$$
+
 \bs
 \egz 计算极限
 $$\limx{\infty}\df{3x^3+2x-1}{4x^3+6x^2+9}$$
@@ -2641,36 +2649,50 @@ $$\limx{\infty}\df{3x^3+2x-1}{4x^3+6x^2+9}$$
 
 \begin{thx}
 	{\bf 有理函数当$x\to+\infty$时的极限：}
-	设$P(x)$和$Q(x)$分别为$m$和$n$次多项式函数，且其最高次项系数分别为
-	$a,b$，$b\ne 0$，则
+	设$P(x)=\sum\limits_{i=0}^na_ix^i$，
+	$Q(x)=\sum\limits_{j=0}^mb_jx^j$，且$a_nb_m\ne0$，则
 	$$
 		\limx{+\infty}\df{P(x)}{Q(x)}=
 		\left\{\begin{array}{ll}
-			a/b, & m=n;\\
-			0, & m<n;\\
-			\mbox{不存在}, & m>n.
+			0, & m>n,\\
+			a_n/b_n, & m=n,\\
+			\mbox{不存在}, & m<n.
 		\end{array}\right.
 	$$
 \end{thx}
 
+以上定理的结论简单地说，就是对于有理分式函数，其当$x\to\infty$
+的极限完全取决于分子分母的最高次幂和最高次幂的系数。
+
 {\bf 思考：}有理函数当$x\to 0$时的极限如何计算？有什么规律？
 $x$趋于其他有限值的时候呢？
+
+\ifhint
+	与$x\to\infty$时的极限比较最高次幂不同，考虑$x\to0$时
+	的极限需要比较分子分母的最低次幂。具体来说，
+	\begin{enumerate}[(1)]
+		\setlength{\itemindent}{1cm}
+		\item 若$b_0\ne 0$，则$\limx0\df{P(x)}{Q(x)}=\df{a_0}{b_0}$
+		\item 若$b_0=0$且$a_0\ne 0$，则极限不存在；
+		\item 若$b_0=a_0=0$且$b_1\ne0$，则$\limx0\df{P(x)}{Q(x)}=\df{a_1}{b_1}$；
+		\item 若$b_0=a_0=0$，$b_1=0$且$a_1\ne 0$，则极限不存在；
+		\item 依此类推...
+	\end{enumerate}
+\fi
 
 \bs
 \egz 确定常数$a,b$的值，使得$\limx1\df{x^2+ax+b}{x-1}=3$。
 
-解：原式可化为
-$$\limx1\df{(x-1)^2+(a+2)(x-1)+(a+b+1)}{x-1}=3,$$
-也即
-$$\limx1(x-1)+(a+2)+\limx1\df{(a+b+1)}{x-1}=3,$$
-该式成立，当且仅当
-$$
-	\left\{\begin{array}{l}
-		a+2=3,\\
-		a+b+1=0.
-	\end{array}\right.
-$$
-从而可以解得$a=1,b=-2$，即为所求。\fin
+解：由已知条件
+$$1+a+b=\limx1(x^2+ax+b)=\limx1\df{x^2+ax+b}{x-1}\limx1(x-1)=3\cdot 0=0.$$
+于是
+原式可化为
+\begin{align*}
+	\limx1&\df{(x-1)^2+(a+2)(x-1)+(a+b+1)}{x-1}\\
+	&=\limx1\df{(x-1)^2+(a+2)(x-1)}{x-1}
+	=\limx1(x-1)+a+2=a+2=3,	
+\end{align*}
+从而$a=1$，进而$b=-2$。\fin
 
 \bs
 \egz 如果存在直线$L:y=kx+b$，使当$x\to\infty$（或$x\to+\infty$，
@@ -2741,11 +2763,32 @@ $$\limn\df{\cos^n\theta-\sin^n\theta}
 {\cos^n\theta+\sin^n\theta}\quad
 (0\leq\theta\leq\df{\pi}{2})$$
 
-提示：根据$\theta$的取值范围，决定是分子分母同时除以$\sin^nx$还是$\cos^nx$，结果为
-$$\mbox{原式}=\left\{\begin{array}{ll}
--1,& 0<\theta<\df{\pi}4\\
+解：以下根据$\theta$的范围讨论。
+
+$\theta=0$时，
+$$\mbox{原式}=\limn\df{1-0}{1+0}=1;$$
+
+$\theta=\frac{\pi}2$时，
+$$\mbox{原式}=\limn\df{0-1}{0+1}=-1;$$
+
+$\theta=\frac{\pi}4$时，$\cos\theta=\sin\theta$，
+$$\mbox{原式}=\limn\df{0}{\cos^n\theta+\sin^n\theta}=0;$$
+
+$\theta\in\left(0,\frac{\pi}4\right)$时，$0<\tan\theta<1$，
+$$\mbox{原式}=\limn\df{1-\tan^n\theta}{1+\tan^n\theta}
+=\df{1-\limn\tan^n\theta}{1+\limn\tan^n\theta}
+\df{1-0}{1+0}=1;,$$
+
+$\theta\in\left(\frac{\pi}4,\frac{\pi}2\right)$时，$0<\cot\theta<1$，
+$$\mbox{原式}=\limn\df{\cot^n\theta-1}{\cot^n\theta+1}
+=\df{\limn\cot^n\theta-1}{\limn\cot^n\theta+1}
+=\df{0-1}{0+1}=-1.$$
+综上，
+$$\limn\df{\cos^n\theta-\sin^n\theta}
+{\cos^n\theta+\sin^n\theta}=\left\{\begin{array}{ll}
+1,& 0\leq\theta<\df{\pi}4\\
 0,& \theta=\df{\pi}4\\
-1,& \df{\pi}4<\theta<\df{\pi}2
+-1,& \df{\pi}4<\theta\leq\df{\pi}2
 \end{array}\right.$$
 \fin
 
@@ -2799,7 +2842,7 @@ $$\mbox{原式}=\left\{\begin{array}{ll}
 
 \bs
 
-{\bf 思考题：}
+{\bf 思考：}计算下列极限
 \begin{enumerate}[(1)]
 	\setlength{\itemindent}{1cm}
 	\item $\limn\left(1-\df1{2^2}\right)\left(1-\df1{3^2}
@@ -2855,7 +2898,6 @@ $$|f(g(x))-A|<\e.$$
 \bs
 {\bf 思考：}为什么定理条件中要求“在$x_0$附近$g(x)\ne u_0$”？
 
-\bs
 \ifhint
   答：因为$f(x)$可能在$x_0$处的定义与极限值无关，例如：
   $$f(x)=\left\{\begin{array}{ll}
@@ -2931,7 +2973,8 @@ $$\limx0\sin x^2=\sin\left(\limx0x^2\right)
 \end{enumerate}
 \fi
 
-{\bf 思考题：}设$\{a_n\},\{b_n\},\{c_n\}$均为非负数列，且
+\bs
+{\bf 思考：}设$\{a_n\},\{b_n\},\{c_n\}$均为非负数列，且
   $$\limn a_n=0,\quad \limn b_n=1,\quad \limn c_n=\infty.$$
   判断以下说法的正误。正确的，给出证明；错误的，举一个反例。
   \begin{enumerate}[(1)]
@@ -2952,6 +2995,26 @@ $$\limx0\sin x^2=\sin\left(\limx0x^2\right)
 \fi
 
 \bs
+\egz 求双曲线$\df{x^2}{a^2}-\df{y^2}{b^2}=1\,(a,b>0)$的渐近线。
+
+提示：以该双曲线的上半分支为例，其函数表达式为
+$$y=b\sqrt{\frac{x^2}{a^2}-1}.$$
+易知，对任意$|x_0|\geq a$，$\limx{x_0}y(x)$均存在，故
+该曲线没有铅直渐近线。
+
+又
+$$\limx{+\infty}\df{y(x)}x=b\limx{+\infty}\sqrt{\df1{a^2}-\df1{x^2}}=\df ba,$$
+$$\limx{-\infty}\df{y(x)}x=b\limx{-\infty}\left(-\sqrt{\df1{a^2}-\df1{x^2}}\right)
+=-\df ba,$$
+$$\limx{+\infty}\left[y(x)-\df bax\right]
+=b\limx{+\infty}\left(\sqrt{\df{x^2}{a^2}-1}-\df xa\right)
+\xlongequal{u=\frac xa}b\lim\limits_{u\to+\infty}(\sqrt{u^2-1}-u)=0,$$
+$$\limx{-\infty}\left[y(x)+\df bax\right]
+=b\limx{-\infty}\left(\sqrt{\df{x^2}{a^2}-1}+\df xa\right)
+\xlongequal{u=-x}b\lim\limits_{u\to+\infty}(\sqrt{\df{u^2}{a^2}}-\df ua)=0,$$
+故双曲线的两条斜渐近线分别为$x=\pm\df bax$。
+
+\bs
 \begin{ext}
 	{\centering\bf 习题1-5}
 	\begin{enumerate}  
@@ -2969,7 +3032,6 @@ $$\limx0\sin x^2=\sin\left(\limx0x^2\right)
 	    \item $\limx{+\infty}x(\sqrt{x^2+1}-x)$
 	    \item $\limx{-\infty}x(\sqrt{x^2+1}-x)$
 	    \item $\limx0x^2\sin\df1x$
-	    \item $\limx{\infty}\df{\arctan x}x$
 	  \end{enumerate}
 	  \item 确定常数$a,b$的值，使得
 	  $\limx{\infty}\left(\df{x^2}{x+1}-ax-b\right)=0$。
@@ -3041,19 +3103,36 @@ $$\left|\sqrt{n+1}-\sqrt{n}-0\right|
 \begin{thx}
 	{\bf 常用极限：}若$a>0$为常数，则$\limn \sqrt[n]{a}=1$。
 \end{thx}
+
 证：$a=1$时结论显然成立。
 
 $a>1$时，显然有$h_n=\sqrt[n]a-1>0$，故
-$$a=(1+h_n)^n=1+nh_n+\df{n(n-1)}2h_n^2+\ldots+h_n^n>1+nh_n,$$
-进而有
-$$0<h_n<\df{a-1}n,$$
-不等式左右两端当$n\to\infty$时极限均为$0$，故由夹逼准则，$\limn h_n=0$，也即
-$$\limn\sqrt[n]a=1.$$
+\begin{align*}
+	0<\sqrt[n]a-1
+	=\df{a-1}{a^{\frac{n-1}n}+a^{\frac{n-2}n}+\ldots+1}
+	<\df{a-1}n,
+\end{align*}
+不等式两端极限均为$1$，故此时$\limn{\sqrt[n]a-1}=0$。
 
 $0<a<1$时，令$b=\df1a$，则由极限的运算性质
 $$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
 =\df1{\limn\sqrt[n]b}=\df11=1.$$
 至此，证毕。\fin
+
+%
+%证：$a=1$时结论显然成立。
+%
+%$a>1$时，显然有$h_n=\sqrt[n]a-1>0$，故
+%$$a=(1+h_n)^n=1+nh_n+\df{n(n-1)}2h_n^2+\ldots+h_n^n>1+nh_n,$$
+%进而有
+%$$0<h_n<\df{a-1}n,$$
+%不等式左右两端当$n\to\infty$时极限均为$0$，故由夹逼准则，$\limn h_n=0$，也即
+%$$\limn\sqrt[n]a=1.$$
+%
+%$0<a<1$时，令$b=\df1a$，则由极限的运算性质
+%$$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
+%=\df1{\limn\sqrt[n]b}=\df11=1.$$
+%至此，证毕。\fin
 
 利用本例类似的方法，可以证明：
 \pss{\centering
@@ -3063,7 +3142,16 @@ $$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
 \begin{thx}
 	{\bf 常用极限：}$\limn\sqrt[n]n=1.$
 \end{thx}
-请作为思考题加以练习。
+
+证：记$h_n=\sqrt[n]{n}-1$，显然$h_n>0$，于是
+\begin{align*}
+	n=(1+h_n)^n
+	=1+n\cdot h_n+\df{n(n-1)}{2}h_n^2+\ldots+h_n^n
+	>\df{n(n-1)}{2}h_n
+\end{align*}
+进而
+$$0<h_n<\sqrt{\df2{n-1}},$$
+不等式两端均趋于$0$，故由夹逼准则，$\limn h_n=0$，即证。\fin
 
 \bs
 {\bf 课堂练习：}计算极限
@@ -3077,27 +3165,75 @@ $$\limn\sqrt[n]a=\limn\sqrt[n]{\df1b}
   \ifhint \quad 提示：$5=\sqrt[n]{5^n}<\sqrt[n]{3^n+5^n}
   <\sqrt[n]{2\cdot 5^n}=\sqrt[n]2\sqrt[n]{5^n}=\sqrt[n]2\cdot5$.\fi
   \item $\limn\sqrt[n^2]{5^n+1}$
+
+  \ifhint
+  \quad 提示：$1<\sqrt[n^2]{5^n+1}<\sqrt[n^2]{2\cdot 5^n}=
+  \sqrt[n^2]{2}\sqrt[n]{5}$，不等式两端的极限都趋于$1$，由夹逼准则，
+  $\mbox{原式}=1$。
+  \fi
   \item 已知$a>b>0$，$\limn\sqrt[n]{\df1{a^n}+\df1{b^n}}$
+
+  \ifhint \quad 提示：
+  $\mbox{原式}=\max\left\{\df1a,\df1b\right\}$
+  \fi
   \item $\limn\df{\sqrt{n+\sqrt n}-\sqrt n}{\sqrt[n]{3^n+5^n+7^n}}$
+
+  \ifhint \quad 提示：
+  $\mbox{原式}=\df1{14}$
+  \fi
   \item $\limn\left(\df1{n+1}+\df1{\sqrt{n^2+1}}+\ldots
 	+\df1{\sqrt[n]{n^n+1}}\right)$
+
+  \ifhint \quad 提示：
+  注意到$\df1{n+1}<\df1{\sqrt{n^2+1}}<\df1{\sqrt[n]{n^n+1}}$，故
+  $\df{n}{\sqrt[n]{n^n+1}}<\left(\df1{n+1}+\df1{\sqrt{n^2+1}}+\ldots
+	+\df1{\sqrt[n]{n^n+1}}\right)<\df{n}{n+1}$，不难验证
+  不等式两端均趋于$1$，故$\mbox{原式}=1$。
+  \fi
   \item $\limn n^2\left(\df kn-\df1{n+1}-\df1{n+2}
 	-\ldots-\df1{n+k}\right),\;k\in\mathbb{Z}_+$
+
+  \ifhint \quad 提示：
+  \begin{align*}
+  	\mbox{原式}&=\limn n^2\left[\left(\df1n-\df1{n+1}\right)
+  	+\left(\df1n-\df1{n+2}\right)+\ldots
+  	+\left(\df1n-\df1{n+k}\right)\right]\\
+  	&=\limn n^2\left[]\df1{n(n+1)}+\df2{n(n+2)}
+  	+\ldots+\df{k}{n(n+k)}\right]\\
+  	&=\limn\left(\df{n}{n+1}+\df{2n}{m+2}
+  	+\ldots+\df{kn}{n+k}\right)\\
+  	&=\limn\df{n}{n+1}+\limn\df{2n}{n+2}
+  	+\ldots+\limn\df{kn}{n+k}\\
+  	&=1+2+\ldots+k=\df{k(k+1)}2.
+  \end{align*}
+  \fi
 \end{enumerate}
 
-以下例题中，我们多次用到了如下的常用极限：
+以上的例题中，我们多次用到了如下的常用极限：
 \begin{thx}
   {\bf 常用极限：}设$a_k\geq0,\;(k=1,2,\ldots)$，则$\limn\sqrt[n]
   {\sum\limits_{k=1}^na_k^n}=\max\limits_{1\leq k\leq n}a_k.$
 \end{thx}
 
 \bs
+\egz 设$f(x)$在$[a,b]$上连续，$\{x_n\}$为$[a,b]$上任一数列，求
+$\limn\sqrt[n]{\df1n\sum\limits_{k=1}^ne^{f(x_k)}}$
+
+解：$e^{f(x)}$在$[a,b]$上连续且非负，故可设
+$m,M$分别为其在$[a,b]$上的最小和最大值，
+\ps{这里用到了连续函数的性质，即：有界闭区间上的连续函数必可以去到最大
+和最小值}
+从而由夹逼定理
+$$\sqrt[n]m\leq\sqrt[n]{\df1n\sum\limits_{k=1}^ne^{f(x_k)}}\leq\sqrt[n]M,$$
+由此易知原式$=1$。\fin
+
+\bs
 夹逼准则可以很方便地推广到函数极限的情形，
 \begin{thx}
 	{\bf 夹逼准则II：}设在$\Delta$的某邻域内，恒有
-	$$\varphi(x)\leq f(x)\leq\psi(x), $$
+	$\varphi(x)\leq f(x)\leq\psi(x), $
 	且$\limx{\Delta}\varphi(x)=\limx{\Delta}\psi(x)=A$，则
-	$$\limx{\Delta}f(x)=A.$$
+	$\limx{\Delta}f(x)=A.$
 \end{thx}
 
 利用该准则，我们可以得到另一个常用的重要极限：
@@ -3120,7 +3256,7 @@ $\theta>0$时，显然弧$AB$的长度大于直线$BD$，即$\sin\theta<\theta$�
 从而$\theta<\tan\theta$。由
 $$\sin\theta<\theta<\tan\theta,$$
 两边都除以$\sin\theta$，然后倒置，可得
-$$1<\df{\sin\theta}{\theta}<\cos\theta,$$
+$$\cos\theta<\df{\sin\theta}{\theta}<1,$$
 注意到当$\theta\to 0^+$时，不等式左右极限都为$1$，故
 $\lim\limits_{\theta\to0^+}\df{\sin\theta}{\theta}=1$。
 又$\df{\sin x}x$为偶函数，故立即可得
@@ -3146,7 +3282,7 @@ $\lim\limits_{\theta\to0^-}\df{\sin\theta}{\theta}=1$。
 \bs
 从这个极限出发可得到的一些常用的极限：
 
-{\bf 课堂练习：}计算下列极限
+{\bf 例：}计算下列极限
 \ps{\baa 这些极限的计算方法和结果都要熟记}
 \begin{enumerate}[(1)]
 	  \setlength{\itemindent}{1cm}
@@ -3183,13 +3319,12 @@ $\lim\limits_{\theta\to0^-}\df{\sin\theta}{\theta}=1$。
 \fi
 
 \bs
-
 \egz 设$f(x)=\sum\limits_{i=1}^na_i\sin
 ix$，其中$a_i(i=1,2,\ldots,n)$为常数，且对任意$x\in\mathbb{R}$， $|f(x)|\leq |\sin x|$，证明：
 $$\left|a_1+2a_2+\ldots+na_n\right|\leq 1$$
 
 证：由已知，$x\ne 0$时，总有
-$$\left|\df{f(x)}{\sin x}\right|\leq 1,$$
+$\left|\df{f(x)}{\sin x}\right|\leq 1,$
 也即
 $$\left|a_1+a_2\df{\sin 2x}{\sin x}+\ldots
 +a_n\df{\sin nx}{\sin x}\right|\leq 1.$$
@@ -3205,7 +3340,7 @@ $$\left|a_1+a_2\df{\sin 2x}{\sin x}+\ldots
 \end{align*}
 即证。\fin
 
-\subsection{单调有界准则（原理）}
+\subsection{单调有界准则}
 
 \pss{单调有界可以理解为单调递增有上界或单调递减有下界}
 \begin{thx}
@@ -3230,25 +3365,17 @@ $$a_N\leq a_n\leq A\quad\Rightarrow\quad |a_n-A|<\e,$$
 单调有界原理可以证明极限的存在性（或数列的收敛性），
 但常常无法给出具体的极限值。例如下面的极限：
 
-\pss{证明参见KD教材2.2.4节例7，不要求掌握}
 \begin{thx}
 	{\bf 常用极限：}$\left\{\left(1+\df1n\right)^n\right\}=e$.
 \end{thx}
 
-该极限结果的常数$e$称为{\kaishu Napier常数}
-\ps{同济教材称之为Euler常数，
-我们沿用的是维基百科和国际上通行的叫法；
-Napier是公认的计算过程“机械化”的先驱}，
-以$e$为底的指数函数在微积分中有着非常广泛的应用。
-
-\begin{shaded}
-\egz 证明数列$\left\{\left(1+\df1n\right)^n\right\}$单调递增有上界。
+\egz 证明数列$\left\{\left(1+\df1n\right)^n\right\}$收敛。
 
 证：先证有上界，
 \begin{align}
 	\left(1+\df1n\right)^n&=1+\df n1\cdot\df1n
 	+\df{n\cdot(n-1)}{2\cdot1}\cdot\df1{n^2}+\ldots
-	+\df{n\cdot(n-1)\ldots3\cdot2}{(n-1)\cdot(n-2)\ldots2\cdot1}\cdot\df1{n^2}\notag\\
+	+\df{n\cdot(n-1)\ldots3\cdot2}{(n-1)\cdot(n-2)\ldots2\cdot1}\cdot\df1{n^n}\notag\\
 	&<1+1+\df1{2\cdot1}+\ldots+\df1{(n-1)\cdot(n-2)\ldots2\cdot1}
 	+\df1{n\cdot(n-1)\ldots2\cdot1}\notag\\
 	&<1+1+\df12+\ldots+\df1{2^{n-2}}+\df1{2^{n-1}}<3\notag
@@ -3257,8 +3384,74 @@ Napier是公认的计算过程“机械化”的先驱}，
 $$\left(1+\df1n\right)^n\cdot 1<
 \left[\df{n\left(1+\frac1n\right)+1}{n+1}\right]^{n+1}
 =\left(1+\df1{n+1}\right)^{n+1}.$$
+综上，由单点有界准则，可知原数列收敛。
 \fin
+
+以上熟练的极限$e$称为{\kaishu Napier常数}
+\ps{同济教材称之为Euler常数，
+我们沿用的是维基百科和国际上通行的叫法}，
+以$e$为底的指数函数在微积分中有着非常广泛的应用。
+
+\begin{shaded}
+	\pss{\centering
+		\includegraphics[width=0.8\marginparwidth]
+		{./images/ch01/Jakob_Bernoulli.jpg}\\
+		\href{https://en.wikipedia.org/wiki/Jacob_Bernoulli}
+		{Jacob Bernoulli (1655-1705)}\\
+		伟大的Bernoulli家族第一代的杰出代表\\[1cm]
+		\includegraphics[width=0.75\marginparwidth]
+		{./images/ch01/Leonhard_Euler.jpg}\\
+		\href{https://en.wikipedia.org/wiki/Leonhard_Euler}
+		{Leonhard Euler (1707-1783)}\\
+		历史上最高产的数学家之一
+	}
+	{\bf \href{https://en.wikipedia.org/wiki/E_(mathematical_constant)}
+	{常数$e$}}
+
+	常数$e$通常被称为{\bf Napier常数}或{\bf Euler数}，关于它有如下的
+	一些结论（在此不作证明）：	
+	\begin{itemize}
+		%\setlength{\itemindent}{1cm}
+		%\item 若将$a>0$分成若干份，使得总乘积最大，由平均值不等式可知，
+		%显然等分最有利，但该分成多大的一份呢？分析可证明分成最接近
+		%于$e$的大小最合适；
+		\item 记$\e_n=e-\sum\limits_{k=0}^n\df1{k!}$，则
+		\limn $\e_n(n+1)!=1$；
+		\item $\delta_n=e-\left(1+\df1n\right)^n<\df3n$；
+		\item $\limn\df{2n\delta_n}e=1$；
+		\item $\df1{n+1}<\ln\left(1+\df1n\right)<\df1n$；
+		\item $a_n=\df1{n+1}+\ldots+\df1{2n},\;(n\in\mathbb{Z}_+)$收敛
+		于$\ln2$.
+	\end{itemize}
+	
+	值得一提的是，$\left\{\left(1+\frac1n\right)^n\right\}$收敛
+	最初是由瑞士数学家Jacob Bernoulli证明的，而真正计算出常数$e$的
+	值的人是瑞士数学家（号称{\kaishu ”什么都会算“}的)Euler，
+	{\kaishu Euler数}(Euler's Number)因此得名，而$e$正好
+	对应于Euler名字的首字母。Napier则被认为是对数函数的发明人。
+
+	Jacob Bernoulli和Euler对于数学的贡献非常广泛，而并不仅仅局限于
+	微积分领域。Bernoulli家族是数学史上最显赫的家族之一，
+	共诞生了八位杰出的数学家
+	（参见：\href{https://zhuanlan.zhihu.com/p/41098703}
+	{伯努利家族：横跨2个世纪的数学天才制造工厂（A）}）。
+	在本门课程中，与Jacob Bernoulli相关的另外两个重要知识点是：
+	调和级数$\sumn\df1n$发散，以及我们将在常微分方程中学到的
+	Bernoulli方程$y'=p(x)y+q(x)y^n$。
+	Euler据说是历史上产出第二多的数学家
+	（\href{https://www.zhihu.com/question/41157845/answer/514221831}
+	{欧拉到底有多厉害？}），他是图论的奠基者，以他名字命名的公式
+	$$e^{i\pi}=-1,$$
+	为誉为数学史上最美的公式。在微积分中，
+	另有一个著名的{\bf Euler常数}
+	$$\gamma=\limn\left(\sumn\df1k-\ln n\right)\approx 0.5772\ldots$$
 \end{shaded}
+
+\pss{\centering
+	\includegraphics[width=\marginparwidth]{./Images/Ch01/enn1.pdf}\\
+	数列$\left\{\left(1+\frac1n\right)^n\right\}$和数列
+	$\left\{\left(1+\frac1n\right)^{n+1}\right\}$
+}
 
 需要了解和这个极限中的数列相关的一些重要性质：
 \begin{itemize}
@@ -3268,50 +3461,6 @@ $$\left(1+\df1n\right)^n\cdot 1<
   \item 以上两个数列极限相同，都为$e$；显然
   $$\b\left(1+\df1n\right)^n<e<\left(1+\df1n\right)^{n+1}$$
 \end{itemize}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{./Images/Ch01/enn1.pdf}
-	\caption{数列$\left\{\left(1+\df1n\right)^n\right\}$和数列
-	$\left\{\left(1+\df1n\right)^{n+1}\right\}$}
-	\label{fig:enn1}
-\end{figure}
-
-和这个极限相关的一类{\baa 典型错误：
-\begin{eqnarray*}
-	\limn\left(1+\df1n\right)^n&
-	=&\limn \underbrace{\left(1+\df 1n\right)\left(1+\df 1n\right)\cdots
-	\left(1+\df	1n\right)}_{n\mbox{\footnotesize\it 个}}\\
-	&=&\underbrace{\limn\left(1+\df1n\right)\limn\left(1+\df1n\right)
-	\cdots\limn\left(1+\df1n\right)}_{n\mbox{\footnotesize\it 个}}\\
-	&=&\left[\limn\left(1+\df1n\right)\right]^n=1
-\end{eqnarray*}}
-和前面关于无穷多个无穷小的和的例子类似，这样相当于把某个$n$
-放在了极限符号之外，而且，不要忘记，极限运算只能和有限次的四则
-运算交换次序(否则结果可能是不确定的)。
-
-\begin{shaded}
-	{\bf Napier常数$e$}
-
-	关于Napier常数$e$有如下的一些结论（在此不作证明）：	
-	\begin{itemize}
-		\setlength{\itemindent}{1cm}
-		\item 若将$a>0$分成若干份，使得总乘积最大，由平均值不等式可知，
-		显然等分最有利，但该分成多大的一份呢？分析可证明分成最接近
-		于$e$的大小最合适；
-		\item 记$\e_n=e-\sum\limits_{k=0}^n\df1{k!}$，则
-		\limn $e_n(n+1)!=1$；
-		\item $\delta_n=e-\left(1+\df1n\right)^n<\df3n$；
-		\item $\limn\df{2n\delta_n}e=1$；
-		\item $\df1{n+1}<\ln\left(1+\df1n\right)<\df1n$；
-		\item $a_n=\df1{n+1}+\ldots+\df1{2n},\;(n\in\mathbb{Z}_+)$收敛
-		于$\ln2$.
-	\end{itemize}
-	
-	\bs
-	{\bf Euler常数}
-	$$\gamma=\limn\left(\sumn\df1k-\ln n\right)\approx 0.5772\ldots$$
-\end{shaded}
 
 利用前述的性质，结合夹逼准则，我们可以推广以上的极限得到：
 \begin{thx}
@@ -3328,7 +3477,7 @@ $$\left(1+\df1n\right)^n<e<\left(1+\df1n\right)^{n+1},$$
 $$\left(1+\df1{[x]+1}\right)^{[x]}<\left(1+\df1x\right)^x
 <\left(1+\df1{[x]}\right)^{[x]+1}.$$
 利用前述极限容易证明以上不等式两边的数列极限均为$e$，从而由夹逼准则，
-$\limx{+\infty}\left(1+\df1x\right)^x=e$。
+$$\limx{+\infty}\left(1+\df1x\right)^x=e.$$
 
 下证$\limx{-\infty}\left(1+\df1x\right)^x=e$。
 
@@ -3340,23 +3489,25 @@ $\limx{+\infty}\left(1+\df1x\right)^x=e$。
 	&=\lim\limits_{y\to+\infty}\left(\df y{y-1}\right)^{y}
 	=\lim\limits_{y\to+\infty}\left(1+\df1{y-1}\right)^{y}\\
 	&=\lim\limits_{y\to+\infty}\left(1+\df1{y-1}\right)^{y-1}
-	\lim\limits_{y\to+\infty}\left(1+\df1{y-1}\right)=e\cdot1=e
+	\lim\limits_{y\to+\infty}\left(1+\df1{y-1}\right)\\
+	&=e\cdot1=e
 \end{align*}
 \fin
 
 \bs
 从以上极限出发也可以得到的一些常用的极限：
 
-\egz 计算如下的极限\ps{\baa 重点掌握}
+\egz 计算如下的极限\ps{\baa 熟练掌握结论与计算方法}
 \begin{enumerate}[(1)]
    \setlength{\itemindent}{1cm}
   \item $\limx{0}(1+x)^{1/x}$ 
   \item $\limx 0(1+\sin x)^{1/\sin x}$ 
-  \item $\limx 0\df{\ln(1+ax)}{x}=a$
-  \item $\limx 0\df{e^{ax}-1}{x}=a$ 
-  \item $\limx 0\df{a^x-1}{x}=\ln a$ 
-  \item $\limx 0\df{(1+x)^a-1}x=a$
-  \item $\limn n(\sqrt[n]{a}-1)=\ln a$ 
+  \item $\limx 0\df{\ln(1+ax)}{x}$
+  \item $\limx 0\df{e^{ax}-1}{x}$ 
+  \item $\limx a\df{e^x-e^a}{x-a}$
+  \item $\limx 0\df{a^x-1}{x}$ 
+  \item $\limx 0\df{(1+x)^a-1}x$
+  \item $\limn n(\sqrt[n]{a}-1)$ 
 \end{enumerate}
 
 \ifhint
@@ -3373,39 +3524,30 @@ $\limx{+\infty}\left(1+\df1x\right)^x=e$。
 	\item $\limx 0\df{e^{ax}-1}{x}=a
 	\xlongequal{y=e^{ax}-1}
 	\lim\limits_{y\to0}\df{y}{\frac1a\ln(1+y)}=a$ 
+	\item $\limx a\df{e^x-e^a}{x-a}=e^{a}\limx a
+	\limx a\df{e^{x-a}=1}{x-a}\xlongequal{y=x-a}
+	e^a\lim\limits_{y\to 0}\df{e^y-1}y=e^a\cdot 1=e^a$
 	\item $\limx0\df{a^x-1}{x}
 	=\limx0\df{e^{x\ln a}-1}x=\ln a$ 
 	\item $\limx0\df{(1+x)^a-1}x
-	=\limx0\df{}{e^{a\ln(1+x)}-1}{\ln(1+x)}
-	\cdot\df{\ln(1+x)}x=a$
+	=\limx0\df{e^{a\ln(1+x)}-1}{a\ln(1+x)}
+	\cdot\df{a\ln(1+x)}x=a$
 	\item $\limn n(\sqrt[n]{a}-1)
 	\xlongequal{x=\frac1n}
 	\limx0\df{a^x-1}x=\ln a$ 
 \end{enumerate}
 \fi
 
-\bs
-\egz 设$f(x)$在$[a,b]$上连续，$\{x_n\}$为$[a,b]$上任一数列，求
-$\limn\sqrt[n]{\df1n\sum\limits_{k=1}^ne^{f(x_k)}}$
-
-解：$e^{f(x)}$在$[a,b]$上连续且非负，故可设
-$m,M$分别为其在$[a,b]$上的最大和最小值，
-\ps{这里用到了连续函数的性质，即：有界闭区间上的连续函数必可以去到最大
-和最小值}
-从而由夹逼定理
-$$\sqrt[n]m\leq\sqrt[n]{\df1n\sum\limits_{k=1}^ne^{f(x_k)}}\leq\sqrt[n]M,$$
-由此易知原式$=1$。\fin
+\subsubsection{用单调有界准则判断递推数列的敛散性}
 
 \bs
-单调有界准则一个很常见的应用领域时判断递推数列的敛散性。
-
 \egz 
 设$a_1>0$，$a_{n+1}=\df 12\left(a_n+\df 1{a_n}\right)\,
 (n=1,2,\ldots)$，证明$\{a_n\}$收敛，并求其极限。
 
 解：显然对任意$n\in\mathbb{Z}_+$，均有$a_n>0$。
 又对任意$n\geq2$，由平均值不等式，
-$$a_n=\df 12\left(a_n+\df 1{a_n}\right)\geq 1.$$
+$$a_{n+1}=\df 12\left(a_n+\df 1{a_n}\right)\geq 1.$$
 进而$\df1{a_n}\leq a_n$，从而
 $$a_{n+1}-a_n=\df12\left(\df1{a_n}-a_n\right)\leq0.$$
 由此即知，从$a_2$开始，数列$\{a_n\}$单调递减有下界，
@@ -3589,13 +3731,13 @@ $$a_n=1-\df1{b_n}=\df{n-2+b_1}{n-1+b_1}\to 1,\;(n\to\infty).$$
 不需要进行任何构造，难度略微降低了一些。
 
 证法二：
-\begin{center}
-	\includegraphics[width=8cm]{./images/ch01/a2a.pdf}
-	
-	\it 给定不同的$a_1$，数列取值的变化规律
-	
-	可以看到，不论$a_1$如何取，当$n$充分大时，数列都是单调递增有上界的
-\end{center}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]
+	{./Images/Ch01/a2a.pdf}
+	\caption{给定不同的$a_1$，数列取值的变化规律}
+	\label{fig:a2a}
+\end{figure}
 
 若存在某个$a_{n_0}=1$，则可知对任意$n\geq n_0$必有$a_n=1$，
 此时数列$\{a_n\}$收敛，极限为$1$。
@@ -3645,7 +3787,7 @@ $(2-A)A=1$，解得$A=1$，即为$\{a_n\}$的极限。\fin
 若$f(x)$当$x$充分大时单调递减且有下界，则$f(+\infty)$存在。
 
 \begin{shaded}
-\subsection{Cauchy极限存在准则}
+\subsection{Cauchy审敛原理}
 
 \pss{\centering
 	\includegraphics[width=0.7\marginparwidth]{./images/ch01/200px-Augustin-Louis_Cauchy_1901.jpg}\\
@@ -3682,7 +3824,7 @@ $$|a_{m_0}-a_{n_0}|\geq\e_0.$$
 
 \begin{thx}
 	{\bf Stolz定理：}
-	($\df{\bm{\infty}}{\bm{\infty}}$型) 设数列$\{y_n\}$满足$\limn\df
+	($\df{\bm{\infty}}{\bm{\infty}}$型不定式极限) 设数列$\{y_n\}$满足$\limn\df
 	1{y_n}=0$，且$\{y_n\}$至少从某一项开始保持严格单调递增，
 	则对任意数列$\{x_n\}$，若$\limn\df{x_n-x_{n-1}}{y_n-y_{n-1}}$存在，则必有
 	$$\limn\df{x_n}{y_n}=\limn\df{x_n-x_{n-1}}{y_n-y_{n-1}}$$
@@ -3741,7 +3883,7 @@ $a>1$，$k$为任意的常数。
 \bs
 Stolz定理还有另一种形式：
 \begin{thx}
-	{\bf Stolz定理}($\df00$型)设$\limn a_n=\limn b_n=0$，且$\{a_n\}$严格
+	{\bf Stolz定理}($\df00$型不定式极限)设$\limn a_n=\limn b_n=0$，且$\{a_n\}$严格
 	单调递减，若$\limn\df{b_{n+1}-b_n}{a_{n+1}-a_n}=l$（$l$可以为$\pm\infty$），
 	则$\limn\df{b_n}{a_n}=l$
 \end{thx}
@@ -3772,7 +3914,7 @@ Stolz定理还有另一种形式：
 	  收敛，并求其极限。
 	  \item 已知$A_1+A_2+\ldots+A_k=0$，证明
 	  $$\limn (A_1\sqrt{n+1}+A_2\sqrt{n+2}+\ldots+A_k\sqrt{n+k})=0.$$
-	  \item 求$f(x)=\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$（$x\geq 0$）
+	  \item 求$f(x)=\limn\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$（$x\geq 0$）
 	  的分段表达式。
 % 	  \begin{enumerate}[(1)]
 % 	    \item $\limx{1}\left(\df1{1-x}-\df3{1-x^3}\right)$；
@@ -3897,7 +4039,7 @@ $\alpha=x$，$\beta=x^2$，$\gamma=x^3$，极限为$1$。
 \fin
 
 \begin{shaded}
-	{\bf 高阶无穷小的演算}
+	{\bf 无穷小的运算}
 	
 	对包含有无穷小符号的表达式进行推导，不可避免地会涉及一些化简、合并运算，以下是一些常用
 	的化简形式，以$x\to 0$时的无穷小为例：
@@ -4043,7 +4185,8 @@ $\limn\df{n^a}{n^b-(n-1)^b}=10=\limn
 进而易得$a={-9/10},b={1/10}$
 \fi
 
-{\bf 思考题：} 设$\limx0\df{a\tan x+b(1-\cos x)}{c\ln(1-2x)+d(1-e^{-x^2})}=2$，已知$ac\ne 0$，证明：$a=-4c$。
+%{\bf 思考：} 设$\limx0\df{a\tan x+b(1-\cos x)}
+%{c\ln(1-2x)+d(1-e^{-x^2})}=2$，已知$ac\ne 0$，证明：$a=-4c$。
 
 \bs
 熟练掌握和应用等价无穷小代换，能够使我们在计算极限值时获得很大的便利，但是必须指出的是，
@@ -4160,24 +4303,13 @@ $$\limx{x_0}f(x)=f(\limx{x_0}x).$$
 或者说{$f(x)$是区间$I$上的连续函数}。
 
 \bs
-\egz 证明：$f(x)=xD(x)$只在$x=0$处连续。
-\ps{在现实世界里，没有只在一个点连续的曲线，这是数学概念和直观现实存在差异的一个很好的例证}
-
-证：对任意$x\ne 0$，注意到$|D(x)|\leq 1$，故
-$$0<|xD(x)|\leq |x|,$$
-从而由夹逼定理可知
-$$\limx0xD(x)=0=f(0),$$
-也即$f(x)$在$x=0$连续。
-
-又对任意$x_0\ne0$，总可以找到一个有理数列$\{x_n^{(1)}\}$和
-一个无理数列$\{x_n^{(2)}\}$，使得
-$$\limn x_n^{(1)}=\limn x_n^{(2)}=x_0,$$
-而由Dirichlet函数的定义可知
-$$\limn f(x_n^{(1)})=\limn x_n^{(1)}=x_0\ne 0=\limn f(x_n^{(2)}),$$
-故由Hiene定理可知，当$x\to x_0$时$f(x)$的极限不存在，从而
-$f(x)$在$x_0$比不连续。
-
-综上，即证。\fin
+连续的直观意义就是“不断”。例如，函数$f(x)$在$x_0$连续，可以想象为
+$y=f(x)$在$x_0$左右两侧的曲线，被点$(x_0,f(x_0))$“连”在了一起。
+而函数在一个区间上连续，则意味着整个区间所对应的函数图像都是不断的。
+然而，必须注意到，按照我们定义连续的方式，可能存在一些不符合直觉的例子。
+例如，我们讨论过的函数$f(x)=xD(x)$。我们已经证明过$xD(x)$只在$x=0$
+处有极限，且极限为$0$。由此可以很容易推出下面的结论，即：$f(x)=xD(x)$
+是只在$x=0$这一点处连续的函数。
 
 \bs
 \egz 
@@ -4689,7 +4821,7 @@ $\circ(x^2)+\circ(x)=\circ(x)$）的理解，以及
 +\pi/2$，其中
 $$2\pi\left(\left[\frac{M}{2\pi}\right]+1\right)
 >2\pi\cdot\df{M}{2\pi}=M,$$
-故
+则
 $$|x_M\sin x_M|=|x_M|>M,$$
 从而与假设矛盾。故假设错误，即证。
 \fin
@@ -4890,7 +5022,7 @@ $$-\df{|a|}2<|a_n|-|a|<\df{|a|}2,$$
 
 证：对任意$\e>0$，令$\delta=\min\left\{1,\frac{\e}5\right\}$，
 则对任意$x\in U_0(2,\delta)$，总有$|x+2|<5$，进而
-$$|x^2-4|=|x_2||x+2|<5|x_2|<5\cdot\df{\delta}5<\e,$$
+$$|x^2-4|=|x-2||x+2|<5|x-2|<5\cdot\df{\e}5<\e,$$
 由极限的定义，即证。\fin
 
 \bs
@@ -4907,7 +5039,7 @@ $$\left|\df{\sin x}{\sqrt x}-0\right|\leq\df1{\sqrt x}
 证：对任意$\e>0$，令$X=\sqrt2/\e-1$，则对任意$|x|>X$，总有
 $$\left|\df{x+\sin x}{x+\cos x}-1\right|
 =\df{|\sin x-\cos x|}{|x+\cos x|}
-<\df{\sqrt2}{|x|+1}<\df{\sqrt2}{X+1}=\e,$$
+<\df{\sqrt2}{|x|-1}<\df{\sqrt2}{X-1}=\e,$$
 由函数极限的定义，即证。\fin
 
 \bs
@@ -4920,22 +5052,30 @@ $$|xD(x)-0|\leq |x|<\delta=\e,$$
 
 以下证明对任意$x_0\ne 0$，$\limx{x_0}f(x)$不存在。
 
-反证法。假设$\limx{x_0}f(x)=A$。
+对任意$x_0\ne0$，总可以取一个有理数列$\{x_n^{(1)}\}$
+和一个无理数列$\{x_n^{(2)}\}$，使得
+$$\limn x_n^{(1)}=\limn x_n^{(2)}=x_0.$$
+注意到
+$$\limn x_n^{(1)}D(x_n^{(1)})=x_0
+\ne 0=\limn x_n^{(2)}D(x_n^{(2)}),$$
+故由Henie定理可知，当$x\to x_0$时$xD(x)$不收敛。\fin
 
-若$A\ne 0$，则由保号性，比存在$\delta_1>0$，使对任意
-$x\in U_0(x_0,\delta_1)$，都有
-$$|xD(x)|>\frac {|A|}2>0,$$
-然而由Dirichlet函数的定义可知，在所有的无理数点上，均有
-$xD(x)=0$，推出矛盾。
+%反证法。假设$\limx{x_0}f(x)=A$。
 
-又若$A=0$，则由极限定义，对$\e\in(0,|x_0|/2)$，
-存在$\delta_2>0$，使对任意$x\in U_0(x_0,\delta_2)$，
-总有
-$$|xD(x)|<\e<\df{|x_0|}2.$$
-然而在所有的有理数点上，均有$xD(x)=x$，当
-$x\in U_0(x_0,\delta_2)$时，$|x|>\df{|x_0|}2$，推出矛盾。
+%若$A\ne 0$，则由保号性，比存在$\delta_1>0$，使对任意
+%$x\in U_0(x_0,\delta_1)$，都有
+%$$|xD(x)|>\frac {|A|}2>0,$$
+%然而由Dirichlet函数的定义可知，在所有的无理数点上，均有
+%$xD(x)=0$，推出矛盾。
 
-综上，假设错误，也即$\limx{x_0}f(x)$不存在。\fin
+%又若$A=0$，则由极限定义，对$\e\in(0,|x_0|/2)$，
+%存在$\delta_2>0$，使对任意$x\in U_0(x_0,\delta_2)$，
+%总有
+%$$|xD(x)|<\e<\df{|x_0|}2.$$
+%然而在所有的有理数点上，均有$xD(x)=x$，当
+%$x\in U_0(x_0,\delta_2)$时，$|x|>\df{|x_0|}2$，推出矛盾。
+
+%综上，假设错误，也即$\limx{x_0}f(x)$不存在。\fin
 
 \bigskip
 
@@ -4953,19 +5093,26 @@ $$y(x_M)=\left(2([M]+1)\pi+\frac{\pi}2\right)\sin(2([M]+1)\pi+\frac{\pi}2)
 由函数无界的定义，即证。
 
 下证该函数不是$x\to0^+$时的无穷大。用反证法，若该函数是$x\to0^+$时的
-无穷大，则
-$$\limx{0^+}\df1y=\limx{0^+}x\df1{\sin\frac1x}=0.$$
+无穷大，则$\limx{0^+}\df1y=0$。
 考虑数列$x_n=\frac1{n\pi}$，显然$\limn x_n=0$，且$\sin\df1{x_n}=0$，
-此时$\df1{y(x_n)}$无定义，故$\left\{\df1{y(x_n)}\right\}$
-必不收敛，从而由Henie定理，前述极限不成立，
-假设错误，即证。\fin
+进而可知$\limn y(x_n)=0$。于是由Henie定理：
+$$1=\limn y(x_n)\df1{y(x_n)}
+=\limn y(x_n)\limn\df1{y(x_n)}=\limn y(x_n)\limx{0^+}\df1{y(x)}=0,$$
+显然不成立，由此即知假设错误，即证。\fin
 
 \bigskip
 2.求函数$y=\df1{1-x^2}$的水平渐近线和铅直渐进线。
 
-解：因为$\limx{\infty}f(x)=0$，故$x=0$是$y=f(x)$的水平渐近线；
+\pss{\centering
+	\includegraphics[width=\marginparwidth]
+	{./images/ch01/11-x2.pdf}\\
+	$y=\df1{1-x^2}$
+}
 
-又因为$\limx{\pm2}\df1{f(x)}=0$，故$y=\pm2$是$y=f(x)$的铅直渐近线。\fin
+解：因为$\limx{\infty}y(x)=0$，故$x=0$是$y=\df1{1-x^2}$的水平渐近线；
+
+又因为$\limx{\pm1}\df1{y(x)}=\limx{\pm1}(1-x^2)=0$，
+故$y=\pm1$是$y=\df1{1-x^2}$的铅直渐近线。\fin
 
 \bigskip
 
@@ -4987,38 +5134,50 @@ $$\limx{0^+}\df1y=\limx{0^+}x\df1{\sin\frac1x}=0.$$
     \item $\limx{+\infty}x(\sqrt{x^2+1}-x)$
     \item $\limx{-\infty}x(\sqrt{x^2+1}-x)$
     \item $\limx0x^2\sin\df1x$
-    \item $\limx{\infty}\df{\arctan x}x$
 \end{enumerate}
 
 解：
 \begin{enumerate}[(1)]
 	\setlength{\itemindent}{1cm}
-	\item $\mbox{原式}=\df{1-x^3-3(1+x+x^2)}{1-x^3}=1$
-	\item $\mbox{原式}=\df{3h^2x+3hx^2+x^3}{x}=3h^2$
-	\item $\arctan x$是$x\to\infty$时的有界量，而
-	$1/x^2$是$x\to\infty$时的无穷小，故$\mbox{原式}=0$
-	\item 分子分母的最高次幂均为$1/2$，且对应系数均为1，故$\mbox{原式}=1$
+	\item $\mbox{原式}
+	=\limx1\df{(x-1)(x+2)}{(1-x)(1+x+x^2)}
+	=-\limx1\df{x+2}{1+x+x^2}=-1$
+	\item $\mbox{原式}=\limx0\df{3h^2x+3hx^2+x^3}{x}=3h^2$
+	\item 因为$\limx{\infty}\df1{x^2}=0$，$|\arctan x|\leq\df{\pi}2$，
+	故由无穷小的性质可知：$\mbox{原式}=0.$
+	%\item $\arctan x$是$x\to\infty$时的有界量，而
+	%$1/x^2$是$x\to\infty$时的无穷小，故$\mbox{原式}=0$
+	\item
+	\begin{align*}
+		\mbox{原式}&=\limx{+\infty}\df{\sqrt[3]{x^{-\frac16}
+		+\sqrt{x^{-\frac13}+1}}}{\sqrt{1+x^{-1}}}
+		=\df{\sqrt[3]{\limx{+\infty}x^{-\frac16}
+		+\sqrt{\limx{+\infty}x^{-\frac13}+1}}}{\sqrt{1+\limx{+\infty}x^{-1}}}
+		=1.
+	\end{align*}
+	%\item 分子分母的最高次幂均为$1/2$，且对应系数均为1，故$\mbox{原式}=1$
 	\item $\mbox{原式}
 	=\limx4\df{(2x-8)(\sqrt{x-2}+\sqrt2)}{(x-4)(\sqrt{2x+1}+3)}
-	=\df43$
+	=\df{2\sqrt2}3$
 	\item $\mbox{原式}=\limx0\df{x}{x[(x+1)^{\frac{2}{3}}
 	+3(x+1)^{\frac{1}{3}}+1]}
 	=\df13$
 	\item 
 	\begin{align*}
-		\mbox{原式}&=\limx0\df{2(\sqrt{1-x^2}-2)}
+		\mbox{原式}&=\limx0\df{2(\sqrt{1-x^2}-1)}
 		{x^2(\sqrt{1+x}+\sqrt{1-x}+2)}\\
-		&=\limx0\df{-x^2}{2x^2(\sqrt{1-x^2}+2)}=-\df16.
+		&=\limx0\df{-2x^2}{x^2(\sqrt{1+x}+\sqrt{1-x}+2)
+		(\sqrt{1-x^2}+1)}=-\df14.
 	\end{align*}
 	\item $\mbox{原式}=\limx{+\infty}
-	\df{3x+\ln(2e^{-3x}+1)}{2x+\ln(3e^{-2x}+1)}=\df32$
+	\df{3x+\ln(2e^{-3x}+1)}{2x+\ln(3e^{-2x}+1)}
+	=\limx{+\infty}
+	\df{3+\frac1x\ln(2e^{-3x}+1)}{2+\frac1x\ln(3e^{-2x}+1)}
+	=\df32$
 	\item $\mbox{原式}=\limx{+\infty}\df{x(\sqrt{x^2+1}+x)}{x^2}=\df12$
 	\item 因为$x$和$\sqrt{x^2+1}-x$均为$x\to-\infty$时的
 	无穷大，故该极限不存在。
 	\item 因为$\limx0x^2=0$，$\left|\sin\df1x\right|\leq1$，由无穷小的性质（无穷小乘以有界量仍为无穷小），可知
-	$\mbox{原式}=0.$
-	\item 因为$\limx{\infty}\df1x=0$，$|\arctan x|\leq\df{\pi}2$，故
-	无穷小的性质，可知
 	$\mbox{原式}=0.$
 \end{enumerate}
 \fin
@@ -5026,8 +5185,25 @@ $$\limx{0^+}\df1y=\limx{0^+}x\df1{\sin\frac1x}=0.$$
 \bs
 2.确定常数$a,b$的值，使得
 $\limx{\infty}\left(\df{x^2}{x+1}-ax-b\right)=0$。
+\pss{\centering
+	\includegraphics[width=\marginparwidth]
+	{./images/ch01/x2x1ab.pdf}\\
+	$y=\df{x^2}{x+1}$
+}
 
-提示：$a=1$，$b=-1$，过程略。\fin
+解：
+\begin{align*}
+	0&=\limx{\infty}\left(\df{x^2}{x+1}-ax-b\right)\limx{\infty}\df1x
+	=\limx{\infty}\df{\frac{x^2}{x+1}-ax-b}{x}\\
+	&=\limx{\infty}\left(\df{x}{x+1}-a-\df bx\right)
+	=1-a,
+\end{align*}
+故$a=1$，进而
+\begin{align*}
+	b&=\limx{\infty}\left(\df{x^2}{x+1}-x\right)
+	=\limx{\infty}\df{-x}{x+1}=-1.
+\end{align*}
+\fin
 
 \bs
 \begin{center}
@@ -5134,7 +5310,8 @@ $$\limn(\sqrt{n+l}-\sqrt{n+1})
 即证。\fin
 
 \bs
-4.求$f(x)=\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$（$x\geq 0$）
+4.求函数$f(x)=\limn\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$
+（$x\geq 0$）的分段表达式。
 
 解：注意到
 $$\max\left\{1,x,\frac{x^2}2\right\}
