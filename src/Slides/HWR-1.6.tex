@@ -1,0 +1,232 @@
+% !TEX root = ../1-main-SL.tex
+% !TEX encoding = UTF-8  (utf8)
+
+\begin{frame}
+	\centering
+	\bf\Huge\color{purple} 习题讲评\\[1em]
+	\small 习题1-6\\[1cm]
+	\small\color{gray}2018-11-9
+\end{frame}
+
+\section{说在前面}
+
+\begin{frame}[t]\frametitle{说在前面}
+	\linespread{1.8}
+	\Large
+	\vspace*{-1em}
+    \begin{itemize}
+    	\item 几个小问题
+    	\begin{enumerate}
+    		\item {\it 暂时不要用L'Hospital法则}
+    		\item {\color{purple}$n\to\infty$时，$\sqrt{n+i}=\sqrt{n}$}
+    		\item {\color{purple} 错误的放缩：
+    			$$\sum\limits_{i=1}^kA_i\sqrt{n+1}
+    			\leq\sum\limits_{i=1}^kA_i\sqrt{n+i}
+    			\leq\sum\limits_{i=1}^kA_i\sqrt{n+k}$$
+    		}
+    	\end{enumerate}
+    	\item \baa{作业不订正或者订正不认真一律C}
+    \end{itemize}
+\end{frame}
+
+\section{参考解答}
+
+\subsection{习题1-6}
+
+\begin{frame}[t]\frametitle{1.计算极限}
+\large
+(1)$\limx{\pi}\df{\sin 7x}{\cos 4x}
+=\df{\limx{\pi}\sin 7x}
+	{\limx{\pi}\cos 4x}=\df{\sin7\pi}{\cos4\pi}=\df01=0$
+
+\bs
+(2)$\limx0\df{(1+x)^{1+x}+x\sin\df1x}{e^x+\sin x}
+=\df{\limx0(1+x)^{1+x}+\limx0x\sin\df1x}
+{\limx0e^x+\limx0\sin x}=1$
+
+\bs
+(3)$\limx{a}\df{\cos x-\cos a}{x-a}
+=-\limx a\sin\df{x+a}2
+\limx a\df{\sin\frac{x-a}2}{\frac{x-a}2}=-\sin a$
+
+\bs
+(4)$\limx0\df{1-\cos3x}{x\sin x}
+=\limx0\df{2\sin^2\frac32x}
+{\left(\frac{3}{2}x\right)^2}\df{\left(\frac32x\right)^2}{x^2}
+\df{x}{\sin x}=\df92$
+\end{frame}
+
+\begin{frame}[t]\frametitle{1.计算极限}
+\large
+(5)
+$
+\limx1\df{\sqrt[3]x-1}{\sqrt x-1}
+\xlongequal{y=x-1}\lim\limits_{y\to0}\df{y}{\sqrt{y+4}-2}$\\
+$\hspace*{3cm}=\lim\limits_{y\to0}\df{y(\sqrt{y+4}+2)}{y}=4
+$
+
+\bs
+(6)$\limx1\df{\sqrt[3]x-1}{\sqrt x-1}
+=\limx1\df{(\sqrt{x}+1)(x-1)}
+{(x-1)(x^{\frac23}+x^{\frac13}+1)}=\df23$
+
+\bs
+(7)$\limn\left(1+\df1n\right)^{n-6}
+=\limn\left(1+\df1n\right)^n
+\left[\limn\left(1+\df1n\right)\right]^{-6}=e$
+\end{frame}
+
+\begin{frame}[t]\frametitle{1.计算极限}
+\large
+(8)$\limn\left(\df{n}{n^2+1}+\df{n}{n^2+2}
++\ldots+\df{n}{n^2+n}\right)$
+
+解：{\it 注意到
+$$\df{n^2}{n^2+n}<\df{n}{n^2+1}+\df{n}{n^2+2}
++\ldots+\df{n}{n^2+n}<\df{n^2}{n^2+1},$$
+而$\limn\df{n^2}{n^2+n}=\df{n^2}{n^2+1}=1$，故由夹逼准则
+$\mbox{原式}=1$}
+
+\bs
+(9)$\limx0(1-x)^{\frac1{\sin x}}
+=\limx0\left[(1-x)^{-\frac1x}\right]^{\frac{-x}{\sin x}}$\\
+$\hspace*{3cm}=\left\{\limx0\left[(1-x)^{-\frac1x}\right]\right\}
+^{\limx0\frac{-x}{\sin x}}=e^{-1}$
+\end{frame}
+
+\begin{frame}[t]\frametitle{1.计算极限}
+\large
+(10)$\limx{\infty}\left(\df{1+x}{2+x}\right)^{2x}
+=\df{\left[\limx{\infty}\left(\df1x+1\right)^x\right]^2}
+{\left[\limx{\infty}\left(\df2x+1\right)^{\frac x2}\right]^4}
+=\df{e^2}{e^4}=e^{-2}$
+
+\bs
+(11)$\limx{+\infty}\left(\df{1+x}{1+2x}\right)^{2x}
+=\limx{+\infty}\left(\df12\right)^{2x}
+\df{\left[\limx{+\infty}\left(\df1x+1\right)^x\right]^2}
+{\limx{+\infty}\left(\df1{2x}+1\right)^{2x}}$\\
+$\hspace*{3cm}=0\cdot\df{e^2}e=0.$\fin
+\end{frame}
+
+\begin{frame}[t]\frametitle{2.递推数列的极限}
+\large
+2.证明数列
+$$a_n=\underbrace{\sqrt{2+\sqrt{2+\ldots+\sqrt2}}}
+_{n\mbox{\footnotesize 个}2}$$
+收敛，并求其极限。
+
+\bs
+解：\it 显然$\{a_n\}$严格单调递增。又
+$$a_n=\underbrace{\sqrt{2+\sqrt{2+\ldots+\sqrt2}}}
+_{n\mbox{\footnotesize 个}2}
+<\underbrace{\sqrt{2+\sqrt{2+\ldots+\sqrt4}}}
+_{n-1\mbox{\footnotesize 个}2}=2,$$
+故由单调有界准则，可知$\{a_n\}$必收敛。设其极限为$A$。
+\end{frame}
+
+\begin{frame}[t]\frametitle{2.递推数列的极限}
+\linespread{1.6}
+\large
+\it 
+注意到有递推式
+$$a_{n+1}=\sqrt{2+a_n},$$
+在其两边同时令$n\to\infty$，可得
+$$A=\sqrt{2+A},$$
+进而可解得$A=2$或$A=-1$。因为$a_n$均非负，故由极限的保号性
+$A\geq 0$，从而$A=-1$不可能是所求极限。
+
+综上，$\limn a_n=2$.\fin
+\end{frame}
+
+\begin{frame}[t]\frametitle{3.极限的运算}
+\large
+
+3.已知$A_1+A_2+\ldots+A_k=0$，证明
+$$\limn (A_1\sqrt{n+1}+A_2\sqrt{n+2}+\ldots+A_k\sqrt{n+k})=0.$$
+
+解：\it 对任意$l=2,3,\ldots,k$，
+$$\limn(\sqrt{n+l}-\sqrt{n+1})
+=\limn\df{l-1}{\sqrt{n+l}+\sqrt{n+1}}=0.$$
+进而\small
+\begin{align*}
+	\mbox{原式}
+	&=\limn\left[A_2\left(\sqrt{n+2}-\sqrt{n+1}\right)
+	+A_3\left(\sqrt{n+3}-\sqrt{n+1}\right)\right.\\
+	&\left.\quad+\ldots
+	+A_k\left(\sqrt{n+k}-\sqrt{n+1}\right)\right]\\
+	&=A_2\limn\left(\sqrt{n+2}-\sqrt{n+1}\right)
+	+A_3\limn\left(\sqrt{n+3}-\sqrt{n+1}\right)\\
+	&\quad +\ldots
+	+A_k\limn\left(\sqrt{n+k}-\sqrt{n+1}\right)=0
+\end{align*}
+即证。\fin
+\end{frame}
+
+\begin{frame}[t]\frametitle{4.用极限定义的函数}
+\large
+
+4.求函数$f(x)=\limn\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$
+（$x\geq 0$）的分段表达式。
+\bs
+
+解：\it 由夹逼准则
+$$\mbox{原式}
+=\max\limits_{x\geq0}\left\{1,x,\frac{x^2}2\right\}=
+\left\{\begin{array}{ll}
+	1,& x\in[0,1]\\
+	x,& x\in(1,2)\\
+	\frac{x^2}2,& x\in[2,+\infty)
+\end{array}\right.$$
+\fin
+\end{frame}
+
+\begin{frame}[t]\frametitle{5.和的极限}
+\large
+5.设$|\lambda|<1$，计算
+$\limn(\lambda+2\lambda^2+\ldots+n\lambda^n)$ 
+
+解：\it\small
+\begin{align*}
+	\lambda+&2\lambda^2+\ldots+n\lambda^n\\
+	=&\lambda(1+\lambda+\lambda^2+\ldots+\lambda^{n-1})
+	+\ldots+\lambda^{n-1}(1+\lambda)+\lambda^n\\
+	=&\df{\lambda}{1-\lambda}\left[(1-\lambda^{n})
+	+\lambda(1-\lambda^{n-1})+\ldots+\lambda^{n-2}(1-\lambda^2)
+	+\lambda^{n-1}(1-\lambda)\right]\\
+	=&\df{\lambda}{1-\lambda}\left[1+\lambda+\lambda^2
+	+\ldots+\lambda^{n-1}-n\lambda^{n}\right]\\
+	=&\df{\lambda}{(1-\lambda)^2}-\df{\lambda^{n+1}}{(1-\lambda)^2}
+	-\df{n\lambda^{n+1}}{1-\lambda}.
+\end{align*}
+\large
+显然$\limn\lambda^{n+1}=0$，以下证明$\limn n\lambda^n=0$。
+\end{frame}
+
+\begin{frame}[t]\frametitle{5.和的极限}
+\it
+以下证明$\limn n\lambda^n=0$。事实上，记$a_n=n\lambda^n$，注意到$\limn\df{n+1}n=1$，故
+$$\df{|a_{n+1}|}{|a_n|}=\df{n+1}{n}|\lambda|\to|\lambda|<1,
+\;(n\to\infty)$$
+由极限的保号性，存在$N\in\mathbb{Z}_+$，使对任意$n>N$，都有
+$$\df{|a_{n+1}|}{|a_n|}<1\quad\Rightarrow\quad
+|a_{n+1}|<|a_n|,$$
+由此可知数列$\{|a_n|\}$当$n$充分大时单调递减有下界，故必收敛，
+设其极限为$A$。在递推式$|a_{n+1}|=\df{(n+1)\lambda}{n}|a_n|$
+两边同时令$n\to\infty$，可得
+$$A=\lambda A\quad\Rightarrow\quad A=0.$$
+从而可知$\limn a_n=0$。
+
+至此，可知$\mbox{原式}=\df{\lambda}{(1-\lambda)^2}$。
+\fin
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[width=\textwidth]{./images/ch01/HWR/notebook.jpg}
+
+	\begin{flushright}
+		\color{white}\vspace*{-2cm}
+		\Huge\bf Q \& A
+	\end{flushright}
+\end{frame}

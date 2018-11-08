@@ -44,8 +44,8 @@
 (1)$\limx{-2}{x^2}=4$
 
 证：\it 对任意$\e>0$，令$\delta=\min\left\{1,\frac{\e}5\right\}$，
-则对任意$x\in U_0(2,\delta)$，总有$|x+2|<5$，进而
-$$|x^2-4|=|x-2||x+2|<5|x-2|<5\cdot\df{\e}5<\e,$$
+则对任意$x\in U_0(-2,\delta)$，总有$|x+2|<5$，进而
+$$|x^2-4|=|x-2||x+2|<5|x+2|<5\cdot\df{\e}5<\e,$$
 由极限的定义，即证。\fin
 \end{frame}
 
@@ -175,10 +175,10 @@ $$\limn f(x_n^{(1)})=\limn x_n^{(1)}=x_0
 （4）
 \begin{align*}
 	\limx{+\infty}&\df{\sqrt[3]{x+\sqrt{x+x^3}}}{\sqrt{x+1}}
-	=\limx{+\infty}\df{\sqrt[3]{x^{-\frac16}
-	+\sqrt{x^{-\frac13}+1}}}{\sqrt{1+x^{-1}}}\\
-	&=\df{\sqrt[3]{\limx{+\infty}x^{-\frac16}
-	+\sqrt{\limx{+\infty}x^{-\frac13}+1}}}{\sqrt{1+\limx{+\infty}x^{-1}}}=1.
+	=\limx{+\infty}\df{\sqrt[3]{x^{-\frac12}
+	+\sqrt{x^{-2}+1}}}{\sqrt{1+x^{-1}}}\\
+	&=\df{\sqrt[3]{\limx{+\infty}x^{-\frac12}
+	+\sqrt{\limx{+\infty}x^{-2}+1}}}{\sqrt{1+\limx{+\infty}x^{-1}}}=1.
 \end{align*}
 \end{frame}
 
@@ -195,7 +195,7 @@ $$\limn f(x_n^{(1)})=\limn x_n^{(1)}=x_0
 \begin{align*}
 	\limx0&\df{\sqrt[3]{x+1}-1}x
 	=\limx0\df{x}{x[(x+1)^{\frac{2}{3}}
-	+3(x+1)^{\frac{1}{3}}+1]}
+	+(x+1)^{\frac{1}{3}}+1]}
 	=\df13
 \end{align*}
 \end{frame}
@@ -234,8 +234,8 @@ $$\limn f(x_n^{(1)})=\limn x_n^{(1)}=x_0
 （10）$\limx{-\infty}x(\sqrt{x^2+1}-x)$
 
 解：{\it 因为
-$$\limx{-\infty}\df1{\sqrt{x^2+1}-x}
-=\limx{-\infty}\df{1/x}{-\sqrt{1+x^{-2}}-1}=0,$$
+$$\limx{-\infty}\df1{x(\sqrt{x^2+1}-x)}
+=\limx{-\infty}\df{1/x^2}{-\sqrt{1+x^{-2}}-1}=0,$$
 故$x$和$\sqrt{x^2+1}-x$均为$x\to-\infty$时的
 无穷大，从而可知该极限不存在。}
 \end{frame}

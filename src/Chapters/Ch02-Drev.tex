@@ -268,7 +268,7 @@ $$\limx{0}\df{f(x)-f(0)}{x-0}=\limx{0}\df{x^2D(x)}{x}=0,$$
 	其中$a\in(0,1)$，$b$为正的奇数，满足$ab>1+\df32\pi$
 	\begin{center}
 		\resizebox{!}{6cm}{\includegraphics
-		{./images/ch01/795px-WeierstrassFunction.svg.png}}
+		{./images/ch01/WeierstrassFunction.png}}
 		
 		\kaishu Weierstrass函数具有某种“分形”的特征，对其任何一个微小的局部
 		进行放大，都会呈现处相似的锯齿状形态，它是一个真正在任一段上都不光滑的函数。
@@ -411,25 +411,25 @@ $$\limx{0}\df{f(x)-f(0)}{x-0}=\limx{0}\df{x^2D(x)}{x}=0,$$
 
 证：(1)
 \begin{align*}
-	(C)‘=\lim\limits_{\Delta x\to0}\df{C-C}{\Delta x}=0.
+	(C)'=\lim\limits_{\Delta x\to0}\df{C-C}{\Delta x}=0.
 \end{align*}
 
 (2)
 \begin{align*}
-	(x^n)‘
+	(x^n)'
 	&=\lim\limits_{\Delta x\to0}\df{(x+\Delta x)^n-x^n}{\Delta x}\\
 	&=\lim\limits_{\Delta x\to0}
 	\df{C_n^1x^{n-1}\Delta x+C_n^2x^{n-2}(\Delta x)^2+\ldots
 	+C_{n}^{n-1}x(\Delta x)^{n-1}+(\Delta x)^n}{\Delta x}\\
 	&=\lim\limits_{\Delta x\to0}\left[C_n^1x^{n-1}
 	+C_n^2x^{n-2}\Delta x+\ldots
-	+C_{n}^{n-1}x(\Delta x)^{n-2}+(\Delta x)^{n-1}\right]
-	=nx^{n-1}.
+	+C_{n}^{n-1}x(\Delta x)^{n-2}+(\Delta x)^{n-1}\right]\\
+	&=nx^{n-1}.
 \end{align*}
 
 (3)
 \begin{align*}
-	(e^x)‘=\lim\limits_{\Delta x\to0}
+	(e^x)'=\lim\limits_{\Delta x\to0}
 	\df{e^{x+\Delta x}-e^x}{\Delta x}
 	=\lim\limits_{\Delta x\to0}\df{e^x(e^{\Delta x}-1)}{\Delta x}
 	=e^x.
@@ -437,7 +437,7 @@ $$\limx{0}\df{f(x)-f(0)}{x-0}=\limx{0}\df{x^2D(x)}{x}=0,$$
 
 (4)若$x>0$
 \begin{align*}
-	(\ln |x|)‘=(\ln x)'=\lim\limits_{\Delta x\to0}
+	(\ln |x|)'=(\ln x)'=\lim\limits_{\Delta x\to0}
 	\df{\ln(x+\Delta x)-\ln x}{\Delta x}
 	=\lim\limits_{\Delta x\to0}
 	\df{\ln\left(1+\frac{\Delta x}x\right)}{x\frac{\Delta x}x}
@@ -448,7 +448,7 @@ $x<0$时，亦有$(\ln|x|)'=\frac 1x$.
 
 (5)
 \begin{align*}
-	(\sin x)‘
+	(\sin x)'
 	&=\lim\limits_{\Delta x\to0}
 	\df{\sin(x+\Delta x)-\sin x}{\Delta x}
 	=\lim\limits_{\Delta x\to0}
@@ -526,7 +526,7 @@ $x<0$时，亦有$(\ln|x|)'=\frac 1x$.
 
 证：(1)
 \begin{align*}
-	[u(x)\pm v(x)]’
+	[u(x)\pm v(x)]'
 	&=\lim\limits_{\Delta x\to 0}
 	\df{[u(x+\Delta x)\pm v(x+\Delta x)]-[u(x)\pm v(x)]}{\Delta x}\\
 	&=\lim\limits_{\Delta x\to 0}
@@ -538,7 +538,7 @@ $x<0$时，亦有$(\ln|x|)'=\frac 1x$.
 
 (2)
 \begin{align*}
-	[u(x)v(x)]’
+	[u(x)v(x)]'
 	&=\lim\limits_{\Delta x\to 0}
 	\df{u(x+\Delta x)v(x+\Delta x)-u(x)v(x)}{\Delta x}\\
 	&=\lim\limits_{\Delta x\to 0}
@@ -727,11 +727,11 @@ $\Delta x,\Delta u,\Delta y$为相对应的三个变化量，则有
 	=g'(u)f'(x)=g'(f(x))f'(x),
 \end{align*}
 于是，我们得到了如下的关于复合函数的求导法则
-\begin{thx}
-	{\bf 复合函数求导法则：}设$f(x),g(x)$均可导，则
-	\ps{\baa 注意区分$[g(f(x))]'$和$g'(f(x))$，前者表示
+\pss{\baa 注意区分$[g(f(x))]'$和$g'(f(x))$，前者表示
 	复合函数$g(f(x))$关于$x$求导，后者表示$g(u)$关于$u$求导，
 	然后带入$u=f(x)$.}
+\begin{thx}
+	{\bf 复合函数求导法则：}设$f(x),g(x)$均可导，则
 	$$[g(f(x))]'=g'(f(x))\cdot f'(x).$$
 \end{thx}
 试想一下，如果是三个可导的函数相互复合，则有
@@ -741,12 +741,12 @@ $$[h(g(f(x))]'=h'(g(f(x)))\cdot g'(f(x))\cdot f'(x),$$
 \bs
 利用链式法则，我们可以得到最后两个常用的初等函数求导公式
 \egz 幂函数和指数函数的导函数
+\ps{我们前面只给出了整数次幂的幂函数的求导公式}
 \begin{thx}
 	{\bf 初等函数的求导公式IV}
 	\begin{enumerate}[(1)]
 	  \item $(x^a)'=ax^{a-1}\;(a\ne 1)$
 	  \item $(a^x)'=ax^{a-1}\;(a>0,a\ne 1)$
-	  \ps{我们前面只给出了整数次幂的幂函数的求导公式}
 	\end{enumerate}
 \end{thx}
 
@@ -1305,13 +1305,11 @@ $$y''(x)=\df{8y^2-8y\sin y+2\sin^2y-2x^2+2x^2\cos y}
 
 \egz 设$x^2+xy+y^2=1$，求$y''$。
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.45\textwidth]
-	{./Images/ch02/x2xyy2.pdf}
-	\caption{$x^2+xy+y^2=1$}
-	\label{fig:x2xyy2}
-\end{figure}
+\pss{\centering
+	\includegraphics[width=0.9\marginparwidth]
+	{./Images/ch02/x2xyy2.pdf}\\
+	$x^2+xy+y^2=1$
+}
 
 提示：
 $$y'=-\df{2x+y}{x+2y},\quad y''=-\df6{(x+2y)^3},\quad
@@ -1925,7 +1923,7 @@ $$\df{s(1)}{s(0)}=\left[\df{V(1)}{V(0)}\right]^{\frac13}=
 \end{shaded}
 
 \begin{ext}
-	{\centering\bf 课后作业}
+	{\centering\bf 习题2.5}
 	
 	\begin{enumerate}  
 % 	  \item 圆形广场中央立着高度为$15$米的灯柱，有一盏灯位于灯柱顶端。
@@ -2000,12 +1998,12 @@ $$f(x)\approx f(x_0)+f\,'(x_0)(x-x_0).$$
 在该点的切线。这意味着，可导和可微，对于我们目前讨论的函数而言，
 事实上是等价的。
 
+\pss{这个式子也常常写为
+	$$\d y=\df{\d y}{\d x}\d x,$$
+	由此很容易发现为什么导数也被称为微商了}
 \begin{thx}
 	{\bf 可导与可微的关系：}$f(x)$在$x_0$可微与$f(x)$
 	在$x_0$可导等价，且
-	\pss{这个式子也常常写为
-	$$\d y=\df{\d y}{\d x}\d x,$$
-	由此很容易发现为什么导数也被称为微商了}
 	$$\d y =f'(x_0)\d x.$$
 \end{thx}
 
@@ -2147,7 +2145,7 @@ $$e_r=\df{\Delta V}{V}\approx 3\df{\Delta R}{R}=3\%.$$
 \end{figure}
 
 \begin{ext}
-	{\centering\bf 课后作业}
+	{\centering\bf 习题2.6}
 	
 	\begin{enumerate}  
 	  \item 设$y=x^3-2x$，
@@ -2193,6 +2191,7 @@ $$e_r=\df{\Delta V}{V}\approx 3\df{\Delta R}{R}=3\%.$$
 
 \newpage
 
+\ifanswer
 \section*{作业参考解答}
 % \addcontentsline{toc}{section}{作业参考解答}
 
@@ -2922,3 +2921,5 @@ $\bullet$微分的运算法则：可以理解成求导法则的另一种表达�
   \item $\d\df uv=\df{v\d u-u\d v}{v^2}$
   \item $\d g[f(x)]=g'[f(x)]\d f(x)=g'[f(x)]f'(x)\d x$
 \end{enumerate}
+
+\fi

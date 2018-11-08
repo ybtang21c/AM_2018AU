@@ -3678,9 +3678,18 @@ $$b_0<b_1<\ldots<b_n<a_n<\ldots<a_1<a_0$$
 {\bf 思考：}证明：$a_n=\sqrt{1+\sqrt{2+\ldots+\sqrt{n}}}$收敛。
 
 \ifhint
-提示：注意到
-$$\sqrt{n-1+\sqrt n}<\sqrt{n-1+2\sqrt{n-1}+1}=\sqrt{n-1}+1,$$
-然后利用不等式$\sqrt{n-1}<2\sqrt{n-2}$递推。
+提示：注意到$\sqrt{n}<2\sqrt{n-1}$，故
+\begin{align*}
+	a_n&=\sqrt{1+\sqrt{2+\ldots
+	+\sqrt{n-3+\sqrt{n-2+\sqrt{n-1+\sqrt{n}}}}}}\\
+	&<\sqrt{1+\sqrt{2+\ldots
+	+\sqrt{n-3+\sqrt{n-2+\sqrt{n-1+2\sqrt{n-1}+1}}}}}\\
+	&=\sqrt{1+\sqrt{2+\ldots+\sqrt{n-3+\sqrt{n-2+\sqrt{n-1}+1}}}}\\
+	&<\sqrt{1+\sqrt{2+\ldots+\sqrt{n-3+\sqrt{n-2+2\sqrt{n-2}+1}}}}\\
+	&=\sqrt{1+\sqrt{2+\ldots+\sqrt{n-3+\sqrt{n-2}+1}}}\\
+	&<\ldots<\sqrt{1+\sqrt2+1}<2,
+\end{align*}
+又$\{a_n\}$显然单调递增，故由单调有界原理$\{a_n\}$收敛。
 \fi
 
 \bs
@@ -3712,59 +3721,6 @@ $$x_{n+1}-x_n=\df{\sqrt{x_n}(3-2x_n)}{\sqrt{x_n(3-x_n)}
 由夹逼定理可知$|x_{n+1}-a|\to0\;(n\to\infty)$，即证。
 \fi
 
-\bs
-{\bf 思考：}设$a_1\in(0,2)$，$(2-a_n)a_{n+1}=1\,(n=1,2,\ldots)$，证明：
-数列$\{a_n\}$收敛，并求其极限。
-
-\ifhint
-证法一：若存在某个$a_{n_0}=1$，则可知对任意$n\geq n_0$必有$a_n=1$，
-此时数列$\{a_n\}$收敛，极限为$1$。
-
-若不存在任何一个$a_n=1$，则可令$b_n=\df1{1-a_n}$，由已知等式可得
-$$b_{n+1}=1+b_n=2+b_{n-1}=\ldots=n+b_1,$$
-进而可得
-$$a_n=1-\df1{b_n}=\df{n-2+b_1}{n-1+b_1}\to 1,\;(n\to\infty).$$
-即证。\fin
-
-这个方法需要很强的观察和构造能力，且并不容易推广，使用起来有一定的难度。
-下面的方法，需要结合$a_1$的不同取值，进行更为复杂的讨论，但相对而言
-不需要进行任何构造，难度略微降低了一些。
-
-证法二：
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]
-	{./Images/Ch01/a2a.pdf}
-	\caption{给定不同的$a_1$，数列取值的变化规律}
-	\label{fig:a2a}
-\end{figure}
-
-若存在某个$a_{n_0}=1$，则可知对任意$n\geq n_0$必有$a_n=1$，
-此时数列$\{a_n\}$收敛，极限为$1$。
-
-排除以上的情况，对剩余的可能进行讨论。
-
-（1）存在某个$a_{n_0}\in(0,1)$，显然，由$a_{n+1}=\df1{2-a_n}$
-可知，对任意$n\geq n_0$时均有$a_n\in(0,1)$，进而
-$$a_{n+1}-a_n=\df{(1-a_n)^2}{2-a_n}>0,$$
-综上，当$n>n_0$时，数列$\{a_n\}$单调递增有上界，从而收敛；
-
-（2）存在某个$a_{n_0}\in(1,2)$，显然，$a_{n_0+1}>1$，
-且对$n\geq n_0$，只要$a_n<2$，都有$a_{n+1}-a_n>0$，若
-最终所有的$a_n$都小于$2$，则由单调有界原理，可知$\{a_n\}$
-收敛；
-
-（3）存在某个$a_{n_0}>2$，则必有$a_{n_0+1}<0$，
-进而必有$a_{n_0+2}\in(0,1)$，于是由前述情况（1）
-的讨论可知，当$n\geq n_0+2$时，数列$\{a_n\}$单调递增有上界，从而收敛；
-
-（4）存在某个$a_{n_0}<0$的情况，已经包含在上述
-情况（3）的讨论中，故此时$\{a_n\}$也收敛。
-
-综上，数列$\{a_n\}$必收敛。设其极限为$A$，在以上等式两边同时令$n\to\infty$，可得
-$(2-A)A=1$，解得$A=1$，即为$\{a_n\}$的极限。\fin
-\fi
-
 总结一下
 \begin{thx}
 	{\bf 求解递推数列的极限问题的几个要点：}
@@ -3776,7 +3732,6 @@ $(2-A)A=1$，解得$A=1$，即为$\{a_n\}$的极限。\fin
 	\end{itemize}
 \end{thx}
 
-\bs
 最后，给出函数极限对应的单调有界准则：
 \begin{thx}
 {\bf 单调有界准则II：}设$f(x)$当$x$从单侧趋于$\Delta$
@@ -3797,8 +3752,7 @@ $(2-A)A=1$，解得$A=1$，即为$\{a_n\}$的极限。\fin
 }
 \begin{thx}
 {\bf Cauchy审敛原理：}
-数列$\{a_n\}$收敛，当且仅当：对任意$\e>0$，存在正整数$N$，使对任意$m,n>N$，总有
-$$|a_m-a_n|<\e.$$
+数列$\{a_n\}$收敛，当且仅当：对任意$\e>0$，存在正整数$N$，使对任意$m,n>N$，总有$|a_m-a_n|<\e.$
 \end{thx}
 
 Cauchy收敛准则的必要性容易证明，但充分性的证明时相当复杂的，这里不作介绍，
@@ -3926,7 +3880,6 @@ Stolz定理还有另一种形式：
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{无穷小的比较}
 
 在极限的计算问题中，真正困难的问题都是一些所谓的“{\it 不定式}”
@@ -4026,8 +3979,9 @@ $\alpha=x$，$\beta=x^2$，$\gamma=x^3$，极限为$1$。
 
 (3)该极限必不存在。因为
 \begin{align*}
-	\limx{\Delta}\df{\beta+\beta}{\alpha+\gamma}
-	=\limx{\Delta}\df{\frac{\beta}{\alpha}+\frac{\gamma}{\alpha}}
+	\limx{\Delta}\df{\beta+\gamma}{\alpha+\gamma}
+	=\limx{\Delta}\df
+	{\frac{\beta}{\alpha}+\frac{\gamma}{\alpha}}
 	{1+\frac{\gamma}{\alpha}}
 	=\df{\limx{\Delta}\frac{\beta}{\alpha}
 	+\limx{\Delta}\frac{\gamma}{\alpha}}
@@ -4227,22 +4181,29 @@ $$\limx0\df{x-\sin x}{x^3},
 	\end{enumerate}
 \end{ext}
 
+%\newpage
 % {\bf 课后思考题：}
 % \begin{enumerate}[(1)]
 % 	\item $\limx0\left(\df{e^x+xe^x}{e^x-1}-\df1x\right)$
-% 	\item $\limx0\df1{x^3}\left[\left(\df{2+\cos x}3\right)^x-1\right]$
-% 	\item $\limn\ln\left(\df{n-2na+1}{n(1-2a)}\right)^n\quad(a\ne1/2)$
+% 	\item $\limx0\df1{x^3}\left[\left(\df{2+\cos }3\right)^x
+% 	-1\right]$
+% 	\item $\limn\ln\left(\df{n-2na+1}{n(1-2a)}\right)^n
+% 	\quad(a\ne1/2)$
 % 	\item $\limx0\df{[\sin x-\sin(\sin x)]\sin x}{x^4}$
 % 	\item $\limx0\df{e^{\tan x}-e^{\sin x}}{x\sin^2x}$
-% 	\item $\limx0\df{\sqrt{1+\tan x}-\sqrt{1+\sin x}}{x(1-\cos x)}$
+% 	\item $\limx0\df{\sqrt{1+\tan x}-\sqrt{1+\sin x}}
+% 	{x(1-\cos x)}$
 % 	\item $\limn\left(n\tan\df1n\right)^{n^2}$
 % 	\item $\limx0\df{\sin x+x^2\sin\df1x}{(1+\cos x)\ln(1+x)}$
 % 	\item $\limx0\left[\df
-% 	  ax-\left(\df1{x^2}-a^2\right)\ln(1+ax)\right]$\quad($a\ne 0$)
-% 	\item $\limx{0}\left(\df{a^{x+1}+b^{x+1}+c^{x+1}}{a+b+c}\right)^{1/x}
+% 	  ax-\left(\df1{x^2}-a^2\right)\ln(1+ax)\right]$
+% 	  \quad($a\ne 0$)
+% 	\item $\limx{0}\left(\df{a^{x+1}+b^{x+1}+c^{x+1}}{a+b+c}\right)
+% 	^{1/x}
 % 	  \,(a,b,c>0)$
 % 	\item $\limx{0}\df{\tan(\tan x)-\sin(\sin x)}{\tan x-\sin x}$ 
-% 	\item $\limx{\infty}\df{(x+a)^{x+a}(x+b)^{x+b}}{(x+a+b)^{2x+a+b}}$
+% 	\item $\limx{\infty}\df{(x+a)^{x+a}(x+b)^{x+b}}
+% 	{(x+a+b)^{2x+a+b}}$
 % 	\item $\limx{0^+}\df{x^x-(\sin x)^x}{x^2\ln(1+x)}$
 % 	\item $\limx0\df{\cos x-e^{-\frac{x^2}2}}{x^2[x+\ln(1-x)]}$
 % 	\item $\limx{+\infty}\left(x+e^x\right)^{\frac1x}$
@@ -4256,12 +4217,13 @@ $$\limx0\df{x-\sin x}{x^3},
 % 	\item $\limx{+\infty}\df{e^x-e^{-x}}{e^x+e^{-x}}$
 % 	\item $\limx0\left(\df1n\sum\limits_{k=1}^na_k^x\right)^{\frac1x}
 % 	  \quad (a_k>0,k=1,2,\ldots,n)$
-% 	\item $\limn n^2\left(\arctan\df an-\arctan\df a{n+1}\right)\quad (a>0)$
+% 	\item $\limn n^2\left(\arctan\df an
+% 	-\arctan\df a{n+1}\right)\quad a>0)$
 % 	\item $\limx0\df{(1+x)^{\frac1x}-(1+2x)^{\frac1{2x}}}{\sin x}$
-% 	\item $\limn\left[\left(n^3-n^2+\df n2\right)e^{\frac1n}-\sqrt{1+n^6}\right]$
+% 	%\item $\limn\left[\left(n^3-n^2+\df n2\right)
+% 	%^{\frac1n}-\sqrt{1+n^6}\right]$
 %   \end{enumerate}
 
-\newpage
 \section{函数的连续性}
 
 掌握了极限的概念，下面可以对微积分的基本研究对象——函数，进行
@@ -4333,12 +4295,13 @@ $$\lim\limits_{\Delta x\to 0}f(\Delta x)
 \subsection{函数的间断点}
 
 {\bf 间断点}即不连续点，根据前述函数一点连续的必要条件，
-可以对间断点作出如下的分类：
+可以对间断点作出如下的分类。
 
-\pss {分类原则：首先根据$f(x)$在$x_0$处的左右极限
-	$f(x+0)$和$f(x-0)$都存在，将其分为第一类间断点和第二类
-	间断点，然后再分别将其分为可去间断点、跳跃间断点、
-	无穷间断点和振荡间断点。}
+基本的分类原则如下：首先根据$f(x)$在$x_0$处的左右极限
+$f(x+0)$和$f(x-0)$都存在，将其分为第一类间断点和第二类
+间断点，然后再分别将其分为可去间断点、跳跃间断点、
+无穷间断点和振荡间断点。
+
 \begin{thx}
 	以下设$x_0$是$f(x)$的间断点（不连续点）。
 	\begin{enumerate}[(1)]
@@ -4726,7 +4689,6 @@ $$f(\pi/2)=A_1(\pi/2)-A_2(\pi/2)=A_4(0)-A_1(0)=A_2(0)-A_1(0)=-f(0)<0,$$
 	\end{enumerate}
 \end{ext}
 
-\newpage
 \section{小结}
 %\section*{小结}
 %\addcontentsline{toc}{section}{小结}
@@ -4939,8 +4901,6 @@ $$\rho=\df{cb^2\cos\theta\pm b^2\sqrt{c^2\cos^2\theta
 $$\rho=\frac{ep}{1-e\cos\theta},$$
 即为所求。\fin
 
-\newpage
-
 \begin{center}
 	\bf 习题1-2
 \end{center}
@@ -5021,8 +4981,8 @@ $$-\df{|a|}2<|a_n|-|a|<\df{|a|}2,$$
 (1)$\limx{-2}{x^2}=4$
 
 证：对任意$\e>0$，令$\delta=\min\left\{1,\frac{\e}5\right\}$，
-则对任意$x\in U_0(2,\delta)$，总有$|x+2|<5$，进而
-$$|x^2-4|=|x-2||x+2|<5|x-2|<5\cdot\df{\e}5<\e,$$
+则对任意$x\in U_0(-2,\delta)$，总有$|x+2|<5$，进而
+$$|x^2-4|=|x-2||x+2|<5|x+2|<5\cdot\df{\e}5<\e,$$
 由极限的定义，即证。\fin
 
 \bs
@@ -5149,10 +5109,10 @@ $$1=\limn y(x_n)\df1{y(x_n)}
 	%$1/x^2$是$x\to\infty$时的无穷小，故$\mbox{原式}=0$
 	\item
 	\begin{align*}
-		\mbox{原式}&=\limx{+\infty}\df{\sqrt[3]{x^{-\frac16}
-		+\sqrt{x^{-\frac13}+1}}}{\sqrt{1+x^{-1}}}
-		=\df{\sqrt[3]{\limx{+\infty}x^{-\frac16}
-		+\sqrt{\limx{+\infty}x^{-\frac13}+1}}}{\sqrt{1+\limx{+\infty}x^{-1}}}
+		\mbox{原式}&=\limx{+\infty}\df{\sqrt[3]{x^{-\frac12}
+		+\sqrt{x^{-2}+1}}}{\sqrt{1+x^{-1}}}
+		=\df{\sqrt[3]{\limx{+\infty}x^{-\frac12}
+		+\sqrt{\limx{+\infty}x^{-2}+1}}}{\sqrt{1+\limx{+\infty}x^{-1}}}
 		=1.
 	\end{align*}
 	%\item 分子分母的最高次幂均为$1/2$，且对应系数均为1，故$\mbox{原式}=1$
@@ -5160,7 +5120,7 @@ $$1=\limn y(x_n)\df1{y(x_n)}
 	=\limx4\df{(2x-8)(\sqrt{x-2}+\sqrt2)}{(x-4)(\sqrt{2x+1}+3)}
 	=\df{2\sqrt2}3$
 	\item $\mbox{原式}=\limx0\df{x}{x[(x+1)^{\frac{2}{3}}
-	+3(x+1)^{\frac{1}{3}}+1]}
+	+(x+1)^{\frac{1}{3}}+1]}
 	=\df13$
 	\item 
 	\begin{align*}
@@ -5231,39 +5191,52 @@ $\limx{\infty}\left(\df{x^2}{x+1}-ax-b\right)=0$。
 解：
 \begin{enumerate}[(1)]
 	\setlength{\itemindent}{1cm}
-	\item $\mbox{原式}=0$
-	\item $\mbox{原式}=-\limx a\df{\sin\frac{x+a}2\sin\frac{x-a}2}
-	{\frac{x-a}2}=-\sin a$
-	\item $\mbox{原式}=1$
+	\item $\mbox{原式}=\df{\limx{\pi}\sin 7x}
+	{\limx{\pi}\cos 4x}=\df{\sin7\pi}{\cos4\pi}=\df01=0$
+	\item $\mbox{原式}=\df{\limx0(1+x)^{1+x}+\limx0x\sin\df1x}
+	{\limx0e^x+\limx0\sin x}=1$
+	\item $\mbox{原式}=-\limx a\sin\df{x+a}2
+	\limx a\df{\sin\frac{x-a}2}{\frac{x-a}2}=-\sin a$
 	\item $\mbox{原式}=\limx0\df{2\sin^2\frac32x}
 	{\left(\frac{3}{2}x\right)^2}\df{\left(\frac32x\right)^2}{x^2}
 	\df{x}{\sin x}=\df92$
-	\item $\mbox{原式}=\lim\limits_{y\to0}\df{y}{\sqrt{y+4}-2}
+	\item $\mbox{原式}
+	\xlongequal{y=x-1}\lim\limits_{y\to0}\df{y}{\sqrt{y+4}-2}
 	=\lim\limits_{y\to0}\df{y(\sqrt{y+4}+2)}{y}=4$
 	\item $\mbox{原式}=\limx1\df{(\sqrt{x}+1)(x-1)}
-	{(x-1)(x^{\frac{2}{3}+\frac13+1})}=\df23$
-	\item $\mbox{原式}=6$
+	{(x-1)(x^{\frac23}+x^{\frac13}+1)}=\df23$
+	\item $\mbox{原式}=\limn\left(1+\df1n\right)^n
+	\left[\limn\left(1+\df1n\right)\right]^{-6}=e$
 	\item 注意到
-	$$\df{n^2}{n^2+n}<\left(\df{n}{n^2+1}+\df{n}{n^2+2}
-    +\ldots+\df{n}{n^2+n}\right)<\df{n^2}{n^2+1},$$
+	$$\df{n^2}{n^2+n}<\df{n}{n^2+1}+\df{n}{n^2+2}
+    +\ldots+\df{n}{n^2+n}<\df{n^2}{n^2+1},$$
     而$\limn\df{n^2}{n^2+n}=\df{n^2}{n^2+1}=1$，故由夹逼准则
     $\mbox{原式}=1$
-    \item $\mbox{原式}=\limx0\left[(1-x)^{-\frac1x\frac{-x}{\sin x}}\right]
+    \item $\mbox{原式}=\limx0\left[(1-x)
+    ^{-\frac1x}\right]^{\frac{-x}{\sin x}}
+    =\left\{\limx0\left[(1-x)^{-\frac1x}\right]\right\}
+	^{\limx0\frac{-x}{\sin x}}
     =e^{-1}$
-    \item $\mbox{原式}=\limx{\infty}
-    \df{\left[\left(\frac1x+1\right)^x\right]^2}
-    {\left[\left(\frac2x+1\right)^{\frac x2}\right]^4}
+    \item $\mbox{原式}
+    =
+    \df{\left[\limx{\infty}\left(\df1x+1\right)^x\right]^2}
+    {\left[\limx{\infty}\left(\df2x+1\right)^{\frac x2}\right]^4}
     =\df{e^2}{e^4}=e^{-2}$
-    \item 因为$\limx{+\infty}\frac{1+x}{1+2x}=\frac12$，故存在
-    $X_1>0$，使对任意$x>X_1$，总有$0<\frac{1+x}{1+2x}<\frac23$。
-    从而当$x>X_1$时，
-    $$\left(\df{1+x}{1+2x}\right)^{2x}<\left(\df49\right)^x
-    <\left(\df12\right)^x.$$
-    对任意$\e>0$，取$X_2=\log_2\frac1{\e}$，则当$x>\max\{X_1,X_2\}$
-    时，总有
-    $$\left(\df{1+x}{1+2x}\right)^{2x}
-    <\left(\df12\right)^x<\e,$$
-    由此即知$\mbox{原式}=0$。\fin
+%    \item 因为$\limx{+\infty}\frac{1+x}{1+2x}=\frac12$，故存在
+%    $X_1>0$，使对任意$x>X_1$，总有$0<\frac{1+x}{1+2x}<\frac23$。
+%    从而当$x>X_1$时，
+%    $$\left(\df{1+x}{1+2x}\right)^{2x}<\left(\df49\right)^x
+%    <\left(\df12\right)^x.$$
+%    对任意$\e>0$，取$X_2=\log_2\frac1{\e}$，则当$x>\max\{X_1,X_2\}$
+%    时，总有
+%    $$\left(\df{1+x}{1+2x}\right)^{2x}
+%    <\left(\df12\right)^x<\e,$$
+%    由此即知$\mbox{原式}=0$。
+    \item $\mbox{原式}
+    =\limx{+\infty}\left(\df12\right)^{2x}
+    \df{\left[\limx{+\infty}\left(\df1x+1\right)^x\right]^2}
+    {\limx{+\infty}\left(\df1{2x}+1\right)^{2x}}=0\cdot\df{e^2}e=0.$
+    \fin
 \end{enumerate}
 
 \bs
@@ -5299,8 +5272,8 @@ $$\limn(\sqrt{n+l}-\sqrt{n+1})
 \begin{align*}
 	\mbox{原式}
 	&=\limn\left[A_2\left(\sqrt{n+2}-\sqrt{n+1}\right)
-	+A_3\left(\sqrt{n+3}-\sqrt{n+1}\right)+
-	\ldots
+	+A_3\left(\sqrt{n+3}-\sqrt{n+1}\right)\right.\\
+	&\left.\quad+\ldots
 	+A_k\left(\sqrt{n+k}-\sqrt{n+1}\right)\right]\\
 	&=A_2\limn\left(\sqrt{n+2}-\sqrt{n+1}\right)
 	+A_3\limn\left(\sqrt{n+3}-\sqrt{n+1}\right)\\
@@ -5313,16 +5286,10 @@ $$\limn(\sqrt{n+l}-\sqrt{n+1})
 4.求函数$f(x)=\limn\sqrt[n]{1+x^n+\left(\df{x^2}2\right)^n}$
 （$x\geq 0$）的分段表达式。
 
-解：注意到
-$$\max\left\{1,x,\frac{x^2}2\right\}
-=\left\{\begin{array}{ll}
-	1,& x\in[0,1]\\
-	x,& x\in(1,2)\\
-	\frac{x^2}2,& x\in[2,+\infty)
-\end{array}\right.$$
-故由夹逼准则
+解：由夹逼准则
 $$\mbox{原式}
-=\left\{\begin{array}{ll}
+=\max\limits_{x\geq0}\left\{1,x,\frac{x^2}2\right\}=
+\left\{\begin{array}{ll}
 	1,& x\in[0,1]\\
 	x,& x\in(1,2)\\
 	\frac{x^2}2,& x\in[2,+\infty)
@@ -5335,32 +5302,31 @@ $\limn(\lambda+2\lambda^2+\ldots+n\lambda^n)$
 解：
 \begin{align*}
 	\lambda+&2\lambda^2+\ldots+n\lambda^n\\
-	=&(1+\lambda+\lambda^2+\ldots+\lambda^n)
-	+\lambda(1+\lambda+\lambda^2+\ldots+\lambda^{n-1})\\
-	&+\ldots+\lambda^{n-1}(1+\lambda)+\lambda^n\\
-	=&\df1{1-\lambda}\left[(1-\lambda^{n+1})
-	+\lambda(1-\lambda^{n})+\ldots+\lambda^{n-1}(1-\lambda^2)
-	+\lambda^n(1-\lambda)\right]\\
-	=&\df1{1-\lambda}\left[1+\lambda+\lambda^2
-	+\ldots+\lambda^{n}-n\lambda^{n+1}\right]\\
-	=&\df1{(1-\lambda)^2}-\df{\lambda^{n+1}}{(1-\lambda)^2}
+	=&\lambda(1+\lambda+\lambda^2+\ldots+\lambda^{n-1})
+	+\ldots+\lambda^{n-1}(1+\lambda)+\lambda^n\\
+	=&\df{\lambda}{1-\lambda}\left[(1-\lambda^{n})
+	+\lambda(1-\lambda^{n-1})+\ldots+\lambda^{n-2}(1-\lambda^2)
+	+\lambda^{n-1}(1-\lambda)\right]\\
+	=&\df{\lambda}{1-\lambda}\left[1+\lambda+\lambda^2
+	+\ldots+\lambda^{n-1}-n\lambda^{n}\right]\\
+	=&\df{\lambda}{(1-\lambda)^2}-\df{\lambda^{n+1}}{(1-\lambda)^2}
 	-\df{n\lambda^{n+1}}{1-\lambda}.
 \end{align*}
 显然$\limn\lambda^{n+1}=0$，以下证明$\limn n\lambda^n=0$。
 
 事实上，记$a_n=n\lambda^n$，注意到$\limn\df{n+1}n=1$，故
-$$\df{|a_{n+1}|}{|a_n|}=\df{n}{n-1}|\lambda|\to|\lambda|<1,
+$$\df{|a_{n+1}|}{|a_n|}=\df{n+1}{n}|\lambda|\to|\lambda|<1,
 \;(n\to\infty)$$
 由极限的保号性，存在$N\in\mathbb{Z}_+$，使对任意$n>N$，都有
 $$\df{|a_{n+1}|}{|a_n|}<1\quad\Rightarrow\quad
 |a_{n+1}|<|a_n|,$$
 由此可知数列$\{|a_n|\}$当$n$充分大时单调递减有下界，故必收敛，
-设其极限为A。在递推式$|a_{n+1}|=\df{n}{n-1}|a_n|$
+设其极限为$A$。在递推式$|a_{n+1}|=\df{(n+1)\lambda}{n}|a_n|$
 两边同时令$n\to\infty$，可得
 $$A=\lambda A\quad\Rightarrow\quad A=0.$$
 从而可知$\limn a_n=0$。
 
-至此，可知$\mbox{原式}=\df1{(1-\lambda)^2}$。
+至此，可知$\mbox{原式}=\df{\lambda}{(1-\lambda)^2}$。
 \fin
 
 \bs
